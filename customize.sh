@@ -15,8 +15,11 @@ export PATH=$PATH:/usr/local/go/bin
 # install tools
 sudo apt install -y gpg gzip sed tar zip
 
+# In order to build AdGuard Home with Node.js 17 and later, specify `--openssl-legacy-provider` option.
+export NODE_OPTIONS=--openssl-legacy-provider
+
 # build dist
-make build-release CHANNEL='release' VERSION='0.0.1' ARCH='amd64' OS='linux' SIGN='0'
+make build-release CHANNEL='release' VERSION='0.0.1' ARCH='amd64 arm64' OS='linux' SIGN='0'
 
 # build docker
 docker run --rm --privileged multiarch/qemu-user-static --reset -p yes --credential yes

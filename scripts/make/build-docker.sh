@@ -32,7 +32,7 @@ readonly version
 sudo_cmd="${SUDO:-}"
 readonly sudo_cmd
 
-docker_platforms="linux/amd64"
+docker_platforms="linux/amd64,linux/arm64"
 # "\
 # linux/386,\
 # linux/amd64,\

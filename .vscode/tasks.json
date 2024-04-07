@@ -11,7 +11,7 @@
     {
       "label": "push to jqknono/adguardhome:v1.0",
       "type": "shell",
-      "command": "docker image import AdGuardHome_linux_amd64.tar.gz jqknono/adguardhome:v1.0 && docker image push jqknono/adguardhome:v1.0"
+      "command": "make build-docker CHANNEL='development' VERSION='0.0.1' DOCKER_IMAGE_NAME='adguardhome' DOCKER_OUTPUT='type=image,name=docker.io/jqknono/adguardhome:v1.0,push=true'"
     },
     {
       "label": "git commit no verified",
@@ -21,7 +21,7 @@
     {
       "label": "build docker image",
       "type": "shell",
-      "command": "make build-docker"
+      "command": "make build-docker CHANNEL='development' VERSION='0.0.1' DOCKER_IMAGE_NAME='adguardhome' DOCKER_OUTPUT='type=image,name=docker.io/jqknono/adguardhome:v1.0,push=false'"
     }
   ]
 }
