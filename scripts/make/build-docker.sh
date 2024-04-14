@@ -32,7 +32,12 @@ readonly version
 sudo_cmd="${SUDO:-}"
 readonly sudo_cmd
 
-docker_platforms="linux/amd64,linux/arm64"
+echo $channel
+if [ "$channel" = "development" ]; then
+    docker_platforms="linux/amd64"
+else
+    docker_platforms="linux/amd64,linux/arm64"
+fi
 # "\
 # linux/386,\
 # linux/amd64,\
@@ -136,5 +141,8 @@ $sudo_cmd docker\
 	--platform "$docker_platforms"\
 	$docker_version_tag\
 	$docker_channel_tag\
+    --tag adguardhome-dev:latest\
 	-f ./docker/Dockerfile\
-	.
+	. > adguardhome-dev.tar
+
+$sudo_cmd docker images
