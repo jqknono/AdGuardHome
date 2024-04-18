@@ -11,7 +11,17 @@
         {
             "label": "push to jqknono/adguardhome:v1.0",
             "type": "shell",
-            "command": "make build-docker CHANNEL='beta' VERSION='0.0.1' DOCKER_IMAGE_NAME='adguardhome' DOCKER_OUTPUT='type=image,name=docker.io/jqknono/adguardhome:v1.0,push=true'"
+            "command": "make build-docker CHANNEL='development' VERSION='0.0.1' DOCKER_IMAGE_NAME='adguardhome' DOCKER_OUTPUT='type=image,name=jqknono/adguardhome:v1.0,push=true'"
+        },
+        {
+            "label": "push to aliyuncs/jqknono/adguardhome:v1.0",
+            "type": "shell",
+            "command": "make build-docker CHANNEL='development' VERSION='0.0.1' DOCKER_IMAGE_NAME='adguardhome' DOCKER_OUTPUT='type=image,name=registry.cn-hangzhou.aliyuncs.com/jqknono/adguardhome:v1.0,push=true'"
+        },
+        {
+            "label": "push to dev.jqknono.com/adguardhome:v1.0",
+            "type": "shell",
+            "command": "make build-docker CHANNEL='development' VERSION='0.0.1' DOCKER_IMAGE_NAME='adguardhome' DOCKER_OUTPUT='type=image,name=dev.jqknono.com:34005/adguardhome:v1.0,push=true'"
         },
         {
             "label": "git commit no verified",
@@ -19,7 +29,7 @@
             "command": "git commit --no-verify -m 'jqknono定制'"
         },
         {
-            "label": "build docker image",
+            "label": "docker build dev",
             "type": "shell",
             "command": "make build-docker CHANNEL='development' VERSION='0.0.1' DOCKER_IMAGE_NAME='adguardhome-dev' DOCKER_OUTPUT='type=docker,dest=-'"
         },
@@ -29,9 +39,19 @@
             "command": "docker load -i ./adguardhome-dev.tar"
         },
         {
-            "label": "docker run adguardhome-dev",
+            "label": "docker run dev",
             "type": "shell",
             "command": "docker run --name adguardhome-dev -d -p 50000:3000 -p 50001:80 -p 50002:443 -p 50003:853 -p 50004:53/udp -v ./data/work:/opt/adguardhome/work -v ./data/conf:/opt/adguardhome/conf adguardhome-dev:latest"
+        },
+        {
+            "label": "build front",
+            "type": "shell",
+            "command": "make js-build"
+        },
+        {
+            "label": "build AdguardHome",
+            "type": "shell",
+            "command": "make go-build"
         }
     ]
 }

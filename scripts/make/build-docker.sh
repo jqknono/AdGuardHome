@@ -32,8 +32,15 @@ readonly version
 sudo_cmd="${SUDO:-}"
 readonly sudo_cmd
 
-echo $channel
-if [ "$channel" = "development" ]; then
+build_date="$( date -u +'%Y-%m-%dT%H:%M:%SZ' )"
+readonly build_date
+
+# Set DOCKER_IMAGE_NAME to 'adguard/adguard-home' if you want (and are allowed)
+# to push to DockerHub.
+docker_image_name="${DOCKER_IMAGE_NAME:-adguardhome-dev}"
+readonly docker_image_name
+
+if [ "$docker_image_name" = "adguardhome-dev" ]; then
     docker_platforms="linux/amd64"
 else
     docker_platforms="linux/amd64,linux/arm64"
@@ -46,14 +53,6 @@ fi
 # linux/arm64,\
 # linux/ppc64le"
 readonly docker_platforms
-
-build_date="$( date -u +'%Y-%m-%dT%H:%M:%SZ' )"
-readonly build_date
-
-# Set DOCKER_IMAGE_NAME to 'adguard/adguard-home' if you want (and are allowed)
-# to push to DockerHub.
-docker_image_name="${DOCKER_IMAGE_NAME:-adguardhome-dev}"
-readonly docker_image_name
 
 # Set DOCKER_OUTPUT to 'type=image,name=adguard/adguard-home,push=true' if you
 # want (and are allowed) to push to DockerHub.
@@ -130,6 +129,7 @@ fi
 #
 # TODO(a.garipov): Once flag --tag of docker buildx build supports commas, use
 # them instead.
+if [ "$docker_image_name" = "adguardhome-dev" ]; then
 $sudo_cmd docker\
 	"$debug_flags"\
 	buildx build\
@@ -145,4 +145,19 @@ $sudo_cmd docker\
 	-f ./docker/Dockerfile\
 	. > adguardhome-dev.tar
 
+else
+$sudo_cmd docker\
+    "$debug_flags"\
+    buildx build\
+    --build-arg BUILD_DATE="$build_date"\
+    --build-arg DIST_DIR="$dist_dir"\
+    --build-arg VCS_REF="$commit"\
+    --build-arg VERSION="$version"\
+    --output "$docker_output"\
+    --platform "$docker_platforms"\
+    $docker_version_tag\
+    $docker_channel_tag\
+    -f ./docker/Dockerfile\
+    .
+fi
 $sudo_cmd docker images
