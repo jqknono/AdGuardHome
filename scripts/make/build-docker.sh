@@ -32,15 +32,6 @@ readonly version
 sudo_cmd="${SUDO:-}"
 readonly sudo_cmd
 
-docker_platforms="\
-linux/386,\
-linux/amd64,\
-linux/arm/v6,\
-linux/arm/v7,\
-linux/arm64,\
-linux/ppc64le"
-readonly docker_platforms
-
 build_date="$( date -u +'%Y-%m-%dT%H:%M:%SZ' )"
 readonly build_date
 
@@ -48,6 +39,20 @@ readonly build_date
 # to push to DockerHub.
 docker_image_name="${DOCKER_IMAGE_NAME:-adguardhome-dev}"
 readonly docker_image_name
+
+if [ "$docker_image_name" = "adguardhome-dev" ]; then
+    docker_platforms="linux/amd64"
+else
+    docker_platforms="linux/amd64,linux/arm64"
+fi
+# "\
+# linux/386,\
+# linux/amd64,\
+# linux/arm/v6,\
+# linux/arm/v7,\
+# linux/arm64,\
+# linux/ppc64le"
+readonly docker_platforms
 
 # Set DOCKER_OUTPUT to 'type=image,name=adguard/adguard-home,push=true' if you
 # want (and are allowed) to push to DockerHub.
@@ -94,24 +99,37 @@ dist_docker="${dist_dir}/docker"
 readonly dist_docker
 
 mkdir -p "$dist_docker"
-cp "${dist_dir}/AdGuardHome_linux_386/AdGuardHome/AdGuardHome"\
-	"${dist_docker}/AdGuardHome_linux_386_"
-cp "${dist_dir}/AdGuardHome_linux_amd64/AdGuardHome/AdGuardHome"\
-	"${dist_docker}/AdGuardHome_linux_amd64_"
-cp "${dist_dir}/AdGuardHome_linux_arm64/AdGuardHome/AdGuardHome"\
-	"${dist_docker}/AdGuardHome_linux_arm64_"
-cp "${dist_dir}/AdGuardHome_linux_arm_6/AdGuardHome/AdGuardHome"\
-	"${dist_docker}/AdGuardHome_linux_arm_v6"
-cp "${dist_dir}/AdGuardHome_linux_arm_7/AdGuardHome/AdGuardHome"\
-	"${dist_docker}/AdGuardHome_linux_arm_v7"
-cp "${dist_dir}/AdGuardHome_linux_ppc64le/AdGuardHome/AdGuardHome"\
-	"${dist_docker}/AdGuardHome_linux_ppc64le_"
+if [ -d "${dist_dir}/AdGuardHome_linux_386/AdGuardHome" ]; then
+    cp "${dist_dir}/AdGuardHome_linux_386/AdGuardHome/AdGuardHome"\
+        "${dist_docker}/AdGuardHome_linux_386_"
+fi
+if [ -d "${dist_dir}/AdGuardHome_linux_amd64/AdGuardHome" ]; then
+    cp "${dist_dir}/AdGuardHome_linux_amd64/AdGuardHome/AdGuardHome"\
+        "${dist_docker}/AdGuardHome_linux_amd64_"
+fi
+if [ -d "${dist_dir}/AdGuardHome_linux_arm64/AdGuardHome" ]; then
+    cp "${dist_dir}/AdGuardHome_linux_arm64/AdGuardHome/AdGuardHome"\
+        "${dist_docker}/AdGuardHome_linux_arm64_"
+fi
+if [ -d "${dist_dir}/AdGuardHome_linux_arm_6/AdGuardHome" ]; then
+    cp "${dist_dir}/AdGuardHome_linux_arm_6/AdGuardHome/AdGuardHome"\
+        "${dist_docker}/AdGuardHome_linux_arm_v6"
+fi
+if [ -d "${dist_dir}/AdGuardHome_linux_arm_7/AdGuardHome" ]; then
+    cp "${dist_dir}/AdGuardHome_linux_arm_7/AdGuardHome/AdGuardHome"\
+        "${dist_docker}/AdGuardHome_linux_arm_v7"
+fi
+if [ -d "${dist_dir}/AdGuardHome_linux_ppc64le/AdGuardHome" ]; then
+    cp "${dist_dir}/AdGuardHome_linux_ppc64le/AdGuardHome/AdGuardHome"\
+        "${dist_docker}/AdGuardHome_linux_ppc64le_"
+fi
 
 # Don't use quotes with $docker_version_tag and $docker_channel_tag, because we
 # want word splitting and or an empty space if tags are empty.
 #
 # TODO(a.garipov): Once flag --tag of docker buildx build supports commas, use
 # them instead.
+if [ "$docker_image_name" = "adguardhome-dev" ]; then
 $sudo_cmd docker\
 	"$debug_flags"\
 	buildx build\
@@ -123,5 +141,23 @@ $sudo_cmd docker\
 	--platform "$docker_platforms"\
 	$docker_version_tag\
 	$docker_channel_tag\
+    --tag adguardhome-dev:latest\
 	-f ./docker/Dockerfile\
-	.
+	. > adguardhome-dev.tar
+
+else
+$sudo_cmd docker\
+    "$debug_flags"\
+    buildx build\
+    --build-arg BUILD_DATE="$build_date"\
+    --build-arg DIST_DIR="$dist_dir"\
+    --build-arg VCS_REF="$commit"\
+    --build-arg VERSION="$version"\
+    --output "$docker_output"\
+    --platform "$docker_platforms"\
+    $docker_version_tag\
+    $docker_channel_tag\
+    -f ./docker/Dockerfile\
+    .
+fi
+$sudo_cmd docker images
