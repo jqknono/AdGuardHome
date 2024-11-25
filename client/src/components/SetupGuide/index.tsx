@@ -34,11 +34,12 @@ const SetupGuide = ({
                 </div>
 
                 <div className="mt-3">
-                    {dnsAddresses.map((ip: any) => (
-                        <li key={ip} className="guide__address">
-                            {ip}
-                        </li>
-                    ))}
+                    {dnsAddresses.map((ip: any) => {
+                      if (ip.startsWith('https') || ip.startsWith('tls')) {
+                        return <li key={ip} className="guide__address"> {ip} </li>;
+                      }
+                      return null;
+                    })}
                 </div>
             </div>
 

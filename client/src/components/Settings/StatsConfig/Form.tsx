@@ -5,36 +5,36 @@ import flow from 'lodash/flow';
 import { connect } from 'react-redux';
 
 import {
-    renderRadioField,
-    toNumber,
+    // renderRadioField,
+    // toNumber,
     CheckboxField,
     renderTextareaField,
-    toFloatNumber,
-    renderInputField,
+    // toFloatNumber,
+    // renderInputField,
 } from '../../../helpers/form';
 import {
     FORM_NAME,
     STATS_INTERVALS_DAYS,
-    DAY,
-    RETENTION_CUSTOM,
-    RETENTION_CUSTOM_INPUT,
+    // DAY,
+    // RETENTION_CUSTOM,
+    // RETENTION_CUSTOM_INPUT,
     CUSTOM_INTERVAL,
-    RETENTION_RANGE,
+    // RETENTION_RANGE,
 } from '../../../helpers/constants';
 
 import { trimLinesAndRemoveEmpty } from '../../../helpers/helpers';
 import '../FormButton.css';
 
-const getIntervalTitle = (intervalMs: any, t: any) => {
-    switch (intervalMs) {
-        case RETENTION_CUSTOM:
-            return t('settings_custom');
-        case DAY:
-            return t('interval_24_hour');
-        default:
-            return t('interval_days', { count: intervalMs / DAY });
-    }
-};
+// const getIntervalTitle = (intervalMs: any, t: any) => {
+//     switch (intervalMs) {
+//         case RETENTION_CUSTOM:
+//             return t('settings_custom');
+//         case DAY:
+//             return t('interval_24_hour');
+//         default:
+//             return t('interval_days', { count: intervalMs / DAY });
+//     }
+// };
 
 interface FormProps {
     handleSubmit: (...args: unknown[]) => string;
@@ -81,8 +81,7 @@ let Form = (props: FormProps) => {
                     disabled={processing}
                 />
             </div>
-
-            <label className="form__label form__label--with-desc">
+            {/* <label className="form__label form__label--with-desc">
                 <Trans>statistics_retention</Trans>
             </label>
 
@@ -132,8 +131,7 @@ let Form = (props: FormProps) => {
                         />
                     ))}
                 </div>
-            </div>
-
+            </div> */}
             <label className="form__label form__label--with-desc">
                 <Trans>ignore_domains_title</Trans>
             </label>

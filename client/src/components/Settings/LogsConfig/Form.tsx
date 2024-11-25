@@ -6,51 +6,51 @@ import flow from 'lodash/flow';
 
 import {
     CheckboxField,
-    toFloatNumber,
+    // toFloatNumber,
     renderTextareaField,
-    renderInputField,
-    renderRadioField,
+    // renderInputField,
+    // renderRadioField,
 } from '../../../helpers/form';
 
 import { trimLinesAndRemoveEmpty } from '../../../helpers/helpers';
 import {
     FORM_NAME,
     QUERY_LOG_INTERVALS_DAYS,
-    HOUR,
-    DAY,
-    RETENTION_CUSTOM,
-    RETENTION_CUSTOM_INPUT,
-    RETENTION_RANGE,
+    // HOUR,
+    // DAY,
+    // RETENTION_CUSTOM,
+    // RETENTION_CUSTOM_INPUT,
+    // RETENTION_RANGE,
     CUSTOM_INTERVAL,
 } from '../../../helpers/constants';
 import '../FormButton.css';
 
-const getIntervalTitle = (interval: any, t: any) => {
-    switch (interval) {
-        case RETENTION_CUSTOM:
-            return t('settings_custom');
-        case 6 * HOUR:
-            return t('interval_6_hour');
-        case DAY:
-            return t('interval_24_hour');
-        default:
-            return t('interval_days', { count: interval / DAY });
-    }
-};
+// const getIntervalTitle = (interval: any, t: any) => {
+//     switch (interval) {
+//         case RETENTION_CUSTOM:
+//             return t('settings_custom');
+//         case 6 * HOUR:
+//             return t('interval_6_hour');
+//         case DAY:
+//             return t('interval_24_hour');
+//         default:
+//             return t('interval_days', { count: interval / DAY });
+//     }
+// };
 
-const getIntervalFields = (processing: any, t: any, toNumber: any) =>
-    QUERY_LOG_INTERVALS_DAYS.map((interval) => (
-        <Field
-            key={interval}
-            name="interval"
-            type="radio"
-            component={renderRadioField}
-            value={interval}
-            placeholder={getIntervalTitle(interval, t)}
-            normalize={toNumber}
-            disabled={processing}
-        />
-    ));
+// const getIntervalFields = (processing: any, t: any, toNumber: any) =>
+//     QUERY_LOG_INTERVALS_DAYS.map((interval) => (
+//         <Field
+//             key={interval}
+//             name="interval"
+//             type="radio"
+//             component={renderRadioField}
+//             value={interval}
+//             placeholder={getIntervalTitle(interval, t)}
+//             normalize={toNumber}
+//             disabled={processing}
+//         />
+//     ));
 
 interface FormProps {
     handleSubmit: (...args: unknown[]) => string;
@@ -107,8 +107,7 @@ let Form = (props: FormProps) => {
                     disabled={processing}
                 />
             </div>
-
-            <label className="form__label">
+            {/* <label className="form__label">
                 <Trans>query_log_retention</Trans>
             </label>
 
@@ -143,8 +142,7 @@ let Form = (props: FormProps) => {
                     )}
                     {getIntervalFields(processing, t, toFloatNumber)}
                 </div>
-            </div>
-
+            </div> */}
             <label className="form__label form__label--with-desc">
                 <Trans>ignore_domains_title</Trans>
             </label>

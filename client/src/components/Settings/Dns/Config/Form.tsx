@@ -81,7 +81,7 @@ const Form = ({ handleSubmit, submitting, invalid, processing }: ConfigFormProps
     return (
         <form onSubmit={handleSubmit}>
             <div className="row">
-                <div className="col-12 col-md-7">
+                {/* <div className="col-12 col-md-7">
                     <div className="form__group form__group--settings">
                         <label htmlFor="ratelimit" className="form__label form__label--with-desc">
                             <Trans>rate_limit</Trans>
@@ -103,9 +103,9 @@ const Form = ({ handleSubmit, submitting, invalid, processing }: ConfigFormProps
                             max={UINT32_RANGE.MAX}
                         />
                     </div>
-                </div>
+                </div> */}
 
-                <div className="col-12 col-md-7">
+                {/* <div className="col-12 col-md-7">
                     <div className="form__group form__group--settings">
                         <label htmlFor="ratelimit_subnet_len_ipv4" className="form__label form__label--with-desc">
                             <Trans>rate_limit_subnet_len_ipv4</Trans>
@@ -127,9 +127,9 @@ const Form = ({ handleSubmit, submitting, invalid, processing }: ConfigFormProps
                             max={32}
                         />
                     </div>
-                </div>
+                </div> */}
 
-                <div className="col-12 col-md-7">
+                {/* <div className="col-12 col-md-7">
                     <div className="form__group form__group--settings">
                         <label htmlFor="ratelimit_subnet_len_ipv6" className="form__label form__label--with-desc">
                             <Trans>rate_limit_subnet_len_ipv6</Trans>
@@ -151,9 +151,9 @@ const Form = ({ handleSubmit, submitting, invalid, processing }: ConfigFormProps
                             max={128}
                         />
                     </div>
-                </div>
+                </div> */}
 
-                <div className="col-12 col-md-7">
+                {/* <div className="col-12 col-md-7">
                     <div className="form__group form__group--settings">
                         <label htmlFor="ratelimit_whitelist" className="form__label form__label--with-desc">
                             <Trans>rate_limit_whitelist</Trans>
@@ -172,7 +172,7 @@ const Form = ({ handleSubmit, submitting, invalid, processing }: ConfigFormProps
                             normalizeOnBlur={removeEmptyLines}
                         />
                     </div>
-                </div>
+                </div> */}
 
                 <div className="col-12">
                     <div className="form__group form__group--settings">
@@ -270,7 +270,7 @@ const Form = ({ handleSubmit, submitting, invalid, processing }: ConfigFormProps
                     </>
                 )}
 
-                <div className="col-12 col-md-7">
+                {/* <div className="col-12 col-md-7">
                     <div className="form__group form__group--settings">
                         <label htmlFor="blocked_response_ttl" className="form__label form__label--with-desc">
                             <Trans>blocked_response_ttl</Trans>
@@ -292,7 +292,7 @@ const Form = ({ handleSubmit, submitting, invalid, processing }: ConfigFormProps
                             max={UINT32_RANGE.MAX}
                         />
                     </div>
-                </div>
+                </div> */}
             </div>
 
             <button
