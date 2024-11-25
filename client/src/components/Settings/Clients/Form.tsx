@@ -36,14 +36,14 @@ const settingsCheckboxes = [
         name: 'filtering_enabled',
         placeholder: 'block_domain_use_filters_and_hosts',
     },
-    {
-        name: 'safebrowsing_enabled',
-        placeholder: 'use_adguard_browsing_sec',
-    },
-    {
-        name: 'parental_enabled',
-        placeholder: 'use_adguard_parental',
-    },
+    // {
+    //     name: 'safebrowsing_enabled',
+    //     placeholder: 'use_adguard_browsing_sec',
+    // },
+    // {
+    //     name: 'parental_enabled',
+    //     placeholder: 'use_adguard_parental',
+    // },
 ];
 
 const logAndStatsCheckboxes = [

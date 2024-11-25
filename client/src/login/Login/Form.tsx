@@ -16,6 +16,15 @@ interface LoginFormProps {
     t: (...args: unknown[]) => string;
 }
 
+const getSubdomain = () => {
+    const hostname = window.location.hostname;
+    const parts = hostname.split('.');
+    if (parts.length > 2) {
+        return parts[0];
+    }
+    return '';
+};
+
 const Form = (props: LoginFormProps) => {
     const { handleSubmit, processing, invalid, t } = props;
 
@@ -69,4 +78,9 @@ const Form = (props: LoginFormProps) => {
     );
 };
 
-export default flow([withTranslation(), reduxForm({ form: FORM_NAME.LOGIN })])(Form);
+export default flow([withTranslation(), reduxForm({
+    form: FORM_NAME.LOGIN,
+    initialValues: {
+        username: getSubdomain()
+    }
+})])(Form);

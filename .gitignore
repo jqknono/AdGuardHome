@@ -35,5 +35,6 @@ coverage.txt
 node_modules/
 
 !/build/gitkeep
+adguardhome-dev.tar
 client/pkg/
 client/bin/
