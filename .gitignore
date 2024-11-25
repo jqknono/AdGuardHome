@@ -35,3 +35,5 @@ coverage.txt
 node_modules/
 
 !/build/gitkeep
+client/pkg/
+client/bin/

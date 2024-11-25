@@ -31,12 +31,8 @@ sudo_cmd="${SUDO:-}"
 readonly sudo_cmd
 
 docker_platforms="\
-linux/386,\
 linux/amd64,\
-linux/arm/v6,\
-linux/arm/v7,\
-linux/arm64,\
-linux/ppc64le"
+linux/arm64"
 readonly docker_platforms
 
 build_date="$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
