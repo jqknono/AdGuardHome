@@ -16,27 +16,27 @@
         {
             "label": "3.1 build release",
             "type": "shell",
-            "command": "sudo make build-release CHANNEL='release' VERSION='0.0.1' ARCH='amd64 arm64' OS='linux' SIGN='0'"
+            "command": "sudo make build-release VERBOSE=2 CHANNEL='release' VERSION='v1.1.0' ARCH='amd64 arm64' OS='linux' SIGN='0'"
         },
         {
             "label": "3.2 docker build release",
             "type": "shell",
-            "command": "make build-docker VERBOSE=2 CHANNEL='release' VERSION='0.0.1' DOCKER_IMAGE_NAME='adguard-private' DOCKER_OUTPUT='type=image'"
+            "command": "make build-docker VERBOSE=2 CHANNEL='release' VERSION='v1.1.0' DOCKER_IMAGE_NAME='adguardprivate' DOCKER_OUTPUT='type=image'"
         },
         {
-            "label": "3.3 push to aliyuncs/jqknono/adguardhome:v1.0",
+            "label": "3.3 push to dev.jqknono.com/adguardprivate:v1.1.0",
             "type": "shell",
-            "command": "make build-docker CHANNEL='release' VERSION='0.0.1' DOCKER_IMAGE_NAME='jqknono/adguard-private' DOCKER_OUTPUT='type=image,name=registry.cn-hangzhou.aliyuncs.com/jqknono/adguardhome:v1.0,push=true'"
+            "command": "make build-docker VERBOSE=2 CHANNEL='release' VERSION='v1.1.0' DOCKER_IMAGE_NAME='dev.jqknono.com:34005/adguardprivate' DOCKER_OUTPUT='type=image,name=dev.jqknono.com:34005/adguardprivate:v1.1.0,push=true'"
         },
         {
-            "label": "3.4 push to jqknono/adguardhome:v1.0",
+            "label": "3.4 push to docker.io/jqknono/adguardprivate:v1.1.0",
             "type": "shell",
-            "command": "make build-docker CHANNEL='release' VERSION='0.0.1' DOCKER_IMAGE_NAME='jqknono/adguard-private' DOCKER_OUTPUT='type=image,name=jqknono/adguardhome:v1.0,push=true'"
+            "command": "make build-docker VERBOSE=2 CHANNEL='release' VERSION='v1.1.0' DOCKER_IMAGE_NAME='jqknono/adguardprivate' DOCKER_OUTPUT='type=image,name=docker.io/jqknono/adguardprivate:v1.1.0,push=true'"
         },
         {
-            "label": "3.5 push to dev.jqknono.com/adguardhome:v1.0",
+            "label": "3.5 push to aliyuncs/adguardprivate/adguardprivate:v1.1.0",
             "type": "shell",
-            "command": "make build-docker CHANNEL='release' VERSION='0.0.1' DOCKER_IMAGE_NAME='adguardhome' DOCKER_OUTPUT='type=image,name=dev.jqknono.com:34005/adguardhome:v1.0,push=true'"
+            "command": "make build-docker VERBOSE=2 CHANNEL='release' VERSION='v1.1.0' DOCKER_IMAGE_NAME='registry.cn-hangzhou.aliyuncs.com/adguardprivate/adguardprivate' DOCKER_OUTPUT='type=image,name=registry.cn-hangzhou.aliyuncs.com/adguardprivate/adguardprivate:v1.1.0,push=true'"
         },
         {
             "label": "git commit no verified",
@@ -46,7 +46,7 @@
         {
             "label": "2.1 docker build dev",
             "type": "shell",
-            "command": "make build-docker CHANNEL='development' VERSION='0.0.1' DOCKER_IMAGE_NAME='adguardhome-dev' DOCKER_OUTPUT='type=docker,dest=-' VERBOSE=2"
+            "command": "make build-docker VERBOSE=2 CHANNEL='development' VERSION='v1.1.0' DOCKER_IMAGE_NAME='adguardhome-dev' DOCKER_OUTPUT='type=docker,dest=-' VERBOSE=2"
         },
         {
             "label": "2.2 docker load dev",
@@ -61,17 +61,17 @@
         {
             "label": "1.0 quick build",
             "type": "shell",
-            "command": "sudo make quick-build"
+            "command": "sudo make quick-build VERBOSE=2 "
         },
         {
             "label": "1.1 build front",
             "type": "shell",
-            "command": "sudo make js-build"
+            "command": "sudo make js-build VERBOSE=2 "
         },
         {
             "label": "1.2 build AdguardHome",
             "type": "shell",
-            "command": "sudo make go-build CHANNEL='development' VERSION='0.0.1' ARCH='amd64' OS='linux' SIGN='0' VERBOSE=2"
+            "command": "sudo make go-build VERBOSE=2 CHANNEL='development' VERSION='v1.1.0' ARCH='amd64' OS='linux' SIGN='0'"
         },
         {
             "label": "1.3 copy AdguardHome",
