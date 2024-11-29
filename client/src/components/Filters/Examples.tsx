@@ -38,7 +38,7 @@ const Examples = () => (
             </ol>
         </div>
 
-        <p className="mt-1">
+        {/* <p className="mt-1">
             <Trans
                 components={[
                     <a
@@ -51,7 +51,7 @@ const Examples = () => (
                 ]}>
                 filtering_rules_learn_more
             </Trans>
-        </p>
+        </p> */}
     </Fragment>
 );
 

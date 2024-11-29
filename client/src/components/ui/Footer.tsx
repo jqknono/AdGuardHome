@@ -68,8 +68,8 @@ const Footer = () => {
                 <a
                     target="_blank"
                     rel="noopener noreferrer"
-                    href="https://link.adtidy.org/forward.html?action=home&from=ui&app=home">
-                    AdGuard
+                    href="https://www.adguardprivate.com">
+                    AdGuardPrivate
                 </a>
             </div>
         </div>

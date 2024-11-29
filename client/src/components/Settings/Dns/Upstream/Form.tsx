@@ -166,7 +166,7 @@ const Form = ({ submitting, invalid, handleSubmit }: FormProps) => {
     return (
         <form onSubmit={handleSubmit} className="form--upstream">
             <div className="row">
-                <label className="col form__label" htmlFor={UPSTREAM_DNS_NAME}>
+                {/* <label className="col form__label" htmlFor={UPSTREAM_DNS_NAME}>
                     <Trans components={components}>upstream_dns_help</Trans>{' '}
                     <Trans
                         components={[
@@ -180,7 +180,7 @@ const Form = ({ submitting, invalid, handleSubmit }: FormProps) => {
                         ]}>
                         dns_providers
                     </Trans>
-                </label>
+                </label> */}
 
                 <div className="col-12 mb-4">
                     <div className="text-edit-container">

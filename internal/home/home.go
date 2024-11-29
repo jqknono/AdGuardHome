@@ -130,6 +130,18 @@ func Main(clientBuildFS fs.FS) {
 		}
 	}()
 
+	// periodically reload tls by 3 days
+	go func() {
+		for {
+			select {
+			case <-time.After(3 * 24 * time.Hour):
+				Context.tls.reload()
+			case <-done:
+				return
+			}
+		}
+	}()
+
 	if opts.serviceControlAction != "" {
 		handleServiceControlAction(opts, clientBuildFS, signals, done)
 
