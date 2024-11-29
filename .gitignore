@@ -35,6 +35,8 @@ coverage.txt
 node_modules/
 
 !/build/gitkeep
+adguard-private
 adguardhome-dev.tar
 client/pkg/
 client/bin/
+.vscode/bookmarks.json

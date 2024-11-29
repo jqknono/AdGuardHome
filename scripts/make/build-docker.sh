@@ -3,11 +3,11 @@
 verbose="${VERBOSE:-0}"
 
 if [ "$verbose" -gt '0' ]; then
-	set -x
-	debug_flags='--debug=1'
+    set -x
+    debug_flags='--debug=1'
 else
-	set +x
-	debug_flags='--debug=0'
+    set +x
+    debug_flags='--debug=0'
 fi
 readonly debug_flags
 
@@ -20,9 +20,9 @@ dist_dir="${DIST_DIR:?please set DIST_DIR}"
 readonly channel commit dist_dir
 
 if [ "${VERSION:-}" = 'v0.0.0' ] || [ "${VERSION:-}" = '' ]; then
-	version="$(sh ./scripts/make/version.sh)"
+    version="$(sh ./scripts/make/version.sh)"
 else
-	version="$VERSION"
+    version="$VERSION"
 fi
 readonly version
 
@@ -30,9 +30,18 @@ readonly version
 sudo_cmd="${SUDO:-}"
 readonly sudo_cmd
 
-docker_platforms="\
-linux/amd64,\
-linux/arm64"
+if [ "$CHANNEL" = "development" ]; then
+    docker_platforms="linux/amd64"
+else
+    docker_platforms="linux/amd64,linux/arm64"
+fi
+# "\
+# linux/386,\
+# linux/amd64,\
+# linux/arm/v6,\
+# linux/arm/v7,\
+# linux/arm64,\
+# linux/ppc64le"
 readonly docker_platforms
 
 build_date="$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
@@ -55,28 +64,28 @@ readonly docker_output
 
 case "$channel" in
 'release')
-	docker_version_tag="--tag=${docker_image_name}:${version}"
-	docker_channel_tag="--tag=${docker_image_name}:latest"
-	;;
+    docker_version_tag="--tag=${docker_image_name}:${version}"
+    docker_channel_tag="--tag=${docker_image_name}:latest"
+    ;;
 'beta')
-	docker_version_tag="--tag=${docker_image_name}:${version}"
-	docker_channel_tag="--tag=${docker_image_name}:beta"
-	;;
+    docker_version_tag="--tag=${docker_image_name}:${version}"
+    docker_channel_tag="--tag=${docker_image_name}:beta"
+    ;;
 'edge')
-	# Set the version tag to an empty string when pushing to the edge channel.
-	docker_version_tag=''
-	docker_channel_tag="--tag=${docker_image_name}:edge"
-	;;
+    # Set the version tag to an empty string when pushing to the edge channel.
+    docker_version_tag=''
+    docker_channel_tag="--tag=${docker_image_name}:edge"
+    ;;
 'development')
-	# Set both tags to an empty string for development builds.
-	docker_version_tag=''
-	docker_channel_tag=''
-	;;
+    # Set both tags to an empty string for development builds.
+    docker_version_tag=''
+    docker_channel_tag=''
+    ;;
 *)
-	echo "invalid channel '$channel', supported values are\
+    echo "invalid channel '$channel', supported values are\
 		'development', 'edge', 'beta', and 'release'" 1>&2
-	exit 1
-	;;
+    exit 1
+    ;;
 esac
 readonly docker_version_tag docker_channel_tag
 
@@ -87,32 +96,54 @@ dist_docker="${dist_dir}/docker"
 readonly dist_docker
 
 mkdir -p "$dist_docker"
-cp "${dist_dir}/AdGuardHome_linux_386/AdGuardHome/AdGuardHome" \
-	"${dist_docker}/AdGuardHome_linux_386_"
-cp "${dist_dir}/AdGuardHome_linux_amd64/AdGuardHome/AdGuardHome" \
-	"${dist_docker}/AdGuardHome_linux_amd64_"
-cp "${dist_dir}/AdGuardHome_linux_arm64/AdGuardHome/AdGuardHome" \
-	"${dist_docker}/AdGuardHome_linux_arm64_"
-cp "${dist_dir}/AdGuardHome_linux_arm_6/AdGuardHome/AdGuardHome" \
-	"${dist_docker}/AdGuardHome_linux_arm_v6"
-cp "${dist_dir}/AdGuardHome_linux_arm_7/AdGuardHome/AdGuardHome" \
-	"${dist_docker}/AdGuardHome_linux_arm_v7"
-cp "${dist_dir}/AdGuardHome_linux_ppc64le/AdGuardHome/AdGuardHome" \
-	"${dist_docker}/AdGuardHome_linux_ppc64le_"
+if [ -d "${dist_dir}/AdGuardHome_linux_386/AdGuardHome" ]; then
+    cp "${dist_dir}/AdGuardHome_linux_386/AdGuardHome/AdGuardHome" \
+        "${dist_docker}/AdGuardHome_linux_386_"
+fi
+if [ -d "${dist_dir}/AdGuardHome_linux_amd64/AdGuardHome" ]; then
+    cp "${dist_dir}/AdGuardHome_linux_amd64/AdGuardHome/AdGuardHome" \
+        "${dist_docker}/AdGuardHome_linux_amd64_"
+fi
+if [ -d "${dist_dir}/AdGuardHome_linux_arm64/AdGuardHome" ]; then
+    cp "${dist_dir}/AdGuardHome_linux_arm64/AdGuardHome/AdGuardHome" \
+        "${dist_docker}/AdGuardHome_linux_arm64_"
+fi
+if [ -d "${dist_dir}/AdGuardHome_linux_arm_6/AdGuardHome" ]; then
+    cp "${dist_dir}/AdGuardHome_linux_arm_6/AdGuardHome/AdGuardHome" \
+        "${dist_docker}/AdGuardHome_linux_arm_v6"
+fi
+if [ -d "${dist_dir}/AdGuardHome_linux_arm_7/AdGuardHome" ]; then
+    cp "${dist_dir}/AdGuardHome_linux_arm_7/AdGuardHome/AdGuardHome" \
+        "${dist_docker}/AdGuardHome_linux_arm_v7"
+fi
+if [ -d "${dist_dir}/AdGuardHome_linux_ppc64le/AdGuardHome" ]; then
+    cp "${dist_dir}/AdGuardHome_linux_ppc64le/AdGuardHome/AdGuardHome" \
+        "${dist_docker}/AdGuardHome_linux_ppc64le_"
+fi
 
 # Don't use quotes with $docker_version_tag and $docker_channel_tag, because we
 # want word splitting and or an empty space if tags are empty.
 #
 # TODO(a.garipov): Once flag --tag of docker buildx build supports commas, use
 # them instead.
-#
-# shellcheck disable=SC2086
-$sudo_cmd docker "$debug_flags" \
-	buildx build \
-	--build-arg BUILD_DATE="$build_date" \
-	--build-arg DIST_DIR="$dist_dir" \
-	--build-arg VCS_REF="$commit" \
-	--build-arg VERSION="$version" \
-	--output "$docker_output" \
-	--platform "$docker_platforms" \
-	$docker_version_tag $docker_channel_tag -f ./docker/Dockerfile .
+if [ "$docker_image_name" = "adguardhome-dev" ]; then
+    $sudo_cmd docker "$debug_flags" \
+        buildx build --build-arg BUILD_DATE="$build_date" \
+        --build-arg DIST_DIR="$dist_dir" \
+        --build-arg VCS_REF="$commit" \
+        --build-arg VERSION="$version" \
+        --output "$docker_output" \
+        --platform "$docker_platforms" \
+        $docker_version_tag $docker_channel_tag --tag adguardhome-dev:latest -f ./docker/Dockerfile . >adguardhome-dev.tar
+
+else
+    $sudo_cmd docker "$debug_flags" \
+        buildx build --build-arg BUILD_DATE="$build_date" \
+        --build-arg DIST_DIR="$dist_dir" \
+        --build-arg VCS_REF="$commit" \
+        --build-arg VERSION="$version" \
+        --output "$docker_output" \
+        --platform "$docker_platforms" \
+        $docker_version_tag $docker_channel_tag -f ./docker/Dockerfile .
+fi
+$sudo_cmd docker images

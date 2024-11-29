@@ -22,21 +22,21 @@ VERBOSE.MACRO = $${VERBOSE:-0}
 
 CHANNEL = development
 CLIENT_DIR = client
-DEPLOY_SCRIPT_PATH = not/a/real/path
+# DEPLOY_SCRIPT_PATH = not/a/real/path
 DIST_DIR = dist
 GOAMD64 = v1
 GOPROXY = https://proxy.golang.org|direct
 GOTELEMETRY = off
 GOTOOLCHAIN = go1.23.3
-GPG_KEY = devteam@adguard.com
-GPG_KEY_PASSPHRASE = not-a-real-password
+# GPG_KEY = devteam@adguard.com
+# GPG_KEY_PASSPHRASE = not-a-real-password
 NPM = npm
 NPM_FLAGS = --prefix $(CLIENT_DIR)
 NPM_INSTALL_FLAGS = $(NPM_FLAGS) --quiet --no-progress --ignore-engines\
 	--ignore-optional --ignore-platform --ignore-scripts
 RACE = 0
 REVISION = $${REVISION:-$$(git rev-parse --short HEAD)}
-SIGN = 1
+SIGN = 0
 SIGNER_API_KEY = not-a-real-key
 VERSION = v0.0.0
 YARN = yarn

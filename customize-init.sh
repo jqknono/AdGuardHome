@@ -4,8 +4,8 @@ set -x
 
 # warn if not root
 if [ "$EUID" -ne 0 ]; then
-  echo "Please run as root"
-  exit
+    echo "Please run as root"
+    exit
 fi
 
 # install nodejs
@@ -49,6 +49,8 @@ make build-docker CHANNEL='beta' VERSION='0.0.1' DOCKER_IMAGE_NAME='adguardhome'
 
 # 推送到docker
 docker login --username=jqknono
+docker tag jqknono/adguardhome:v1.0 jqknono/adguardhome:v1.0
+docker push jqknono/adguardhome:v1.0
 
 # 推送到aliyun
 docker login --username=jqknono@outlook.com https://registry.cn-hangzhou.aliyuncs.com

@@ -14,24 +14,24 @@
             "command": "bash customize-build.sh"
         },
         {
-            "label": "3.1 build",
+            "label": "3.1 build release",
             "type": "shell",
             "command": "sudo make build-release CHANNEL='release' VERSION='0.0.1' ARCH='amd64 arm64' OS='linux' SIGN='0'"
         },
         {
             "label": "3.2 docker build release",
             "type": "shell",
-            "command": "make build-docker CHANNEL='release' VERSION='0.0.1' DOCKER_IMAGE_NAME='adguardhome' DOCKER_OUTPUT='type=docker,dest=-'"
+            "command": "make build-docker VERBOSE=2 CHANNEL='release' VERSION='0.0.1' DOCKER_IMAGE_NAME='adguard-private' DOCKER_OUTPUT='type=image'"
         },
         {
             "label": "3.3 push to aliyuncs/jqknono/adguardhome:v1.0",
             "type": "shell",
-            "command": "make build-docker CHANNEL='release' VERSION='0.0.1' DOCKER_IMAGE_NAME='adguardhome' DOCKER_OUTPUT='type=image,name=registry.cn-hangzhou.aliyuncs.com/jqknono/adguardhome:v1.0,push=true'"
+            "command": "make build-docker CHANNEL='release' VERSION='0.0.1' DOCKER_IMAGE_NAME='jqknono/adguard-private' DOCKER_OUTPUT='type=image,name=registry.cn-hangzhou.aliyuncs.com/jqknono/adguardhome:v1.0,push=true'"
         },
         {
             "label": "3.4 push to jqknono/adguardhome:v1.0",
             "type": "shell",
-            "command": "make build-docker CHANNEL='release' VERSION='0.0.1' DOCKER_IMAGE_NAME='adguardhome' DOCKER_OUTPUT='type=image,name=jqknono/adguardhome:v1.0,push=true'"
+            "command": "make build-docker CHANNEL='release' VERSION='0.0.1' DOCKER_IMAGE_NAME='jqknono/adguard-private' DOCKER_OUTPUT='type=image,name=jqknono/adguardhome:v1.0,push=true'"
         },
         {
             "label": "3.5 push to dev.jqknono.com/adguardhome:v1.0",
@@ -41,12 +41,12 @@
         {
             "label": "git commit no verified",
             "type": "shell",
-            "command": "git commit --no-verify -m 'jqknono定制'"
+            "command": "git commit --no-verify -m 'jqknono commit'"
         },
         {
             "label": "2.1 docker build dev",
             "type": "shell",
-            "command": "make build-docker CHANNEL='development' VERSION='0.0.1' DOCKER_IMAGE_NAME='adguardhome-dev' DOCKER_OUTPUT='type=docker,dest=-'"
+            "command": "make build-docker CHANNEL='development' VERSION='0.0.1' DOCKER_IMAGE_NAME='adguardhome-dev' DOCKER_OUTPUT='type=docker,dest=-' VERBOSE=2"
         },
         {
             "label": "2.2 docker load dev",
@@ -59,6 +59,11 @@
             "command": "docker run --name adguardhome-dev -d -p 50000:3000 -p 50001:80 -p 50002:443 -p 50003:853 -p 50004:53/udp -v ./data/work:/opt/adguardhome/work -v ./data/conf:/opt/adguardhome/conf adguardhome-dev:latest"
         },
         {
+            "label": "1.0 quick build",
+            "type": "shell",
+            "command": "sudo make quick-build"
+        },
+        {
             "label": "1.1 build front",
             "type": "shell",
             "command": "sudo make js-build"
@@ -66,12 +71,12 @@
         {
             "label": "1.2 build AdguardHome",
             "type": "shell",
-            "command": "sudo make go-build"
+            "command": "sudo make go-build CHANNEL='development' VERSION='0.0.1' ARCH='amd64' OS='linux' SIGN='0' VERBOSE=2"
         },
         {
             "label": "1.3 copy AdguardHome",
             "type": "shell",
-            "command": "sudo cp ./dist/AdGuardHome_linux_amd64/AdGuardHome/AdGuardHome ./build/AdGuardHome"
+            "command": "sudo cp ./AdGuardHome ./build/AdGuardHome"
         },
         {
             "label": "1.4 run AdguardHome",
