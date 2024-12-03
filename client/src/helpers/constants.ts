@@ -60,15 +60,16 @@ export const STATUS_COLORS = {
 };
 
 export const REPOSITORY = {
-    URL: 'https://github.com/AdguardTeam/AdGuardHome',
-    TRACKERS_DB: 'https://github.com/AdguardTeam/AdGuardHome/tree/master/client/src/helpers/trackers/trackers.json',
+    URL: 'https://github.com/jqknono/AdGuardHome',
+    TRACKERS_DB: 'https://github.com/jqknono/AdGuardHome/tree/master/client/src/helpers/trackers/trackers.json',
     ISSUES: 'https://github.com/AdguardTeam/AdGuardHome/issues/new/choose',
 };
 
+export const HOMEPAGE = 'https://www.adguardprivate.com';
 export const CLIENT_ID_LINK = 'https://github.com/AdguardTeam/AdGuardHome/wiki/Clients#clientid';
 export const MANUAL_UPDATE_LINK = 'https://github.com/AdguardTeam/AdGuardHome/wiki/FAQ#manual-update';
 export const PORT_53_FAQ_LINK = 'https://github.com/AdguardTeam/AdGuardHome/wiki/FAQ#bindinuse';
-export const PRIVACY_POLICY_LINK = 'https://link.adtidy.org/forward.html?action=privacy&from=ui&app=home';
+export const PRIVACY_POLICY_LINK = 'https://www.adguardprivate.com/docs/startup/private/privacy_policy/';
 export const UPSTREAM_CONFIGURATION_WIKI_LINK =
     'https://github.com/AdguardTeam/AdGuardHome/wiki/Configuration#upstreams';
 
@@ -180,7 +181,7 @@ export const RETENTION_CUSTOM_INPUT = 'custom_retention_input';
 
 export const CUSTOM_INTERVAL = 'customInterval';
 
-export const FILTERS_INTERVALS_HOURS = [0, 1, 12, 24, 72, 168];
+export const FILTERS_INTERVALS_HOURS = [0, 72, 168];
 
 // Note that translation strings contain these modes (blocking_mode_CONSTANT)
 // i.e. blocking_mode_default, blocking_mode_null_ip

@@ -14,7 +14,7 @@ LABEL\
 	org.opencontainers.image.documentation="https://github.com/AdguardTeam/AdGuardHome/wiki/" \
 	org.opencontainers.image.licenses="GPL-3.0" \
 	org.opencontainers.image.revision=$VCS_REF \
-	org.opencontainers.image.source="https://github.com/AdguardTeam/AdGuardHome" \
+	org.opencontainers.image.source="https://github.com/jqknono/AdGuardHome" \
 	org.opencontainers.image.title="AdGuard Home" \
 	org.opencontainers.image.url="https://adguard.com/en/adguard-home/overview.html" \
 	org.opencontainers.image.vendor="AdGuard" \

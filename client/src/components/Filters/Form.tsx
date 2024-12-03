@@ -146,10 +146,10 @@ const Form = (props: FormProps) => {
                             className="btn btn-success btn-standard mr-2 btn-large">
                             {t('choose_from_list')}
                         </button>
-
+                        {/* 
                         <button onClick={openAddFiltersModal} className="btn btn-primary btn-standard">
                             {t('add_custom_list')}
-                        </button>
+                        </button> */}
                     </div>
                 )}
                 {modalType === MODAL_TYPE.CHOOSE_FILTERING_LIST && renderFilters(filtersCatalog, selectedSources, t)}

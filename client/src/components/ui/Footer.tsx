@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import cn from 'classnames';
 
-import { REPOSITORY, PRIVACY_POLICY_LINK, THEMES } from '../../helpers/constants';
+import { REPOSITORY, HOMEPAGE, PRIVACY_POLICY_LINK, THEMES } from '../../helpers/constants';
 import { LANGUAGES } from '../../helpers/twosky';
 import i18n from '../../i18n';
 
@@ -18,7 +18,7 @@ import { RootState } from '../../initialState';
 
 const linksData = [
     {
-        href: REPOSITORY.URL,
+        href: HOMEPAGE,
         name: 'homepage',
     },
     {
