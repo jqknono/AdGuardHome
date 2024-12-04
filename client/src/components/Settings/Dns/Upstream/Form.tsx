@@ -122,14 +122,14 @@ const INPUT_FIELDS = [
         subtitle: 'upstream_parallel',
         placeholder: 'parallel_requests',
     },
-    {
-        name: UPSTREAM_MODE_NAME,
-        type: 'radio',
-        value: DNS_REQUEST_OPTIONS.FASTEST_ADDR,
-        component: renderRadioField,
-        subtitle: 'fastest_addr_desc',
-        placeholder: 'fastest_addr',
-    },
+    // {
+    //     name: UPSTREAM_MODE_NAME,
+    //     type: 'radio',
+    //     value: DNS_REQUEST_OPTIONS.FASTEST_ADDR,
+    //     component: renderRadioField,
+    //     subtitle: 'fastest_addr_desc',
+    //     placeholder: 'fastest_addr',
+    // },
 ];
 
 interface FormProps {
