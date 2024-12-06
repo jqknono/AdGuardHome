@@ -39,9 +39,9 @@
             "command": "make build-docker VERBOSE=2 CHANNEL='release' VERSION='v1.1.0' DOCKER_IMAGE_NAME='registry.cn-hangzhou.aliyuncs.com/adguardprivate/adguardprivate' DOCKER_OUTPUT='type=image,name=registry.cn-hangzhou.aliyuncs.com/adguardprivate/adguardprivate:v1.1.0,push=true'"
         },
         {
-            "label": "3.5.2 push to aliyuncs/jqknono/adguardhome:v1.0",
+            "label": "3.5.2 push to aliyuncs/jqknono/adguardhome:v1.1.0",
             "type": "shell",
-            "command": "make build-docker VERBOSE=2 CHANNEL='release' VERSION='v1.0' DOCKER_IMAGE_NAME='registry.cn-hangzhou.aliyuncs.com/jqknono/adguardhome' DOCKER_OUTPUT='type=image,name=registry.cn-hangzhou.aliyuncs.com/jqknono/adguardhome:v1.0,push=true'"
+            "command": "make build-docker VERBOSE=2 CHANNEL='release' VERSION='v1.1.0' DOCKER_IMAGE_NAME='registry.cn-hangzhou.aliyuncs.com/jqknono/adguardhome' DOCKER_OUTPUT='type=image,name=registry.cn-hangzhou.aliyuncs.com/jqknono/adguardhome:v1.1.0,push=true'"
         },
         {
             "label": "git commit no verified",
