@@ -3,7 +3,7 @@
     "example_upstream_reserved": "<0>供特定的網域</0>之上游；",
     "example_multiple_upstreams_reserved": "<0>特定網域</0>的多個上游伺服器；",
     "example_upstream_comment": "註解。",
-    "upstream_parallel": "透過同時地查詢所有上游的伺服器，使用並行的查詢以加速解析。",
+    "upstream_parallel": "透過同時地查詢最多5个上游的伺服器，使用並行的查詢以加速解析。",
     "parallel_requests": "並行的請求",
     "load_balancing": "負載平衡",
     "load_balancing_desc": "一次查詢一台伺服器。AdGuard Private 使用加權隨機演算法來選擇具有最少失敗查詢和最低平均查詢時間的伺服器。",

@@ -3,7 +3,7 @@
     "example_upstream_reserved": "指定为<0>特定域名</0>的上游服务器；",
     "example_multiple_upstreams_reserved": "<0>特定域名</0>的多个上游服务器；",
     "example_upstream_comment": "注释。",
-    "upstream_parallel": "使用并行请求以同时查询所有上游服务器来加快解析速度。在上游DNS服务器延迟都超过150ms时选择此选项以降低整体的延迟。",
+    "upstream_parallel": "使用并行请求以同时查询最多5个上游服务器来加快解析速度。在上游DNS服务器延迟都超过150ms时选择此选项以降低整体的延迟。",
     "parallel_requests": "并行请求",
     "load_balancing": "负载均衡",
     "load_balancing_desc": "一次查询一台服务器。AdGuard Private 使用加权随机算法来选择具有最少失败查找和最低平均查找时间的服务器。",

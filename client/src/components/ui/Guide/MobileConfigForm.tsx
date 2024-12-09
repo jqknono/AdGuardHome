@@ -108,7 +108,7 @@ const MobileConfigForm = ({ invalid }: MobileConfigFormProps) => {
                     </div>
                 </div> */}
 
-                {/* <div className="form__group form__group--settings">
+                <div className="form__group form__group--settings">
                     <label htmlFor="clientId" className="form__label form__label--with-desc">
                         {i18next.t('client_id')}
                     </label>
@@ -125,7 +125,7 @@ const MobileConfigForm = ({ invalid }: MobileConfigFormProps) => {
                         placeholder={i18next.t('client_id_placeholder')}
                         validate={validateConfigClientId}
                     />
-                </div> */}
+                </div>
 
                 <div className="form__group form__group--settings">
                     <label htmlFor="protocol" className="form__label">

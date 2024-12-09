@@ -3,7 +3,7 @@
     "example_upstream_reserved": "您可以<0>指定網域</0>使用特定 DNS 查詢",
     "example_multiple_upstreams_reserved": "多個上游 <0>for 特定網域</0>;",
     "example_upstream_comment": "您可以指定註解",
-    "upstream_parallel": "使用平行查詢，同時查詢所有上游伺服器來加速解析結果",
+    "upstream_parallel": "使用平行查詢，同時查詢最多5个上游伺服器來加速解析結果",
     "parallel_requests": "平行處理",
     "load_balancing": "負載平衡",
     "load_balancing_desc": "一次只查詢一個伺服器。AdGuard Private 會使用加權隨機取樣來選擇使用的查詢結果，以確保速度最快的伺服器能被充分運用。",
