@@ -174,7 +174,7 @@ const Form = ({ handleSubmit, submitting, invalid, processing }: ConfigFormProps
                     </div>
                 </div> */}
 
-                <div className="col-12">
+                {/* <div className="col-12">
                     <div className="form__group form__group--settings">
                         <Field
                             name="edns_cs_enabled"
@@ -208,7 +208,7 @@ const Form = ({ handleSubmit, submitting, invalid, processing }: ConfigFormProps
                             validate={[validateIp, validateRequiredValue]}
                         />
                     )}
-                </div>
+                </div> */}
 
                 {checkboxes.map(({ name, placeholder, subtitle }) => (
                     <div className="col-12" key={name}>
@@ -270,7 +270,7 @@ const Form = ({ handleSubmit, submitting, invalid, processing }: ConfigFormProps
                     </>
                 )}
 
-                {/* <div className="col-12 col-md-7">
+                <div className="col-12 col-md-7">
                     <div className="form__group form__group--settings">
                         <label htmlFor="blocked_response_ttl" className="form__label form__label--with-desc">
                             <Trans>blocked_response_ttl</Trans>
@@ -292,7 +292,7 @@ const Form = ({ handleSubmit, submitting, invalid, processing }: ConfigFormProps
                             max={UINT32_RANGE.MAX}
                         />
                     </div>
-                </div> */}
+                </div>
             </div>
 
             <button

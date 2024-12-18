@@ -151,7 +151,7 @@ const Form = ({ submitting, invalid, handleSubmit }: FormProps) => {
     const processingTestUpstream = useSelector((state: RootState) => state.settings.processingTestUpstream);
 
     const processingSetConfig = useSelector((state: RootState) => state.dnsConfig.processingSetConfig);
-    const defaultLocalPtrUpstreams = useSelector((state: RootState) => state.dnsConfig.default_local_ptr_upstreams);
+    // const defaultLocalPtrUpstreams = useSelector((state: RootState) => state.dnsConfig.default_local_ptr_upstreams);
 
     const handleUpstreamTest = () => dispatch(testUpstreamWithFormValues());
 
@@ -254,7 +254,7 @@ const Form = ({ submitting, invalid, handleSubmit }: FormProps) => {
                     <hr />
                 </div>
 
-                <div className="col-12">
+                {/* <div className="col-12">
                     <label className="form__label form__label--with-desc" htmlFor="local_ptr">
                         <Trans>local_ptr_title</Trans>
                     </label>
@@ -264,7 +264,6 @@ const Form = ({ submitting, invalid, handleSubmit }: FormProps) => {
                     </div>
 
                     <div className="form__desc form__desc--top">
-                        {/** TODO: Add internazionalization for "" */}
                         {defaultLocalPtrUpstreams?.length > 0 ? (
                             <Trans values={{ ip: defaultLocalPtrUpstreams.map((s: any) => `"${s}"`).join(', ') }}>
                                 local_ptr_default_resolver
@@ -295,9 +294,9 @@ const Form = ({ submitting, invalid, handleSubmit }: FormProps) => {
                             disabled={processingSetConfig}
                         />
                     </div>
-                </div>
+                </div> */}
 
-                <div className="col-12">
+                {/* <div className="col-12">
                     <hr />
                 </div>
 
@@ -310,7 +309,7 @@ const Form = ({ submitting, invalid, handleSubmit }: FormProps) => {
                         subtitle={t('resolve_clients_desc')}
                         disabled={processingSetConfig}
                     />
-                </div>
+                </div> */}
             </div>
 
             <div className="card-actions">

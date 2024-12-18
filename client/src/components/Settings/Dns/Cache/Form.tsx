@@ -88,7 +88,7 @@ const Form = ({ handleSubmit, submitting, invalid }: CacheFormProps) => {
                 {minExceedsMax && <span className="text-danger pl-3 pb-3">{t('ttl_cache_validation')}</span>}
             </div>
 
-            {/* <div className="row">
+            <div className="row">
                 <div className="col-12 col-md-7">
                     <div className="form__group form__group--settings">
                         <Field
@@ -101,7 +101,7 @@ const Form = ({ handleSubmit, submitting, invalid }: CacheFormProps) => {
                         />
                     </div>
                 </div>
-            </div> */}
+            </div>
 
             <button
                 type="submit"

@@ -30,7 +30,7 @@
 /test-reports/
 AdGuardHome
 AdGuardHome.exe
-AdGuardHome.yaml*
+# AdGuardHome.yaml*
 coverage.txt
 node_modules/
 
@@ -40,3 +40,4 @@ adguardhome-dev.tar
 client/pkg/
 client/bin/
 .vscode/bookmarks.json
+__debug_bin*
