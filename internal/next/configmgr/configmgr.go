@@ -22,6 +22,7 @@ import (
 	"github.com/AdguardTeam/golibs/errors"
 	"github.com/AdguardTeam/golibs/logutil/slogutil"
 	"github.com/AdguardTeam/golibs/timeutil"
+	"github.com/google/renameio/v2/maybe"
 	"gopkg.in/yaml.v3"
 )
 
@@ -62,7 +63,7 @@ func Validate(fileName string) (err error) {
 		return err
 	}
 
-	err = conf.validate()
+	err = conf.Validate()
 	if err != nil {
 		return fmt.Errorf("validating config: %w", err)
 	}
@@ -104,7 +105,7 @@ func New(ctx context.Context, c *Config) (m *Manager, err error) {
 		return nil, err
 	}
 
-	err = conf.validate()
+	err = conf.Validate()
 	if err != nil {
 		return nil, fmt.Errorf("validating config: %w", err)
 	}
@@ -161,7 +162,7 @@ func (m *Manager) assemble(
 		BootstrapServers:    conf.DNS.BootstrapDNS,
 		UpstreamServers:     conf.DNS.UpstreamDNS,
 		DNS64Prefixes:       conf.DNS.DNS64Prefixes,
-		UpstreamTimeout:     conf.DNS.UpstreamTimeout.Duration,
+		UpstreamTimeout:     time.Duration(conf.DNS.UpstreamTimeout),
 		BootstrapPreferIPv6: conf.DNS.BootstrapPreferIPv6,
 		UseDNS64:            conf.DNS.UseDNS64,
 	}
@@ -184,7 +185,7 @@ func (m *Manager) assemble(
 		Addresses:       conf.HTTP.Addresses,
 		SecureAddresses: conf.HTTP.SecureAddresses,
 		OverrideAddress: webAddr,
-		Timeout:         conf.HTTP.Timeout.Duration,
+		Timeout:         time.Duration(conf.HTTP.Timeout),
 		ForceHTTPS:      conf.HTTP.ForceHTTPS,
 	}
 
@@ -203,7 +204,7 @@ func (m *Manager) write(ctx context.Context) (err error) {
 		return fmt.Errorf("encoding: %w", err)
 	}
 
-	err = aghos.WriteFile(m.fileName, b, aghos.DefaultPermFile)
+	err = maybe.WriteFile(m.fileName, b, aghos.DefaultPermFile)
 	if err != nil {
 		return fmt.Errorf("writing: %w", err)
 	}
@@ -265,7 +266,7 @@ func (m *Manager) updateCurrentDNS(c *dnssvc.Config) {
 	m.current.DNS.BootstrapDNS = slices.Clone(c.BootstrapServers)
 	m.current.DNS.UpstreamDNS = slices.Clone(c.UpstreamServers)
 	m.current.DNS.DNS64Prefixes = slices.Clone(c.DNS64Prefixes)
-	m.current.DNS.UpstreamTimeout = timeutil.Duration{Duration: c.UpstreamTimeout}
+	m.current.DNS.UpstreamTimeout = timeutil.Duration(c.UpstreamTimeout)
 	m.current.DNS.BootstrapPreferIPv6 = c.BootstrapPreferIPv6
 	m.current.DNS.UseDNS64 = c.UseDNS64
 }
@@ -317,6 +318,6 @@ func (m *Manager) updateCurrentWeb(c *websvc.Config) {
 
 	m.current.HTTP.Addresses = slices.Clone(c.Addresses)
 	m.current.HTTP.SecureAddresses = slices.Clone(c.SecureAddresses)
-	m.current.HTTP.Timeout = timeutil.Duration{Duration: c.Timeout}
+	m.current.HTTP.Timeout = timeutil.Duration(c.Timeout)
 	m.current.HTTP.ForceHTTPS = c.ForceHTTPS
 }

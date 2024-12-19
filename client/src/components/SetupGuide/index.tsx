@@ -33,7 +33,7 @@ const SetupGuide = ({
                     <Trans>install_devices_address</Trans>:
                 </div>
 
-                <div className="mt-3">
+                <div className="guide__list">
                     {dnsAddresses.map((ip: any) => {
                       if (ip.startsWith('https') || ip.startsWith('tls')) {
                         return <li key={ip} className="guide__address"> {ip} </li>;
