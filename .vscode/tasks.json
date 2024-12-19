@@ -21,35 +21,35 @@
         {
             "label": "3.2 docker build release",
             "type": "shell",
-            "command": "make build-docker VERBOSE=2 CHANNEL='release' VERSION='v1.1.0' DOCKER_IMAGE_NAME='adguardprivate' DOCKER_OUTPUT='type=image'"
+            "command": "make build-docker VERBOSE=2 CHANNEL='release' VERSION='v1.1.0' DOCKER_IMAGE_NAME='adguardprivate:v1.1.0' DOCKER_OUTPUT='type=image'"
         },
         {
             "label": "3.3 push to dev.jqknono.com/adguardprivate:v1.1.0",
             "type": "shell",
-            "command": "make build-docker VERBOSE=2 CHANNEL='release' VERSION='v1.1.0' DOCKER_IMAGE_NAME='dev.jqknono.com:34005/adguardprivate' DOCKER_OUTPUT='type=image,name=dev.jqknono.com:34005/adguardprivate:v1.1.0,push=true'"
+            "command": "make build-docker VERBOSE=2 CHANNEL='release' VERSION='v1.1.0' DOCKER_IMAGE_NAME='dev.jqknono.com:34005/adguardprivate:v1.1.0' DOCKER_OUTPUT='type=image,name=dev.jqknono.com:34005/adguardprivate:v1.1.0,push=true'"
         },
         {
             "label": "3.4 push to docker.io/jqknono/adguardprivate:v1.1.0",
             "type": "shell",
-            "command": "make build-docker VERBOSE=2 CHANNEL='release' VERSION='v1.1.0' DOCKER_IMAGE_NAME='jqknono/adguardprivate' DOCKER_OUTPUT='type=image,name=docker.io/jqknono/adguardprivate:v1.1.0,push=true'"
+            "command": "make build-docker VERBOSE=2 CHANNEL='release' VERSION='v1.1.0' DOCKER_IMAGE_NAME='jqknono/adguardprivate:v1.1.0' DOCKER_OUTPUT='type=image,name=docker.io/jqknono/adguardprivate:v1.1.0,push=true'"
         },
         {
             "label": "(Dprecate)3.5 push to aliyuncs/jqknono/adguardhome:v1.1.0",
             "type": "shell",
-            "command": "make build-docker VERBOSE=2 CHANNEL='release' VERSION='v1.1.0' DOCKER_IMAGE_NAME='registry.cn-hangzhou.aliyuncs.com/jqknono/adguardhome' DOCKER_OUTPUT='type=image,name=registry.cn-hangzhou.aliyuncs.com/jqknono/adguardhome:v1.1.0,push=true'"
+            "command": "make build-docker VERBOSE=2 CHANNEL='release' VERSION='v1.1.0' DOCKER_IMAGE_NAME='registry.cn-hangzhou.aliyuncs.com/jqknono/adguardhome:v1.1.0' DOCKER_OUTPUT='type=image,name=registry.cn-hangzhou.aliyuncs.com/jqknono/adguardhome:v1.1.0,push=true'"
         },
         {
-            "label": "3.5.1 push to aliyuncs/adguardprivate/adguardprivate:v0.0.1",
+            "label": "3.5.1 push to aliyuncs/adguardprivate/adguardprivate:dev",
             "type": "shell",
-            "command": "make build-docker VERBOSE=2 CHANNEL='release' VERSION='v0.0.1' DOCKER_IMAGE_NAME='registry.cn-hangzhou.aliyuncs.com/adguardprivate/adguardprivate' DOCKER_OUTPUT='type=image,name=registry.cn-hangzhou.aliyuncs.com/adguardprivate/adguardprivate:v0.0.1,push=true'",
+            "command": "make build-docker VERBOSE=2 CHANNEL='release' VERSION='dev' DOCKER_IMAGE_NAME='registry.cn-hangzhou.aliyuncs.com/adguardprivate/adguardprivate:dev' DOCKER_OUTPUT='type=image,name=registry.cn-hangzhou.aliyuncs.com/adguardprivate/adguardprivate:dev,push=true'",
             "dependsOn": [
                 "3.1 build release"
             ]
         },
         {
-            "label": "3.5.2 push to aliyuncs/adguardprivate/adguardprivate:v1.1.0",
+            "label": "3.5.2 push to aliyuncs/adguardprivate/adguardprivate:latest",
             "type": "shell",
-            "command": "make build-docker VERBOSE=2 CHANNEL='release' VERSION='v1.1.0' DOCKER_IMAGE_NAME='registry.cn-hangzhou.aliyuncs.com/adguardprivate/adguardprivate' DOCKER_OUTPUT='type=image,name=registry.cn-hangzhou.aliyuncs.com/adguardprivate/adguardprivate:v1.1.0,push=true'",
+            "command": "make build-docker VERBOSE=2 CHANNEL='release' VERSION='latest' DOCKER_IMAGE_NAME='registry.cn-hangzhou.aliyuncs.com/adguardprivate/adguardprivate:latest' DOCKER_OUTPUT='type=image,name=registry.cn-hangzhou.aliyuncs.com/adguardprivate/adguardprivate:latest,push=true'",
             "dependsOn": [
                 "3.1 build release"
             ]
@@ -103,6 +103,16 @@
             "label": "Debug: tools/q",
             "type": "shell",
             "command": "./tools/q -s 127.0.0.1:5353 -t A -w -q baidu.com"
-        }
+        },
+        {
+            "label": "4.1 push to aliyuncs/adguardprivate/adguardprivate:base",
+            "type": "shell",
+            "command": "docker buildx build -f docker/Dockerfile.base -t registry.cn-hangzhou.aliyuncs.com/adguardprivate/adguardprivate:base . --push"
+        },
+        {
+            "label": "4.2 push to aliyuncs/adguardprivate/adguardprivate:quick",
+            "type": "shell",
+            "command": "docker buildx build -f docker/Dockerfile.quick -t registry.cn-hangzhou.aliyuncs.com/adguardprivate/adguardprivate:quick . --push"
+        },
     ]
 }

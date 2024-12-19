@@ -63,3 +63,5 @@ require (
 	golang.org/x/tools v0.26.0 // indirect
 	gonum.org/v1/gonum v0.15.1 // indirect
 )
+
+replace github.com/AdguardTeam/dnsproxy v0.73.3 => github.com/jqknono/dnsproxy v0.73.3

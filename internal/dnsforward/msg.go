@@ -389,6 +389,12 @@ func (s *Server) NewMsgNODATA(req *dns.Msg) (resp *dns.Msg) {
 	return resp
 }
 
+// NewMsgRateLimited implements the [MessageConstructor] interface for
+// DefaultMessageConstructor.
+func (s *Server) NewMsgRateLimited(req *dns.Msg) (resp *dns.Msg) {
+	return s.reply(req, dns.RcodeRefused)
+}
+
 func (s *Server) genSOA(req *dns.Msg) []dns.RR {
 	zone := ""
 	if len(req.Question) > 0 {
