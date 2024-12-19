@@ -304,7 +304,7 @@
     "download_mobileconfig_doh": "حمّل .mobileconfig for DNS-over-HTTPS",
     "download_mobileconfig_dot": "حمل .mobileconfig for DNS-over-TLS",
     "download_mobileconfig": "حمّل ملف الإعدادات",
-    "plain_dns": "عنوان DNS العادي",
+    "plain_dns": "DNS-over-TLS",
     "form_enter_rate_limit": "ادخل حد التقييم",
     "rate_limit": "حدود التقييم",
     "edns_enable": "فعل EDNS client subnet",

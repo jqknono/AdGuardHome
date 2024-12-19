@@ -304,7 +304,7 @@
     "download_mobileconfig_doh": ".mobileconfig voor DNS-via-HTTPS downloaden",
     "download_mobileconfig_dot": ".mobileconfig voor DNS-via-TLS downloaden",
     "download_mobileconfig": "Configuratiebestand downloaden",
-    "plain_dns": "Gewone DNS",
+    "plain_dns": "DNS-over-TLS",
     "form_enter_rate_limit": "Voer ratio limiet in",
     "rate_limit": "Ratio limiet",
     "edns_enable": "EDNS client subnet inschakelen",

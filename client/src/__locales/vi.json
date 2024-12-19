@@ -304,7 +304,7 @@
     "download_mobileconfig_doh": "Tải xuống .mobileconfig cho DNS-over-HTTPS",
     "download_mobileconfig_dot": "Tải xuống .mobileconfig cho DNS-over-TLS",
     "download_mobileconfig": "Tải xuống tệp cấu hình",
-    "plain_dns": "DNS thuần",
+    "plain_dns": "DNS-over-TLS",
     "form_enter_rate_limit": "Nhập giới hạn yêu cầu",
     "rate_limit": "Giới hạn yêu cầu",
     "edns_enable": "Bật mạng con EDNS Client",

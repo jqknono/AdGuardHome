@@ -304,7 +304,7 @@
     "download_mobileconfig_doh": "Pobierz plik .mobileconfig dla DNS-over-HTTPS",
     "download_mobileconfig_dot": "Pobierz plik .mobileconfig dla DNS-over-TLS",
     "download_mobileconfig": "Pobierz plik konfiguracyjny",
-    "plain_dns": "Zwykły DNS",
+    "plain_dns": "DNS-over-TLS",
     "form_enter_rate_limit": "Wpisz limit ilościowy",
     "rate_limit": "Limit ilościowy",
     "edns_enable": "Włącz podsieć klienta EDNS",

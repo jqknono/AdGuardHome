@@ -276,7 +276,7 @@
     "download_mobileconfig_doh": "Last ned .mobileconfig for DNS-over-HTTPS",
     "download_mobileconfig_dot": "Last ned .mobileconfig for DNS-over-TLS",
     "download_mobileconfig": "Last ned oppsettsfil",
-    "plain_dns": "Ordinær DNS",
+    "plain_dns": "DNS-over-TLS",
     "form_enter_rate_limit": "Skriv inn forespørselsfrekvensgrense",
     "rate_limit": "Forespørselsfrekvensgrense",
     "edns_enable": "Aktiver EDNS-klientundernett",

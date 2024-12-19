@@ -304,7 +304,7 @@
     "download_mobileconfig_doh": "下載適用於 DNS-over-HTTPS 的 .mobileconfig",
     "download_mobileconfig_dot": "下載適用於 DNS-over-TLS 的 .mobileconfig",
     "download_mobileconfig": "下載描述檔",
-    "plain_dns": "一般未加密 DNS",
+    "plain_dns": "DNS-over-TLS",
     "form_enter_rate_limit": "輸入速率限制",
     "rate_limit": "速率限制",
     "edns_enable": "啟用 EDNS Client Subnet",

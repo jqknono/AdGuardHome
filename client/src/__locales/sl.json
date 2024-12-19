@@ -304,7 +304,7 @@
     "download_mobileconfig_doh": "Prenos .mobileconfig za DNS-preko-HTTPS",
     "download_mobileconfig_dot": "Prenos .mobileconfig za DNS-preko-TLS",
     "download_mobileconfig": "Prenesi nastavitveno datoteko",
-    "plain_dns": "Navadni DNS",
+    "plain_dns": "DNS-over-TLS",
     "form_enter_rate_limit": "Vnesite omejitev hitrosti",
     "rate_limit": "Omejitev hitrosti",
     "edns_enable": "Omogoči odjemalsko podomrežje EDNS",
