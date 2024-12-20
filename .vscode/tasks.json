@@ -39,7 +39,7 @@
             "command": "make build-docker VERBOSE=2 CHANNEL='release' VERSION='v1.1.0' DOCKER_IMAGE_NAME='registry.cn-hangzhou.aliyuncs.com/jqknono/adguardhome:v1.1.0' DOCKER_OUTPUT='type=image,name=registry.cn-hangzhou.aliyuncs.com/jqknono/adguardhome:v1.1.0,push=true'"
         },
         {
-            "label": "3.5.1 push to aliyuncs/adguardprivate/adguardprivate:dev",
+            "label": "(amd64)3.5.1 push to aliyuncs/adguardprivate/adguardprivate:dev",
             "type": "shell",
             "command": "make build-docker VERBOSE=2 CHANNEL='release' VERSION='dev' DOCKER_IMAGE_NAME='registry.cn-hangzhou.aliyuncs.com/adguardprivate/adguardprivate:dev' DOCKER_OUTPUT='type=image,name=registry.cn-hangzhou.aliyuncs.com/adguardprivate/adguardprivate:dev,push=true'",
             "dependsOn": [
@@ -47,7 +47,7 @@
             ]
         },
         {
-            "label": "3.5.2 push to aliyuncs/adguardprivate/adguardprivate:latest",
+            "label": "(amd64)3.5.2 push to aliyuncs/adguardprivate/adguardprivate:latest",
             "type": "shell",
             "command": "make build-docker VERBOSE=2 CHANNEL='release' VERSION='latest' DOCKER_IMAGE_NAME='registry.cn-hangzhou.aliyuncs.com/adguardprivate/adguardprivate:latest' DOCKER_OUTPUT='type=image,name=registry.cn-hangzhou.aliyuncs.com/adguardprivate/adguardprivate:latest,push=true'",
             "dependsOn": [
@@ -110,9 +110,9 @@
             "command": "docker buildx build -f docker/Dockerfile.base -t registry.cn-hangzhou.aliyuncs.com/adguardprivate/adguardprivate:base . --push"
         },
         {
-            "label": "4.2 push to aliyuncs/adguardprivate/adguardprivate:quick",
+            "label": "4.2 push to aliyuncs/adguardprivate/adguardprivate:dev",
             "type": "shell",
-            "command": "docker buildx build -f docker/Dockerfile.quick -t registry.cn-hangzhou.aliyuncs.com/adguardprivate/adguardprivate:quick . --push"
+            "command": "docker buildx build -f docker/Dockerfile.quick -t registry.cn-hangzhou.aliyuncs.com/adguardprivate/adguardprivate:dev . --push"
         },
         {
             "label": "4.3 push to aliyuncs/adguardprivate/adguardprivate:latest",
