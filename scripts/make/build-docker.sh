@@ -96,28 +96,28 @@ dist_docker="${dist_dir}/docker"
 readonly dist_docker
 
 mkdir -p "$dist_docker"
-if [ -d "${dist_dir}/AdGuardHome_linux_386/AdGuardHome" ]; then
-    cp "${dist_dir}/AdGuardHome_linux_386/AdGuardHome/AdGuardHome" \
+if [ -e "${dist_dir}/AdGuardHome_linux_386/AdGuardHome" ]; then
+    cp -f "${dist_dir}/AdGuardHome_linux_386/AdGuardHome/AdGuardHome" \
         "${dist_docker}/AdGuardHome_linux_386_"
 fi
-if [ -d "${dist_dir}/AdGuardHome_linux_amd64/AdGuardHome" ]; then
-    cp "${dist_dir}/AdGuardHome_linux_amd64/AdGuardHome/AdGuardHome" \
+if [ -e "${dist_dir}/AdGuardHome_linux_amd64/AdGuardHome" ]; then
+    cp -f "${dist_dir}/AdGuardHome_linux_amd64/AdGuardHome/AdGuardHome" \
         "${dist_docker}/AdGuardHome_linux_amd64_"
 fi
-if [ -d "${dist_dir}/AdGuardHome_linux_arm64/AdGuardHome" ]; then
-    cp "${dist_dir}/AdGuardHome_linux_arm64/AdGuardHome/AdGuardHome" \
+if [ -e "${dist_dir}/AdGuardHome_linux_arm64/AdGuardHome" ]; then
+    cp -f "${dist_dir}/AdGuardHome_linux_arm64/AdGuardHome/AdGuardHome" \
         "${dist_docker}/AdGuardHome_linux_arm64_"
 fi
-if [ -d "${dist_dir}/AdGuardHome_linux_arm_6/AdGuardHome" ]; then
-    cp "${dist_dir}/AdGuardHome_linux_arm_6/AdGuardHome/AdGuardHome" \
+if [ -e "${dist_dir}/AdGuardHome_linux_arm_6/AdGuardHome" ]; then
+    cp -f "${dist_dir}/AdGuardHome_linux_arm_6/AdGuardHome/AdGuardHome" \
         "${dist_docker}/AdGuardHome_linux_arm_v6"
 fi
-if [ -d "${dist_dir}/AdGuardHome_linux_arm_7/AdGuardHome" ]; then
-    cp "${dist_dir}/AdGuardHome_linux_arm_7/AdGuardHome/AdGuardHome" \
+if [ -e "${dist_dir}/AdGuardHome_linux_arm_7/AdGuardHome" ]; then
+    cp -f "${dist_dir}/AdGuardHome_linux_arm_7/AdGuardHome/AdGuardHome" \
         "${dist_docker}/AdGuardHome_linux_arm_v7"
 fi
-if [ -d "${dist_dir}/AdGuardHome_linux_ppc64le/AdGuardHome" ]; then
-    cp "${dist_dir}/AdGuardHome_linux_ppc64le/AdGuardHome/AdGuardHome" \
+if [ -e "${dist_dir}/AdGuardHome_linux_ppc64le/AdGuardHome" ]; then
+    cp -f "${dist_dir}/AdGuardHome_linux_ppc64le/AdGuardHome/AdGuardHome" \
         "${dist_docker}/AdGuardHome_linux_ppc64le_"
 fi
 
@@ -129,11 +129,11 @@ fi
 #
 # shellcheck disable=SC2086
 $sudo_cmd docker "$debug_flags" \
-	buildx build \
-	--build-arg BUILD_DATE="$build_date" \
-	--build-arg DIST_DIR="$dist_dir" \
-	--build-arg VCS_REF="$commit" \
-	--build-arg VERSION="$version" \
-	--output "$docker_output" \
-	--platform "$docker_platforms" \
-	$docker_version_tag $docker_channel_tag -f ./docker/Dockerfile .
+    buildx build \
+    --build-arg BUILD_DATE="$build_date" \
+    --build-arg DIST_DIR="$dist_dir" \
+    --build-arg VCS_REF="$commit" \
+    --build-arg VERSION="$version" \
+    --output "$docker_output" \
+    --platform "$docker_platforms" \
+    $docker_version_tag $docker_channel_tag -f ./docker/Dockerfile .
