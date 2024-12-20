@@ -126,24 +126,14 @@ fi
 #
 # TODO(a.garipov): Once flag --tag of docker buildx build supports commas, use
 # them instead.
-if [ "$docker_image_name" = "adguardhome-dev" ]; then
-    $sudo_cmd docker "$debug_flags" \
-        buildx build --build-arg BUILD_DATE="$build_date" \
-        --build-arg DIST_DIR="$dist_dir" \
-        --build-arg VCS_REF="$commit" \
-        --build-arg VERSION="$version" \
-        --output "$docker_output" \
-        --platform "$docker_platforms" \
-        $docker_version_tag $docker_channel_tag --tag adguardhome-dev:latest -f ./docker/Dockerfile . >adguardhome-dev.tar
-
-else
-    $sudo_cmd docker "$debug_flags" \
-        buildx build --build-arg BUILD_DATE="$build_date" \
-        --build-arg DIST_DIR="$dist_dir" \
-        --build-arg VCS_REF="$commit" \
-        --build-arg VERSION="$version" \
-        --output "$docker_output" \
-        --platform "$docker_platforms" \
-        $docker_version_tag $docker_channel_tag -f ./docker/Dockerfile .
-fi
-$sudo_cmd docker images
+#
+# shellcheck disable=SC2086
+$sudo_cmd docker "$debug_flags" \
+	buildx build \
+	--build-arg BUILD_DATE="$build_date" \
+	--build-arg DIST_DIR="$dist_dir" \
+	--build-arg VCS_REF="$commit" \
+	--build-arg VERSION="$version" \
+	--output "$docker_output" \
+	--platform "$docker_platforms" \
+	$docker_version_tag $docker_channel_tag -f ./docker/Dockerfile .
