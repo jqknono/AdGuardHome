@@ -306,7 +306,7 @@ const getTabs = ({ tlsAddress, httpsAddress, showDnsPrivacyNotice, serverName, p
                                     initialValues={{
                                         host: serverName,
                                         clientId: '',
-                                        protocol: MOBILE_CONFIG_LINKS.DOH,
+                                        protocol: MOBILE_CONFIG_LINKS.DOT,
                                         port: portHttps,
                                     }}
                                 />

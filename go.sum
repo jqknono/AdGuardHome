@@ -1,5 +1,3 @@
-github.com/AdguardTeam/dnsproxy v0.73.4 h1:FTIXX34wQqePjtWUD1I4QfWTq2B2N1gfOW/TzZDdR4o=
-github.com/AdguardTeam/dnsproxy v0.73.4/go.mod h1:18ssqhDgOCiVIwYmmVuXVM05wSwrzkO2yjKhVRWJX/g=
 github.com/AdguardTeam/golibs v0.31.0 h1:Z0oPfLTLw6iZmpE58dePy2Bel0MaX+lnDwtFEE5EmIo=
 github.com/AdguardTeam/golibs v0.31.0/go.mod h1:wIkZ9o2UnppeW6/YD7yJB71dYbMhiuC1Fh/I2ElW7GQ=
 github.com/AdguardTeam/urlfilter v0.20.0 h1:X32qiuVCVd8WDYCEsbdZKfXMzwdVqrdulamtUi4rmzs=
@@ -57,8 +55,8 @@ github.com/jessevdk/go-flags v1.4.0/go.mod h1:4FA24M0QyGHXBuZZK/XkWh8h0e1EYbRYJS
 github.com/josharian/native v1.0.0/go.mod h1:7X/raswPFr05uY3HiLlYeyQntB6OO7E/d2Cu7qoaN2w=
 github.com/josharian/native v1.1.1-0.20230202152459-5c7d0dd6ab86 h1:elKwZS1OcdQ0WwEDBeqxKwb7WB62QX8bvZ/FJnVXIfk=
 github.com/josharian/native v1.1.1-0.20230202152459-5c7d0dd6ab86/go.mod h1:aFAMtuldEgx/4q7iSGazk22+IcgvtiC+HIimFO9XlS8=
-github.com/jqknono/dnsproxy v0.73.3 h1:yJgkhZEVAW6ZNS7tEZeOzCCYo6RVY10iFToLYD/8Vpw=
-github.com/jqknono/dnsproxy v0.73.3/go.mod h1:18ssqhDgOCiVIwYmmVuXVM05wSwrzkO2yjKhVRWJX/g=
+github.com/jqknono/dnsproxy v0.73.5 h1:zj41N4N6BZtFWuqwIBsw0GOjAq45HK8yPPwceYX1e4M=
+github.com/jqknono/dnsproxy v0.73.5/go.mod h1:t1jyiTbpeGYhC0OLOCRdECMeZ2kn31xvjEe3nnf74xw=
 github.com/kardianos/service v1.2.2 h1:ZvePhAHfvo0A7Mftk/tEzqEZ7Q4lgnR8sGz4xu1YX60=
 github.com/kardianos/service v1.2.2/go.mod h1:CIMRFEJVL+0DS1a3Nx06NaMn4Dz63Ng6O7dl0qH0zVM=
 github.com/kr/text v0.2.0 h1:5Nx0Ya0ZqY2ygV366QzturHI13Jq95ApcVaJBhpS+AY=

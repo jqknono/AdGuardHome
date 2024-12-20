@@ -114,5 +114,13 @@
             "type": "shell",
             "command": "docker buildx build -f docker/Dockerfile.quick -t registry.cn-hangzhou.aliyuncs.com/adguardprivate/adguardprivate:quick . --push"
         },
+        {
+            "label": "4.3 push to aliyuncs/adguardprivate/adguardprivate:latest",
+            "type": "shell",
+            "command": "docker buildx build -f docker/Dockerfile.quick -t registry.cn-hangzhou.aliyuncs.com/adguardprivate/adguardprivate:latest . --push",
+            "dependsOn": [
+                "3.1 build release v1.1.0"
+            ]
+        },
     ]
 }

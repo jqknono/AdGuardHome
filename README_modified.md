@@ -26,3 +26,15 @@
   - 由负载均衡器处理加密证书路由, DoH 代理到 HTTP, DoT 代理到 UDP 请求
   - HTTP 请求限制每秒 30, 允许突发量 60
   - UDP 请求限制每秒 30
+
+
+## 统一库
+
+```shell
+# github.com/AdguardTeam/dnsproxy
+cp -R ../dnsproxy/fastip/ .
+cp -R ../dnsproxy/internal/ .
+cp -R ../dnsproxy/proxy/ .
+cp -R ../dnsproxy/proxyutil/ .
+cp -R ../dnsproxy/upstream/ .
+```
