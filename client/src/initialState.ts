@@ -300,7 +300,7 @@ export type DnsConfigData = {
     processingGetConfig: boolean;
     processingSetConfig: boolean;
     blocking_mode: string;
-    // ratelimit: number;
+    ratelimit: number;
     blocking_ipv4: string;
     blocking_ipv6: string;
     blocked_response_ttl: number;
@@ -312,16 +312,16 @@ export type DnsConfigData = {
     fallback_dns: string;
     bootstrap_dns: string;
     // local_ptr_upstreams: string;
-    // ratelimit_whitelist: string;
+    ratelimit_whitelist: string;
     upstream_mode: string;
     // resolve_clients: boolean;
     // use_private_ptr_resolvers: boolean;
     // default_local_ptr_upstreams: any[];
-    // ratelimit_subnet_len_ipv4?: number;
-    // ratelimit_subnet_len_ipv6?: number;
+    ratelimit_subnet_len_ipv4?: number;
+    ratelimit_subnet_len_ipv6?: number;
     edns_cs_use_custom?: boolean;
     edns_cs_custom_ip?: boolean;
-    // cache_size?: number;
+    cache_size?: number;
     cache_ttl_max?: number;
     cache_ttl_min?: number;
     cache_optimistic?: boolean;
@@ -485,7 +485,7 @@ export const initialState: RootState = {
         processingGetConfig: false,
         processingSetConfig: false,
         blocking_mode: BLOCKING_MODES.default,
-        // ratelimit: 20,
+        ratelimit: 20,
         blocking_ipv4: DEFAULT_BLOCKING_IPV4,
         blocking_ipv6: DEFAULT_BLOCKING_IPV6,
         blocked_response_ttl: 10,
@@ -497,7 +497,7 @@ export const initialState: RootState = {
         fallback_dns: '',
         bootstrap_dns: '',
         // local_ptr_upstreams: '',
-        // ratelimit_whitelist: '',
+        ratelimit_whitelist: '',
         upstream_mode: '',
         // resolve_clients: false,
         // use_private_ptr_resolvers: false,

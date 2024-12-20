@@ -12,12 +12,12 @@ import { clearDnsCache } from '../../../../actions/dnsConfig';
 import { RootState } from '../../../../initialState';
 
 const INPUTS_FIELDS = [
-    // {
-    //     name: CACHE_CONFIG_FIELDS.cache_size,
-    //     title: 'cache_size',
-    //     description: 'cache_size_desc',
-    //     placeholder: 'enter_cache_size',
-    // },
+    {
+        name: CACHE_CONFIG_FIELDS.cache_size,
+        title: 'cache_size',
+        description: 'cache_size_desc',
+        placeholder: 'enter_cache_size',
+    },
     {
         name: CACHE_CONFIG_FIELDS.cache_ttl_min,
         title: 'cache_ttl_min_override',

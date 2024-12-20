@@ -16,7 +16,7 @@
         {
             "label": "3.1 build release v1.1.0",
             "type": "shell",
-            "command": "sudo make build-release VERBOSE=2 CHANNEL='beta' VERSION='v1.1.0' ARCH='amd64 arm64' OS='linux' SIGN='0'"
+            "command": "sudo make build-release VERBOSE=2 CHANNEL='release' VERSION='v1.1.0' ARCH='amd64 arm64' OS='linux' SIGN='0'"
         },
         {
             "label": "3.2 docker build release",
@@ -110,20 +110,20 @@
             "command": "docker buildx build --platform linux/amd64,linux/arm64 -f docker/Dockerfile.base -t registry.cn-hangzhou.aliyuncs.com/adguardprivate/adguardprivate:base . --push"
         },
         {
-            "label": "4.2 push to aliyuncs/adguardprivate/adguardprivate:dev",
+            "label": "4.2 push to aliyuncs/adguardprivate/adguardprivate:public_dev",
             "type": "shell",
-            "command": "docker buildx build --platform linux/amd64,linux/arm64 -f docker/Dockerfile.quick -t registry.cn-hangzhou.aliyuncs.com/adguardprivate/adguardprivate:dev . --push",
+            "command": "docker buildx build --platform linux/amd64,linux/arm64 -f docker/Dockerfile.quick -t registry.cn-hangzhou.aliyuncs.com/adguardprivate/adguardprivate:public_dev . --push",
             "dependsOn": [
                 "3.1 build release v1.1.0"
             ]
         },
         {
-            "label": "4.3 push to aliyuncs/adguardprivate/adguardprivate:latest",
+            "label": "4.3 push to aliyuncs/adguardprivate/adguardprivate:public_latest",
             "type": "shell",
-            "command": "docker buildx build --platform linux/amd64,linux/arm64 -f docker/Dockerfile.quick -t registry.cn-hangzhou.aliyuncs.com/adguardprivate/adguardprivate:latest . --push",
+            "command": "docker buildx build --platform linux/amd64,linux/arm64 -f docker/Dockerfile.quick -t registry.cn-hangzhou.aliyuncs.com/adguardprivate/adguardprivate:public_latest . --push",
             "dependsOn": [
                 "3.1 build release v1.1.0"
             ]
-        },
+        }
     ]
 }
