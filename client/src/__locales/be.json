@@ -304,7 +304,7 @@
     "download_mobileconfig_doh": "Спампаваць .mobileconfig для DNS-over-HTTPS",
     "download_mobileconfig_dot": "Спампаваць .mobileconfig для DNS-over-TLS",
     "download_mobileconfig": "Загрузіць файл канфігурацыі",
-    "plain_dns": "DNS-over-TLS",
+    "plain_dns": "Нешыфраваны DNS",
     "form_enter_rate_limit": "Увядзіце rate limit",
     "rate_limit": "Ограничение скорости",
     "edns_enable": "Уключыць адпраўленне EDNS Client Subnet",

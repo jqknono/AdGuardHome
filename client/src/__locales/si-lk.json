@@ -271,7 +271,7 @@
     "download_mobileconfig_doh": "HTTPS-මගින්-ව.නා.ප. සඳහා .ජංගමවින්‍යාසය බාගන්න",
     "download_mobileconfig_dot": "TLS-මගින්-ව.නා.ප. සඳහා .ජංගමවින්‍යාසය බාගන්න",
     "download_mobileconfig": "වින්‍යාසගත ගොනුව බාගන්න",
-    "plain_dns": "DNS-over-TLS",
+    "plain_dns": "සරල ව.නා.ප.",
     "form_enter_rate_limit": "අනුපාත සීමාව ඇතුල් කරන්න",
     "rate_limit": "අනුපාත සීමාව",
     "edns_enable": "EDNS අනුග්‍රාහක අනුජාලය සබල කරන්න",

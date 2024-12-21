@@ -304,7 +304,7 @@
     "download_mobileconfig_doh": ".mobileconfig letöltése DNS-over-HTTPS-hez",
     "download_mobileconfig_dot": ".mobileconfig letöltése DNS-over-TLS-hez",
     "download_mobileconfig": "Konfigurációs fájl letöltése",
-    "plain_dns": "DNS-over-TLS",
+    "plain_dns": "Egyszerű DNS",
     "form_enter_rate_limit": "Adja meg a kérések maximális számát",
     "rate_limit": "Kérések korlátozása",
     "edns_enable": "EDNS kliens alhálózat engedélyezése",

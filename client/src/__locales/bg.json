@@ -158,7 +158,7 @@
     "custom_ip": "Персонализиран IP",
     "dns_over_https": "DNS-пред-HTTPS",
     "dns_over_quic": "DNS-over-QUIC",
-    "plain_dns": "DNS-over-TLS",
+    "plain_dns": "Обикновен DNS",
     "theme_light": "Светла тема",
     "theme_dark": "Тъмна тема",
     "source_label": "Източник",
