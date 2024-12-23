@@ -26,6 +26,7 @@
     - 原库不支持定时重载证书, 增加协程每隔三天重载证书, `case <-time.After(3 * 24 * time.Hour):`
     - 限制指定特定域名的上游服务器, 特定域名数量限制为`255`
     - 限制并行请求模式下, 生效的上游 DNS 数量限制为`5`
+    - 限制黑白名单规则各 `100w` 条上限, `dns_blocklists_desc`, `maximumCount := 1000000`
 - dnsproxy
   - 原库仅支持 plain UDP 请求的 ratelimit, 修改增加了对其他协议的 ratelimit 支持, `p.isRatelimited(ip)`
 - k8s
