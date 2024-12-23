@@ -70,11 +70,21 @@
             ]
         },
         {
-            "label": "4.3 push to aliyuncs/adguardprivate/adguardprivate:public_latest",
+            "label": "4.4 push to aliyuncs/adguardprivate/adguardprivate:public_latest",
             "type": "shell",
             "command": "docker buildx build --platform linux/amd64,linux/arm64 -f docker/Dockerfile.quick -t registry.cn-hangzhou.aliyuncs.com/adguardprivate/adguardprivate:public_latest . --push",
             "dependsOn": [
-                // "3.0 build front",
+                "3.0 build front",
+                "3.1 build release v1.1.0",
+                "4.2 update dist docker"
+            ]
+        },
+        {
+            "label": "4.5 push to docker.io/jqknono/adguardprivate:public_latest",
+            "type": "shell",
+            "command": "docker buildx build --platform linux/amd64,linux/arm64 -f docker/Dockerfile.quick -t docker.io/jqknono/adguardprivate:public_latest . --push",
+            "dependsOn": [
+                "3.0 build front",
                 "3.1 build release v1.1.0",
                 "4.2 update dist docker"
             ]
