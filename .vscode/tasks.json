@@ -127,18 +127,18 @@
             "command": "docker buildx build --platform linux/amd64,linux/arm64 -f docker/Dockerfile.quick -t registry.cn-hangzhou.aliyuncs.com/adguardprivate/adguardprivate:dev . --push",
             "dependsOrder": "sequence",
             "dependsOn": [
-                // "3.0 build front",
+                "3.0 build front",
                 "3.1 build release v1.1.0",
                 "4.2 update dist docker"
             ]
         },
         {
-            "label": "4.3 push to aliyuncs/adguardprivate/adguardprivate:latest",
+            "label": "4.4 push to aliyuncs/adguardprivate/adguardprivate:latest",
             "type": "shell",
             "command": "docker buildx build --platform linux/amd64,linux/arm64 -f docker/Dockerfile.quick -t registry.cn-hangzhou.aliyuncs.com/adguardprivate/adguardprivate:latest . --push",
             "dependsOn": [
                 // "3.0 build front",
-                "3.1 build release v1.1.0",
+                // "3.1 build release v1.1.0",
                 "4.2 update dist docker"
             ]
         }
