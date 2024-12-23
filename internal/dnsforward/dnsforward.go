@@ -506,6 +506,9 @@ func (s *Server) Prepare(conf *ServerConfig) (err error) {
 		return fmt.Errorf("setting up fallback dns servers: %w", err)
 	}
 
+	// Limit the number of upstreams
+	s.limitResourceUsage(proxyConfig)
+
 	dnsProxy, err := proxy.New(proxyConfig)
 	if err != nil {
 		return fmt.Errorf("creating proxy: %w", err)
@@ -518,6 +521,63 @@ func (s *Server) Prepare(conf *ServerConfig) (err error) {
 	s.registerHandlers()
 
 	return nil
+}
+
+// limit the DomainReservedUpstreams count to 255, root domain
+// limit the SpecifiedDomainUpstreams count to 255, more specific domain
+// limit the Upstreams count to 5 if the UpstreamMode is Parallel
+func (s *Server) limitResourceUsage(conf *proxy.Config) {
+	const (
+		maxDomainUpstreams   = 255
+		maxParallelUpstreams = 5
+	)
+
+	upsConf := conf.UpstreamConfig
+
+	// Limit specified domain count
+	mapsToLimit := []*map[string][]upstream.Upstream{
+		&upsConf.DomainReservedUpstreams,
+		&upsConf.SpecifiedDomainUpstreams,
+	}
+	for _, currentMap := range mapsToLimit {
+		if len(*currentMap) <= maxDomainUpstreams {
+			continue
+		}
+
+		limitedMap := make(map[string][]upstream.Upstream)
+		count := 0
+		for domain, upstreams := range *currentMap {
+			if count >= maxDomainUpstreams {
+				break
+			}
+			limitedMap[domain] = upstreams
+			count++
+		}
+		*currentMap = limitedMap
+	}
+
+	// Limit Upstreams in Parallel mode
+	if conf.UpstreamMode == proxy.UpstreamModeParallel {
+		for _, currentMap := range mapsToLimit {
+			for domain, upstreams := range *currentMap {
+				// Limit upstreams per domain
+				if len(upstreams) > maxParallelUpstreams {
+					upstreams = upstreams[:maxParallelUpstreams]
+				}
+				(*currentMap)[domain] = upstreams
+			}
+		}
+
+		// Limit the Upstreams count
+		if len(upsConf.Upstreams) > maxParallelUpstreams {
+			upsConf.Upstreams = upsConf.Upstreams[:maxParallelUpstreams]
+		}
+
+		// Limit the Fallbacks count
+		if len(conf.Fallbacks.Upstreams) > maxParallelUpstreams {
+			conf.Fallbacks.Upstreams = conf.Fallbacks.Upstreams[:maxParallelUpstreams]
+		}
+	}
 }
 
 // prepareUpstreamSettings sets upstream DNS server settings.

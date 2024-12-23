@@ -18,15 +18,20 @@
     - AdguardPrivate 不提供非加密的 DNS, 所有`plain_dns`翻译修改为`DNS-over-TLS`,`"plain_dns": ".+",`
     - 修改 Logo 和标题
 - internal(backend)
-  - 使用 `github.com/jqknono/dnsproxy` 替换 `github.com/AdguardTeam/dnsproxy`
-  - 原库不支持定时重载证书, 增加协程每隔三天重载证书, `case <-time.After(3 * 24 * time.Hour):`
+  - 增加
+    - 证书定时重载
+    - 其他协议的 ratelimit 支持
+  - 修改
+    - 使用 `github.com/jqknono/dnsproxy` 替换 `github.com/AdguardTeam/dnsproxy`
+    - 原库不支持定时重载证书, 增加协程每隔三天重载证书, `case <-time.After(3 * 24 * time.Hour):`
+    - 限制指定特定域名的上游服务器, 特定域名数量限制为`255`
+    - 限制并行请求模式下, 生效的上游 DNS 数量限制为`5`
 - dnsproxy
   - 原库仅支持 plain UDP 请求的 ratelimit, 修改增加了对其他协议的 ratelimit 支持, `p.isRatelimited(ip)`
 - k8s
   - 由负载均衡器处理加密证书路由, DoH 代理到 HTTP, DoT 代理到 UDP 请求
   - HTTP 请求限制每秒 30, 允许突发量 60
   - UDP 请求限制每秒 30
-
 
 ## 统一库
 
