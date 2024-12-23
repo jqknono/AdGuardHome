@@ -230,7 +230,7 @@ let Form = (props: FormProps) => {
                     </div>
                 </div>
 
-                <div className="col-lg-6">
+                {/* <div className="col-lg-6">
                     <div className="form__group form__group--settings">
                         <Field
                             name="force_https"
@@ -245,7 +245,7 @@ let Form = (props: FormProps) => {
                             <Trans>encryption_redirect_desc</Trans>
                         </div>
                     </div>
-                </div>
+                </div> */}
             </div>
 
             <div className="row">
