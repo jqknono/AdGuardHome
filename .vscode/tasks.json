@@ -4,16 +4,6 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "(Dprecate)customize build init",
-            "type": "shell",
-            "command": "bash customize-init.sh"
-        },
-        {
-            "label": "(Dprecate)simple build",
-            "type": "shell",
-            "command": "bash customize-build.sh"
-        },
-        {
             "label": "3.0 build front",
             "type": "shell",
             "command": "sudo make js-deps js-build"
@@ -27,59 +17,6 @@
             "label": "3.2 docker build release",
             "type": "shell",
             "command": "make build-docker VERBOSE=2 CHANNEL='development' VERSION='v1.1.0' ARCH='amd64 arm64' DOCKER_IMAGE_NAME='adguardprivate:v1.1.0' DOCKER_OUTPUT='type=image'"
-        },
-        {
-            "label": "3.3 push to dev.jqknono.com/adguardprivate:v1.1.0",
-            "type": "shell",
-            "command": "make build-docker VERBOSE=2 CHANNEL='development' VERSION='v1.1.0' ARCH='amd64 arm64' DOCKER_IMAGE_NAME='dev.jqknono.com:34005/adguardprivate' DOCKER_OUTPUT='type=image,name=dev.jqknono.com:34005/adguardprivate:v1.1.0,push=true'"
-        },
-        {
-            "label": "3.4 push to docker.io/jqknono/adguardprivate:v1.1.0",
-            "type": "shell",
-            "command": "make build-docker VERBOSE=2 CHANNEL='development' VERSION='v1.1.0' ARCH='amd64 arm64' DOCKER_IMAGE_NAME='docker.io/jqknono/adguardprivate' DOCKER_OUTPUT='type=image,name=docker.io/jqknono/adguardprivate:v1.1.0,push=true'"
-        },
-        {
-            "label": "(Dprecate)3.5 push to aliyuncs/jqknono/adguardhome:v1.1.0",
-            "type": "shell",
-            "command": "make build-docker VERBOSE=2 CHANNEL='development' VERSION='v1.1.0' ARCH='amd64 arm64' DOCKER_IMAGE_NAME='registry.cn-hangzhou.aliyuncs.com/jqknono/adguardhome' DOCKER_OUTPUT='type=image,name=registry.cn-hangzhou.aliyuncs.com/jqknono/adguardhome:v1.1.0,push=true'"
-        },
-        {
-            "label": "3.5.1 push to aliyuncs/adguardprivate/adguardprivate:dev",
-            "type": "shell",
-            "command": "make build-docker VERBOSE=2 CHANNEL='development' VERSION='dev' ARCH='amd64 arm64' DOCKER_IMAGE_NAME='registry.cn-hangzhou.aliyuncs.com/adguardprivate/adguardprivate' DOCKER_OUTPUT='type=image,name=registry.cn-hangzhou.aliyuncs.com/adguardprivate/adguardprivate:dev,push=true'",
-            "dependsOn": [
-                "3.0 build front",
-                "3.1 build release"
-            ]
-        },
-        {
-            "label": "3.5.2 push to aliyuncs/adguardprivate/adguardprivate:latest",
-            "type": "shell",
-            "command": "make build-docker VERBOSE=2 CHANNEL='development' VERSION='latest' ARCH='amd64 arm64' DOCKER_IMAGE_NAME='registry.cn-hangzhou.aliyuncs.com/adguardprivate/adguardprivate' DOCKER_OUTPUT='type=image,name=registry.cn-hangzhou.aliyuncs.com/adguardprivate/adguardprivate:latest,push=true'",
-            "dependsOn": [
-                "3.0 build front",
-                "3.1 build release"
-            ]
-        },
-        {
-            "label": "git commit no verified",
-            "type": "shell",
-            "command": "git commit --no-verify -m 'jqknono commit'"
-        },
-        {
-            "label": "2.1 docker build dev",
-            "type": "shell",
-            "command": "make build-docker VERBOSE=2 CHANNEL='development' VERSION='v1.1.0' ARCH='amd64' DOCKER_IMAGE_NAME='adguardhome-dev' DOCKER_OUTPUT='type=docker,dest=-' VERBOSE=2"
-        },
-        {
-            "label": "2.2 docker load dev",
-            "type": "shell",
-            "command": "docker load -i ./adguardhome-dev.tar"
-        },
-        {
-            "label": "2.3 docker run dev",
-            "type": "shell",
-            "command": "docker run --name adguardhome-dev -d -p 50000:3000 -p 50001:80 -p 50002:443 -p 50003:853 -p 50004:53/udp -v ./data/work:/opt/adguardhome/work -v ./data/conf:/opt/adguardhome/conf adguardhome-dev:latest"
         },
         {
             "label": "1.0 build",
@@ -127,7 +64,7 @@
             "command": "docker buildx build --platform linux/amd64,linux/arm64 -f docker/Dockerfile.quick -t registry.cn-hangzhou.aliyuncs.com/adguardprivate/adguardprivate:public_dev . --push",
             "dependsOrder": "sequence",
             "dependsOn": [
-                // "3.0 build front",
+                "3.0 build front",
                 "3.1 build release v1.1.0",
                 "4.2 update dist docker"
             ]
