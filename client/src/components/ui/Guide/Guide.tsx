@@ -253,7 +253,7 @@ const getTabs = ({ tlsAddress, httpsAddress, showDnsPrivacyNotice, serverName, p
                                 <Trans
                                     // remove the prefix "tls://" and postfix ":853" from the address
                                     // values={{ address: tlsAddress[0] }}
-                                    values={{ address: tlsAddress[0].replace('tls://', '').replace(':853', '') }}
+                                    values={{ address: "device1." + tlsAddress[0].replace('tls://', '').replace(':853', '') }}
                                     components={[<strong key="0">text</strong>, <code key="1">text</code>]}>
                                     setup_dns_privacy_1
                                 </Trans>
@@ -262,7 +262,7 @@ const getTabs = ({ tlsAddress, httpsAddress, showDnsPrivacyNotice, serverName, p
                         {httpsAddress?.length > 0 && (
                             <div className="tab__paragraph">
                                 <Trans
-                                    values={{ address: httpsAddress[0] }}
+                                    values={{ address: httpsAddress[0] + "/device2" }}
                                     components={[<strong key="0">text</strong>, <code key="1">text</code>]}>
                                     setup_dns_privacy_2
                                 </Trans>
