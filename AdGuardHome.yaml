@@ -120,7 +120,7 @@ filters:
     id: 1734953904
 whitelist_filters: []
 user_rules:
-  - example.com
+  - example1.com
   - ""
 dhcp:
   enabled: false

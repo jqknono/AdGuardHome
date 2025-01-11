@@ -3,18 +3,18 @@
 FROM alpine:3.18
 
 # Update certificates.
-RUN apk --no-cache add ca-certificates libcap tzdata && \
-	mkdir -p /opt/adguardhome/conf /opt/adguardhome/work && \
-	chown -R nobody: /opt/adguardhome
+RUN apk --no-cache add ca-certificates libcap tzdata nfs-utils && \
+    mkdir -p /opt/adguardhome/conf /opt/adguardhome/work && \
+    chown -R nobody: /opt/adguardhome
 
-EXPOSE 80/tcp 443/tcp 853/tcp
+EXPOSE 80/tcp 443/tcp 853/tcp 443/udp 853/udp
 
 WORKDIR /opt/adguardhome/work
 
 ENTRYPOINT ["/opt/adguardhome/AdGuardHome"]
 
 CMD [ \
-	"--no-check-update", \
-	"-c", "/opt/adguardhome/conf/AdGuardHome.yaml", \
-	"-w", "/opt/adguardhome/work" \
-]
+    "--no-check-update", \
+    "-c", "/opt/adguardhome/conf/AdGuardHome.yaml", \
+    "-w", "/opt/adguardhome/work" \
+    ]
