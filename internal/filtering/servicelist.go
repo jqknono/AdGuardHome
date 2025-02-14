@@ -197,6 +197,9 @@ var blockedServices = []blockedService{{
 		"||qq-video.cdn-go.cn^",
 		"||qq.com^$denyallow=wx.qq.com|weixin.qq.com",
 		"||url.cn^",
+		"||gtimg.cn^",
+		"||gtimg.com^",
+		"||qpic.cn^"
 	},
 }, {
 	ID:      "rockstar_games",
@@ -283,6 +286,7 @@ var blockedServices = []blockedService{{
 		"||ttlivecdn.com^",
 		"||v*.tiktokcdn-eu.com^",
 		"||zijieapi.com^",
+		"||ixigua.com^",
 	},
 }, {
 	ID:      "ubisoft",
