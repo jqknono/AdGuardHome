@@ -540,6 +540,9 @@ func (s *Server) limitResourceUsage(conf *proxy.Config) {
 		&upsConf.SpecifiedDomainUpstreams,
 	}
 	for _, currentMap := range mapsToLimit {
+		if *currentMap == nil {
+			continue
+		}
 		if len(*currentMap) <= maxDomainUpstreams {
 			continue
 		}
@@ -559,6 +562,9 @@ func (s *Server) limitResourceUsage(conf *proxy.Config) {
 	// Limit Upstreams in Parallel mode
 	if conf.UpstreamMode == proxy.UpstreamModeParallel {
 		for _, currentMap := range mapsToLimit {
+			if *currentMap == nil {
+				continue
+			}
 			for domain, upstreams := range *currentMap {
 				// Limit upstreams per domain
 				if len(upstreams) > maxParallelUpstreams {
@@ -573,8 +579,8 @@ func (s *Server) limitResourceUsage(conf *proxy.Config) {
 			upsConf.Upstreams = upsConf.Upstreams[:maxParallelUpstreams]
 		}
 
-		// Limit the Fallbacks count
-		if len(conf.Fallbacks.Upstreams) > maxParallelUpstreams {
+		// Limit the Fallbacks count,增加 nil 检查
+		if conf.Fallbacks != nil && len(conf.Fallbacks.Upstreams) > maxParallelUpstreams {
 			conf.Fallbacks.Upstreams = conf.Fallbacks.Upstreams[:maxParallelUpstreams]
 		}
 	}

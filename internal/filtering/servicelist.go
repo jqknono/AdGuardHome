@@ -199,7 +199,7 @@ var blockedServices = []blockedService{{
 		"||url.cn^",
 		"||gtimg.cn^",
 		"||gtimg.com^",
-		"||qpic.cn^"
+		"||qpic.cn^",
 	},
 }, {
 	ID:      "rockstar_games",
@@ -287,6 +287,7 @@ var blockedServices = []blockedService{{
 		"||v*.tiktokcdn-eu.com^",
 		"||zijieapi.com^",
 		"||ixigua.com^",
+		"||bytegecko.com^",
 	},
 }, {
 	ID:      "ubisoft",
