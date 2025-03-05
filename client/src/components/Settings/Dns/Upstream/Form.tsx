@@ -32,6 +32,7 @@ interface renderFieldProps {
     normalizeOnBlur?: (...args: unknown[]) => unknown;
     containerClass?: string;
     onScroll?: (...args: unknown[]) => unknown;
+    requiredServiceTypes?: string[];
 }
 
 const renderField = ({
@@ -45,12 +46,18 @@ const renderField = ({
     normalizeOnBlur,
     containerClass,
     onScroll,
+    requiredServiceTypes,
 }: renderFieldProps) => {
     const { t } = useTranslation();
+    const service_type = useSelector((state: RootState) => state.service_type);
 
     const processingTestUpstream = useSelector((state: RootState) => state.settings.processingTestUpstream);
-
     const processingSetConfig = useSelector((state: RootState) => state.dnsConfig.processingSetConfig);
+
+    // Skip rendering if requiredServiceTypes is specified and current service_type doesn't match
+    if (requiredServiceTypes && !requiredServiceTypes.includes(service_type)) {
+        return null;
+    }
 
     return (
         <div key={placeholder} className={classnames('col-12 mb-4', containerClass)}>
@@ -122,14 +129,15 @@ const INPUT_FIELDS = [
         subtitle: 'upstream_parallel',
         placeholder: 'parallel_requests',
     },
-    // {
-    //     name: UPSTREAM_MODE_NAME,
-    //     type: 'radio',
-    //     value: DNS_REQUEST_OPTIONS.FASTEST_ADDR,
-    //     component: renderRadioField,
-    //     subtitle: 'fastest_addr_desc',
-    //     placeholder: 'fastest_addr',
-    // },
+    {
+        name: UPSTREAM_MODE_NAME,
+        type: 'radio',
+        value: DNS_REQUEST_OPTIONS.FASTEST_ADDR,
+        component: renderRadioField,
+        subtitle: 'fastest_addr_desc',
+        placeholder: 'fastest_addr',
+        requiredServiceTypes: ['enterprise'],
+    },
 ];
 
 interface FormProps {
@@ -145,6 +153,7 @@ interface FormProps {
 const Form = ({ submitting, invalid, handleSubmit }: FormProps) => {
     const dispatch = useDispatch();
     const { t } = useTranslation();
+    const service_type = useSelector((state: RootState) => state.service_type);
 
     const upstream_dns = useSelector((store: RootState) => store.form[FORM_NAME.UPSTREAM].values.upstream_dns);
 
@@ -166,22 +175,6 @@ const Form = ({ submitting, invalid, handleSubmit }: FormProps) => {
     return (
         <form onSubmit={handleSubmit} className="form--upstream">
             <div className="row">
-                {/* <label className="col form__label" htmlFor={UPSTREAM_DNS_NAME}>
-                    <Trans components={components}>upstream_dns_help</Trans>{' '}
-                    <Trans
-                        components={[
-                            <a
-                                href="https://link.adtidy.org/forward.html?action=dns_kb_providers&from=ui&app=home"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                key="0">
-                                DNS providers
-                            </a>,
-                        ]}>
-                        dns_providers
-                    </Trans>
-                </label> */}
-
                 <div className="col-12 mb-4">
                     <div className="text-edit-container">
                         <Field
@@ -200,7 +193,6 @@ const Form = ({ submitting, invalid, handleSubmit }: FormProps) => {
 
                 <div className="col-12">
                     <Examples />
-
                     <hr />
                 </div>
 

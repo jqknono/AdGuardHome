@@ -2,39 +2,40 @@ import React, { useEffect } from 'react';
 import { change, Field, formValueSelector, reduxForm } from 'redux-form';
 import { Trans, withTranslation } from 'react-i18next';
 import flow from 'lodash/flow';
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 
 import {
-    // renderRadioField,
-    // toNumber,
+    renderRadioField,
+    toNumber,
     CheckboxField,
     renderTextareaField,
-    // toFloatNumber,
-    // renderInputField,
+    toFloatNumber,
+    renderInputField,
 } from '../../../helpers/form';
 import {
     FORM_NAME,
     STATS_INTERVALS_DAYS,
-    // DAY,
-    // RETENTION_CUSTOM,
-    // RETENTION_CUSTOM_INPUT,
+    DAY,
+    RETENTION_CUSTOM,
+    RETENTION_CUSTOM_INPUT,
     CUSTOM_INTERVAL,
-    // RETENTION_RANGE,
+    RETENTION_RANGE,
 } from '../../../helpers/constants';
 
 import { trimLinesAndRemoveEmpty } from '../../../helpers/helpers';
 import '../FormButton.css';
+import { RootState } from '../../../initialState';
 
-// const getIntervalTitle = (intervalMs: any, t: any) => {
-//     switch (intervalMs) {
-//         case RETENTION_CUSTOM:
-//             return t('settings_custom');
-//         case DAY:
-//             return t('interval_24_hour');
-//         default:
-//             return t('interval_days', { count: intervalMs / DAY });
-//     }
-// };
+const getIntervalTitle = (intervalMs: any, t: any) => {
+    switch (intervalMs) {
+        case RETENTION_CUSTOM:
+            return t('settings_custom');
+        case DAY:
+            return t('interval_24_hour');
+        default:
+            return t('interval_days', { count: intervalMs / DAY });
+    }
+};
 
 interface FormProps {
     handleSubmit: (...args: unknown[]) => string;
@@ -64,6 +65,8 @@ let Form = (props: FormProps) => {
         dispatch,
     } = props;
 
+    const service_type = useSelector((state: RootState) => state.service_type);
+
     useEffect(() => {
         if (STATS_INTERVALS_DAYS.includes(interval)) {
             dispatch(change(FORM_NAME.STATS_CONFIG, CUSTOM_INTERVAL, null));
@@ -81,57 +84,61 @@ let Form = (props: FormProps) => {
                     disabled={processing}
                 />
             </div>
-            {/* <label className="form__label form__label--with-desc">
-                <Trans>statistics_retention</Trans>
-            </label>
+            {service_type === 'enterprise' && (
+                <>
+                    <label className="form__label form__label--with-desc">
+                        <Trans>statistics_retention</Trans>
+                    </label>
 
-            <div className="form__desc form__desc--top">
-                <Trans>statistics_retention_desc</Trans>
-            </div>
+                    <div className="form__desc form__desc--top">
+                        <Trans>statistics_retention_desc</Trans>
+                    </div>
 
-            <div className="form__group form__group--settings mt-2">
-                <div className="custom-controls-stacked">
-                    <Field
-                        key={RETENTION_CUSTOM}
-                        name="interval"
-                        type="radio"
-                        component={renderRadioField}
-                        value={STATS_INTERVALS_DAYS.includes(interval) ? RETENTION_CUSTOM : interval}
-                        placeholder={getIntervalTitle(RETENTION_CUSTOM, t)}
-                        normalize={toFloatNumber}
-                        disabled={processing}
-                    />
-                    {!STATS_INTERVALS_DAYS.includes(interval) && (
-                        <div className="form__group--input">
-                            <div className="form__desc form__desc--top">{t('custom_retention_input')}</div>
-
+                    <div className="form__group form__group--settings mt-2">
+                        <div className="custom-controls-stacked">
                             <Field
-                                key={RETENTION_CUSTOM_INPUT}
-                                name={CUSTOM_INTERVAL}
-                                type="number"
-                                className="form-control"
-                                component={renderInputField}
-                                disabled={processing}
+                                key={RETENTION_CUSTOM}
+                                name="interval"
+                                type="radio"
+                                component={renderRadioField}
+                                value={STATS_INTERVALS_DAYS.includes(interval) ? RETENTION_CUSTOM : interval}
+                                placeholder={getIntervalTitle(RETENTION_CUSTOM, t)}
                                 normalize={toFloatNumber}
-                                min={RETENTION_RANGE.MIN}
-                                max={RETENTION_RANGE.MAX}
+                                disabled={processing}
                             />
+                            {!STATS_INTERVALS_DAYS.includes(interval) && (
+                                <div className="form__group--input">
+                                    <div className="form__desc form__desc--top">{t('custom_retention_input')}</div>
+
+                                    <Field
+                                        key={RETENTION_CUSTOM_INPUT}
+                                        name={CUSTOM_INTERVAL}
+                                        type="number"
+                                        className="form-control"
+                                        component={renderInputField}
+                                        disabled={processing}
+                                        normalize={toFloatNumber}
+                                        min={RETENTION_RANGE.MIN}
+                                        max={RETENTION_RANGE.MAX}
+                                    />
+                                </div>
+                            )}
+                            {STATS_INTERVALS_DAYS.map((interval) => (
+                                <Field
+                                    key={interval}
+                                    name="interval"
+                                    type="radio"
+                                    component={renderRadioField}
+                                    value={interval}
+                                    placeholder={getIntervalTitle(interval, t)}
+                                    normalize={toNumber}
+                                    disabled={processing}
+                                />
+                            ))}
                         </div>
-                    )}
-                    {STATS_INTERVALS_DAYS.map((interval) => (
-                        <Field
-                            key={interval}
-                            name="interval"
-                            type="radio"
-                            component={renderRadioField}
-                            value={interval}
-                            placeholder={getIntervalTitle(interval, t)}
-                            normalize={toNumber}
-                            disabled={processing}
-                        />
-                    ))}
-                </div>
-            </div> */}
+                    </div>
+                </>
+            )}
             <label className="form__label form__label--with-desc">
                 <Trans>ignore_domains_title</Trans>
             </label>

@@ -78,137 +78,145 @@ const Form = ({ handleSubmit, submitting, invalid, processing }: ConfigFormProps
         shallowEqual,
     );
 
+    const { service_type } = useSelector((state: RootState) => state);
+    const requiredServiceTypes = ['enterprise']
+    const shouldShow = requiredServiceTypes && !requiredServiceTypes.includes(service_type);
+
     return (
         <form onSubmit={handleSubmit}>
             <div className="row">
-                {/* <div className="col-12 col-md-7">
-                    <div className="form__group form__group--settings">
-                        <label htmlFor="ratelimit" className="form__label form__label--with-desc">
-                            <Trans>rate_limit</Trans>
-                        </label>
+                {shouldShow && (
+                    <>
+                        <div className="col-12 col-md-7">
+                            <div className="form__group form__group--settings">
+                                <label htmlFor="ratelimit" className="form__label form__label--with-desc">
+                                    <Trans>rate_limit</Trans>
+                                </label>
 
-                        <div className="form__desc form__desc--top">
-                            <Trans>rate_limit_desc</Trans>
+                                <div className="form__desc form__desc--top">
+                                    <Trans>rate_limit_desc</Trans>
+                                </div>
+
+                                <Field
+                                    name="ratelimit"
+                                    type="number"
+                                    component={renderInputField}
+                                    className="form-control"
+                                    placeholder={t('form_enter_rate_limit')}
+                                    normalize={toNumber}
+                                    validate={validateRequiredValue}
+                                    min={UINT32_RANGE.MIN}
+                                    max={UINT32_RANGE.MAX}
+                                />
+                            </div>
                         </div>
 
-                        <Field
-                            name="ratelimit"
-                            type="number"
-                            component={renderInputField}
-                            className="form-control"
-                            placeholder={t('form_enter_rate_limit')}
-                            normalize={toNumber}
-                            validate={validateRequiredValue}
-                            min={UINT32_RANGE.MIN}
-                            max={UINT32_RANGE.MAX}
-                        />
-                    </div>
-                </div> */}
+                        <div className="col-12 col-md-7">
+                            <div className="form__group form__group--settings">
+                                <label htmlFor="ratelimit_subnet_len_ipv4" className="form__label form__label--with-desc">
+                                    <Trans>rate_limit_subnet_len_ipv4</Trans>
+                                </label>
 
-                {/* <div className="col-12 col-md-7">
-                    <div className="form__group form__group--settings">
-                        <label htmlFor="ratelimit_subnet_len_ipv4" className="form__label form__label--with-desc">
-                            <Trans>rate_limit_subnet_len_ipv4</Trans>
-                        </label>
+                                <div className="form__desc form__desc--top">
+                                    <Trans>rate_limit_subnet_len_ipv4_desc</Trans>
+                                </div>
 
-                        <div className="form__desc form__desc--top">
-                            <Trans>rate_limit_subnet_len_ipv4_desc</Trans>
+                                <Field
+                                    name="ratelimit_subnet_len_ipv4"
+                                    type="number"
+                                    component={renderInputField}
+                                    className="form-control"
+                                    placeholder={t('form_enter_rate_limit_subnet_len')}
+                                    normalize={toNumber}
+                                    validate={[validateRequiredValue, validateIPv4Subnet]}
+                                    min={0}
+                                    max={32}
+                                />
+                            </div>
                         </div>
 
-                        <Field
-                            name="ratelimit_subnet_len_ipv4"
-                            type="number"
-                            component={renderInputField}
-                            className="form-control"
-                            placeholder={t('form_enter_rate_limit_subnet_len')}
-                            normalize={toNumber}
-                            validate={[validateRequiredValue, validateIPv4Subnet]}
-                            min={0}
-                            max={32}
-                        />
-                    </div>
-                </div> */}
+                        <div className="col-12 col-md-7">
+                            <div className="form__group form__group--settings">
+                                <label htmlFor="ratelimit_subnet_len_ipv6" className="form__label form__label--with-desc">
+                                    <Trans>rate_limit_subnet_len_ipv6</Trans>
+                                </label>
 
-                {/* <div className="col-12 col-md-7">
-                    <div className="form__group form__group--settings">
-                        <label htmlFor="ratelimit_subnet_len_ipv6" className="form__label form__label--with-desc">
-                            <Trans>rate_limit_subnet_len_ipv6</Trans>
-                        </label>
+                                <div className="form__desc form__desc--top">
+                                    <Trans>rate_limit_subnet_len_ipv6_desc</Trans>
+                                </div>
 
-                        <div className="form__desc form__desc--top">
-                            <Trans>rate_limit_subnet_len_ipv6_desc</Trans>
+                                <Field
+                                    name="ratelimit_subnet_len_ipv6"
+                                    type="number"
+                                    component={renderInputField}
+                                    className="form-control"
+                                    placeholder={t('form_enter_rate_limit_subnet_len')}
+                                    normalize={toNumber}
+                                    validate={[validateRequiredValue, validateIPv6Subnet]}
+                                    min={0}
+                                    max={128}
+                                />
+                            </div>
                         </div>
 
-                        <Field
-                            name="ratelimit_subnet_len_ipv6"
-                            type="number"
-                            component={renderInputField}
-                            className="form-control"
-                            placeholder={t('form_enter_rate_limit_subnet_len')}
-                            normalize={toNumber}
-                            validate={[validateRequiredValue, validateIPv6Subnet]}
-                            min={0}
-                            max={128}
-                        />
-                    </div>
-                </div> */}
+                        <div className="col-12 col-md-7">
+                            <div className="form__group form__group--settings">
+                                <label htmlFor="ratelimit_whitelist" className="form__label form__label--with-desc">
+                                    <Trans>rate_limit_whitelist</Trans>
+                                </label>
 
-                {/* <div className="col-12 col-md-7">
-                    <div className="form__group form__group--settings">
-                        <label htmlFor="ratelimit_whitelist" className="form__label form__label--with-desc">
-                            <Trans>rate_limit_whitelist</Trans>
-                        </label>
+                                <div className="form__desc form__desc--top">
+                                    <Trans>rate_limit_whitelist_desc</Trans>
+                                </div>
 
-                        <div className="form__desc form__desc--top">
-                            <Trans>rate_limit_whitelist_desc</Trans>
+                                <Field
+                                    name="ratelimit_whitelist"
+                                    component={renderTextareaField}
+                                    type="text"
+                                    className="form-control"
+                                    placeholder={t('rate_limit_whitelist_placeholder')}
+                                    normalizeOnBlur={removeEmptyLines}
+                                />
+                            </div>
                         </div>
 
-                        <Field
-                            name="ratelimit_whitelist"
-                            component={renderTextareaField}
-                            type="text"
-                            className="form-control"
-                            placeholder={t('rate_limit_whitelist_placeholder')}
-                            normalizeOnBlur={removeEmptyLines}
-                        />
-                    </div>
-                </div> */}
+                        <div className="col-12">
+                            <div className="form__group form__group--settings">
+                                <Field
+                                    name="edns_cs_enabled"
+                                    type="checkbox"
+                                    component={CheckboxField}
+                                    placeholder={t('edns_enable')}
+                                    disabled={processing}
+                                    subtitle={t('edns_cs_desc')}
+                                />
+                            </div>
+                        </div>
 
-                {/* <div className="col-12">
-                    <div className="form__group form__group--settings">
-                        <Field
-                            name="edns_cs_enabled"
-                            type="checkbox"
-                            component={CheckboxField}
-                            placeholder={t('edns_enable')}
-                            disabled={processing}
-                            subtitle={t('edns_cs_desc')}
-                        />
-                    </div>
-                </div>
+                        <div className="col-12 form__group form__group--inner">
+                            <div className="form__group ">
+                                <Field
+                                    name="edns_cs_use_custom"
+                                    type="checkbox"
+                                    component={CheckboxField}
+                                    placeholder={t('edns_use_custom_ip')}
+                                    disabled={processing || !edns_cs_enabled}
+                                    subtitle={t('edns_use_custom_ip_desc')}
+                                />
+                            </div>
 
-                <div className="col-12 form__group form__group--inner">
-                    <div className="form__group ">
-                        <Field
-                            name="edns_cs_use_custom"
-                            type="checkbox"
-                            component={CheckboxField}
-                            placeholder={t('edns_use_custom_ip')}
-                            disabled={processing || !edns_cs_enabled}
-                            subtitle={t('edns_use_custom_ip_desc')}
-                        />
-                    </div>
-
-                    {edns_cs_use_custom && (
-                        <Field
-                            name="edns_cs_custom_ip"
-                            component={renderInputField}
-                            className="form-control"
-                            placeholder={t('form_enter_ip')}
-                            validate={[validateIp, validateRequiredValue]}
-                        />
-                    )}
-                </div> */}
+                            {edns_cs_use_custom && (
+                                <Field
+                                    name="edns_cs_custom_ip"
+                                    component={renderInputField}
+                                    className="form-control"
+                                    placeholder={t('form_enter_ip')}
+                                    validate={[validateIp, validateRequiredValue]}
+                                />
+                            )}
+                        </div>
+                    </>
+                )}
 
                 {checkboxes.map(({ name, placeholder, subtitle }) => (
                     <div className="col-12" key={name}>

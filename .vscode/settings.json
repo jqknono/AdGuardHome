@@ -3,5 +3,6 @@
         {
             "file": ".copilot-codeGeneration-instructions.md",
         }
-    ]
+    ],
+    "github.copilot.chat.localeOverride": "zh-CN"
 }

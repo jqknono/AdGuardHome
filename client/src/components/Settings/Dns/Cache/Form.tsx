@@ -12,12 +12,13 @@ import { clearDnsCache } from '../../../../actions/dnsConfig';
 import { RootState } from '../../../../initialState';
 
 const INPUTS_FIELDS = [
-    // {
-    //     name: CACHE_CONFIG_FIELDS.cache_size,
-    //     title: 'cache_size',
-    //     description: 'cache_size_desc',
-    //     placeholder: 'enter_cache_size',
-    // },
+    {
+        name: CACHE_CONFIG_FIELDS.cache_size,
+        title: 'cache_size',
+        description: 'cache_size_desc',
+        placeholder: 'enter_cache_size',
+        requiredServiceTypes: ['enterprise'],
+    },
     {
         name: CACHE_CONFIG_FIELDS.cache_ttl_min,
         title: 'cache_ttl_min_override',
@@ -47,6 +48,7 @@ const Form = ({ handleSubmit, submitting, invalid }: CacheFormProps) => {
         (state: RootState) => state.form[FORM_NAME.CACHE].values,
         shallowEqual,
     );
+    const serviceType = useSelector((state: RootState) => state.service_type);
 
     const minExceedsMax = cache_ttl_min > 0 && cache_ttl_max > 0 && cache_ttl_min > cache_ttl_max;
 
@@ -59,32 +61,39 @@ const Form = ({ handleSubmit, submitting, invalid }: CacheFormProps) => {
     return (
         <form onSubmit={handleSubmit}>
             <div className="row">
-                {INPUTS_FIELDS.map(({ name, title, description, placeholder }) => (
-                    <div className="col-12" key={name}>
-                        <div className="col-12 col-md-7 p-0">
-                            <div className="form__group form__group--settings">
-                                <label htmlFor={name} className="form__label form__label--with-desc">
-                                    {t(title)}
-                                </label>
+                {INPUTS_FIELDS.map(({ name, title, description, placeholder, requiredServiceTypes }) => {
+                    // Skip rendering if field requires specific service types and current type doesn't match
+                    if (requiredServiceTypes && !requiredServiceTypes.includes(serviceType)) {
+                        return null;
+                    }
 
-                                <div className="form__desc form__desc--top">{t(description)}</div>
+                    return (
+                        <div className="col-12" key={name}>
+                            <div className="col-12 col-md-7 p-0">
+                                <div className="form__group form__group--settings">
+                                    <label htmlFor={name} className="form__label form__label--with-desc">
+                                        {t(title)}
+                                    </label>
 
-                                <Field
-                                    name={name}
-                                    type="number"
-                                    component={renderInputField}
-                                    placeholder={t(placeholder)}
-                                    disabled={processingSetConfig}
-                                    className="form-control"
-                                    normalizeOnBlur={replaceZeroWithEmptyString}
-                                    normalize={toNumber}
-                                    min={0}
-                                    max={UINT32_RANGE.MAX}
-                                />
+                                    <div className="form__desc form__desc--top">{t(description)}</div>
+
+                                    <Field
+                                        name={name}
+                                        type="number"
+                                        component={renderInputField}
+                                        placeholder={t(placeholder)}
+                                        disabled={processingSetConfig}
+                                        className="form-control"
+                                        normalizeOnBlur={replaceZeroWithEmptyString}
+                                        normalize={toNumber}
+                                        min={0}
+                                        max={UINT32_RANGE.MAX}
+                                    />
+                                </div>
                             </div>
                         </div>
-                    </div>
-                ))}
+                    );
+                })}
                 {minExceedsMax && <span className="text-danger pl-3 pb-3">{t('ttl_cache_validation')}</span>}
             </div>
 

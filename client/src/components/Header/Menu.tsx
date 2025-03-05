@@ -47,19 +47,21 @@ const SETTINGS_ITEMS = [
         route: SETTINGS_URLS.dns,
         text: 'dns_settings',
     },
-    // {
-    //     route: SETTINGS_URLS.encryption,
-    //     text: 'encryption_settings',
-    // },
+    {
+        route: SETTINGS_URLS.encryption,
+        text: 'encryption_settings',
+        requiredServiceTypes: ['enterprise'],
+    },
     {
         route: SETTINGS_URLS.clients,
         text: 'client_settings',
-        requiredServiceType: 'family',
+        requiredServiceTypes: ['family','enterprise'],
     },
-    // {
-    //     route: SETTINGS_URLS.dhcp,
-    //     text: 'dhcp_settings',
-    // },
+    {
+        route: SETTINGS_URLS.dhcp,
+        text: 'dhcp_settings',
+        requiredServiceTypes: ['enterprise'],
+    },
 ];
 
 const FILTERS_ITEMS = [
@@ -134,8 +136,8 @@ class Menu extends Component<MenuProps> {
             controlClassName={`nav-link ${this.getActiveClassForDropdown(URLS)}`}
             icon={icon}>
             {ITEMS.map((item: any) =>
-                // Filter out menu items that require a specific service type
-                !item.requiredServiceType || item.requiredServiceType === this.props.serviceType 
+                // Filter out menu items that require specific service types
+                !item.requiredServiceTypes || item.requiredServiceTypes.includes(this.props.serviceType)
                 ? this.getNavLink({
                     ...item,
                     order,
