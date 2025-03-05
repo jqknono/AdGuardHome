@@ -688,6 +688,18 @@ class Api {
 
         return this.makeRequest(path, method);
     }
+
+    // Service Type API endpoints
+    GET_SERVICE_TYPE = { path: 'service-type', method: 'GET' };
+
+    /**
+     * Get the current service type
+     * @returns {Promise<{service_type: string}>} Service type object with values 'personal', 'family', or 'enterprise'
+     */
+    getServiceType() {
+        const { path, method } = this.GET_SERVICE_TYPE;
+        return this.makeRequest(path, method);
+    }
 }
 
 const apiClient = new Api();

@@ -35,6 +35,9 @@ const (
 	// userFilterDataDir is the name of the directory used to store users'
 	// FS-based rule lists.
 	userFilterDataDir = "userfilters"
+
+	// Default service type constants
+	defaultServiceType = "personal"
 )
 
 // logSettings are the logging settings part of the configuration file.
@@ -125,6 +128,8 @@ type configuration struct {
 	Language string `yaml:"language"`
 	// Theme is a UI theme for current user.
 	Theme Theme `yaml:"theme"`
+	// ServiceType represents the type of service for AdGuard Private
+	ServiceType string `yaml:"service_type"`
 
 	// TODO(a.garipov): Make DNS and the fields below pointers and validate
 	// and/or reset on explicit nulling.
@@ -481,6 +486,7 @@ var config = &configuration{
 	OSConfig:      &osConfig{},
 	SchemaVersion: configmigrate.LastSchemaVersion,
 	Theme:         ThemeAuto,
+	ServiceType:   defaultServiceType,
 }
 
 // configFilePath returns the absolute path to the symlink-evaluated path to the
@@ -577,6 +583,16 @@ func validateConfig() (err error) {
 	if err != nil {
 		// Don't wrap the error since it's informative enough as is.
 		return err
+	}
+
+	// Validate ServiceType
+	switch config.ServiceType {
+	case "personal", "family", "enterprise":
+		// Valid values
+	case "":
+		config.ServiceType = defaultServiceType
+	default:
+		return fmt.Errorf("invalid service_type: %s", config.ServiceType)
 	}
 
 	tcpPorts := aghalg.UniqChecker[tcpPort]{}

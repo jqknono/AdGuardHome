@@ -41,3 +41,4 @@ client/pkg/
 client/bin/
 .vscode/bookmarks.json
 __debug_bin*
+.env

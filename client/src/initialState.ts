@@ -257,11 +257,11 @@ export type DhcpData = {
     check?: {
         v4?: {
             other_server?: { found: string; error?: string },
-            static_ip?: {static: string, ip: string},
+            static_ip?: { static: string, ip: string },
         },
         v6?: {
             other_server?: { found: string; error?: string },
-            static_ip?: {static: string, ip: string},
+            static_ip?: { static: string, ip: string },
         },
     };
     v4: {
@@ -391,6 +391,7 @@ export type RootState = {
     toasts: { notices: any[] };
     loadingBar: any;
     form: any;
+    service_type: string;
 };
 
 export type InstallState = {
@@ -616,4 +617,5 @@ export const initialState: RootState = {
     toasts: { notices: [] },
     loadingBar: {},
     form: {},
+    service_type: '',
 };

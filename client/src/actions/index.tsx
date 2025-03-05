@@ -763,3 +763,18 @@ export const toggleBlockingForClient = (type: any, domain: any, client: any) => 
 
     return toggleBlocking(type, domain, baseRule, baseUnblocking);
 };
+
+export const getServiceTypeRequest = createAction('GET_SERVICE_TYPE_REQUEST');
+export const getServiceTypeFailure = createAction('GET_SERVICE_TYPE_FAILURE');
+export const getServiceTypeSuccess = createAction('GET_SERVICE_TYPE_SUCCESS');
+
+export const getServiceType = () => async (dispatch: any) => {
+    dispatch(getServiceTypeRequest());
+    try {
+        const response = await apiClient.getServiceType();
+        dispatch(getServiceTypeSuccess({ service_type: response.service_type }));
+    } catch (error) {
+        dispatch(addErrorToast({ error }));
+        dispatch(getServiceTypeFailure());
+    }
+};

@@ -4,6 +4,7 @@ http:
     enabled: false
   address: 0.0.0.0:8080
   session_ttl: 720h
+service_type: family  # personal|family|enterprise
 users:
   - name: jqknono
     password: $2a$10$4AYmaNFdqVIUTvHs7XuDI..2HzN0hA21Mk5UDh2.aHQrjWatC86zS

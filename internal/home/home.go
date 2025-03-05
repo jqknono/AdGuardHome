@@ -46,6 +46,7 @@ import (
 
 // Global context
 type homeContext struct {
+	debug bool // Debug mode flag
 	// Modules
 	// --
 
@@ -155,6 +156,7 @@ func Main(clientBuildFS fs.FS) {
 // setupContext initializes [Context] fields.  It also reads and upgrades
 // config file if necessary.
 func setupContext(opts options) (err error) {
+	Context.debug = true
 	Context.firstRun = detectFirstRun()
 
 	Context.tlsRoots = aghtls.SystemRootCAs()
@@ -168,7 +170,7 @@ func setupContext(opts options) (err error) {
 		}
 	}
 
-	if Context.firstRun {
+	if !Context.debug && Context.firstRun {
 		log.Info("This is the first time AdGuard Home is launched")
 		checkNetworkPermissions()
 

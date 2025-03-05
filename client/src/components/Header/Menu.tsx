@@ -5,9 +5,11 @@ import { NavLink } from 'react-router-dom';
 import enhanceWithClickOutside from 'react-click-outside';
 import classnames from 'classnames';
 import { Trans, withTranslation } from 'react-i18next';
+import { connect } from 'react-redux';
 import { SETTINGS_URLS, FILTERS_URLS, MENU_URLS } from '../../helpers/constants';
 
 import Dropdown from '../ui/Dropdown';
+import { RootState } from '../../initialState';
 
 const MENU_ITEMS = [
     {
@@ -49,10 +51,11 @@ const SETTINGS_ITEMS = [
     //     route: SETTINGS_URLS.encryption,
     //     text: 'encryption_settings',
     // },
-    // {
-    //     route: SETTINGS_URLS.clients,
-    //     text: 'client_settings',
-    // },
+    {
+        route: SETTINGS_URLS.clients,
+        text: 'client_settings',
+        requiredServiceType: 'family',
+    },
     // {
     //     route: SETTINGS_URLS.dhcp,
     //     text: 'dhcp_settings',
@@ -87,6 +90,7 @@ interface MenuProps {
     closeMenu: (...args: unknown[]) => unknown;
     pathname: string;
     t?: (...args: unknown[]) => string;
+    serviceType: string;
 }
 
 class Menu extends Component<MenuProps> {
@@ -130,11 +134,14 @@ class Menu extends Component<MenuProps> {
             controlClassName={`nav-link ${this.getActiveClassForDropdown(URLS)}`}
             icon={icon}>
             {ITEMS.map((item: any) =>
-                this.getNavLink({
+                // Filter out menu items that require a specific service type
+                !item.requiredServiceType || item.requiredServiceType === this.props.serviceType 
+                ? this.getNavLink({
                     ...item,
                     order,
                     className: 'dropdown-item',
-                }),
+                })
+                : null
             )}
         </Dropdown>
     );
@@ -184,4 +191,8 @@ class Menu extends Component<MenuProps> {
     }
 }
 
-export default withTranslation()(enhanceWithClickOutside(Menu));
+const mapStateToProps = (state: RootState) => ({
+    serviceType: state.service_type,
+});
+
+export default connect(mapStateToProps)(withTranslation()(enhanceWithClickOutside(Menu)));

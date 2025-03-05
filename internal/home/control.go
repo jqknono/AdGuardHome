@@ -184,6 +184,9 @@ func registerControlHandlers(web *webAPI) {
 	httpRegister(http.MethodGet, "/control/profile", handleGetProfile)
 	httpRegister(http.MethodPut, "/control/profile/update", handlePutProfile)
 
+	// Service type API endpoints
+	httpRegister(http.MethodGet, "/control/service-type", web.handleServiceTypeGet)
+
 	// No auth is necessary for DoH/DoT configurations
 	Context.mux.HandleFunc("/apple/doh.mobileconfig", postInstall(handleMobileConfigDoH))
 	Context.mux.HandleFunc("/apple/dot.mobileconfig", postInstall(handleMobileConfigDoT))

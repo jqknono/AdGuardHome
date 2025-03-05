@@ -26,7 +26,7 @@ import { getLogsUrlParams, setHtmlLangAttr, setUITheme } from '../../helpers/hel
 
 import Header from '../Header';
 
-import { changeLanguage, getDnsStatus, getTimerStatus } from '../../actions';
+import { changeLanguage, getDnsStatus, getServiceType, getTimerStatus } from '../../actions';
 
 import Dashboard from '../../containers/Dashboard';
 import SetupGuide from '../../containers/SetupGuide';
@@ -119,6 +119,7 @@ const App = () => {
 
     useEffect(() => {
         dispatch(getDnsStatus());
+        dispatch(getServiceType());
 
         const handleVisibilityChange = () => {
             if (document.visibilityState === 'visible') {

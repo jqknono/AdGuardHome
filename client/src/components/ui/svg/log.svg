@@ -3,7 +3,7 @@
         <text x="50" y="15" fill="#0942b3" alignment-baseline="auto" font-weight="900" font-family="Siyuan Hei"
             letterSpacing="0em" text-anchor="start">ADGUARD</text>
 
-        <text x="50" y="35" fill="#0a54e8" alignment-baseline="auto" font-weight="200" font-family="Siyuan Hei"
+        <text x="50" y="35" fill="#0a54e8" alignment-baseline="auto" font-weight="400" font-family="Siyuan Hei"
             letterSpacing="0em" text-anchor="start">Private</text>
 
         <circle cx="20" cy="20" r="20" fill="#0a54e8" />

@@ -15,6 +15,7 @@ import filtering from './filtering';
 import settings from './settings';
 import dashboard from './dashboard';
 import dhcp from './dhcp';
+import serviceTypeReducer from './serviceType';
 
 export default combineReducers({
     settings,
@@ -32,4 +33,5 @@ export default combineReducers({
     dnsConfig,
     loadingBar: loadingBarReducer,
     form: formReducer,
+    service_type: serviceTypeReducer,
 });
