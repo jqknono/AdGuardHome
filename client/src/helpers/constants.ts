@@ -62,7 +62,7 @@ export const STATUS_COLORS = {
 export const REPOSITORY = {
     URL: 'https://github.com/jqknono/AdGuardHome',
     TRACKERS_DB: 'https://github.com/jqknono/AdGuardHome/tree/master/client/src/helpers/trackers/trackers.json',
-    ISSUES: 'https://github.com/AdguardTeam/AdGuardHome/issues/new/choose',
+    ISSUES: 'https://www.adguardprivate.com/docs/faq/', // https://github.com/AdguardTeam/AdGuardHome/issues/new/choose
 };
 
 export const HOMEPAGE = 'https://www.adguardprivate.com';
