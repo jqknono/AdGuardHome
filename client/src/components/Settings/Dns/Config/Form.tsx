@@ -80,7 +80,7 @@ const Form = ({ handleSubmit, submitting, invalid, processing }: ConfigFormProps
 
     const { service_type } = useSelector((state: RootState) => state);
     const requiredServiceTypes = ['enterprise']
-    const shouldShow = requiredServiceTypes && !requiredServiceTypes.includes(service_type);
+    const shouldShow = requiredServiceTypes && requiredServiceTypes.includes(service_type);
 
     return (
         <form onSubmit={handleSubmit}>
@@ -179,44 +179,44 @@ const Form = ({ handleSubmit, submitting, invalid, processing }: ConfigFormProps
                                 />
                             </div>
                         </div>
-
-                        <div className="col-12">
-                            <div className="form__group form__group--settings">
-                                <Field
-                                    name="edns_cs_enabled"
-                                    type="checkbox"
-                                    component={CheckboxField}
-                                    placeholder={t('edns_enable')}
-                                    disabled={processing}
-                                    subtitle={t('edns_cs_desc')}
-                                />
-                            </div>
-                        </div>
-
-                        <div className="col-12 form__group form__group--inner">
-                            <div className="form__group ">
-                                <Field
-                                    name="edns_cs_use_custom"
-                                    type="checkbox"
-                                    component={CheckboxField}
-                                    placeholder={t('edns_use_custom_ip')}
-                                    disabled={processing || !edns_cs_enabled}
-                                    subtitle={t('edns_use_custom_ip_desc')}
-                                />
-                            </div>
-
-                            {edns_cs_use_custom && (
-                                <Field
-                                    name="edns_cs_custom_ip"
-                                    component={renderInputField}
-                                    className="form-control"
-                                    placeholder={t('form_enter_ip')}
-                                    validate={[validateIp, validateRequiredValue]}
-                                />
-                            )}
-                        </div>
                     </>
                 )}
+
+                <div className="col-12">
+                    <div className="form__group form__group--settings">
+                        <Field
+                            name="edns_cs_enabled"
+                            type="checkbox"
+                            component={CheckboxField}
+                            placeholder={t('edns_enable')}
+                            disabled={processing}
+                            subtitle={t('edns_cs_desc')}
+                        />
+                    </div>
+                </div>
+
+                <div className="col-12 form__group form__group--inner">
+                    <div className="form__group ">
+                        <Field
+                            name="edns_cs_use_custom"
+                            type="checkbox"
+                            component={CheckboxField}
+                            placeholder={t('edns_use_custom_ip')}
+                            disabled={processing || !edns_cs_enabled}
+                            subtitle={t('edns_use_custom_ip_desc')}
+                        />
+                    </div>
+
+                    {edns_cs_use_custom && (
+                        <Field
+                            name="edns_cs_custom_ip"
+                            component={renderInputField}
+                            className="form-control"
+                            placeholder={t('form_enter_ip')}
+                            validate={[validateIp, validateRequiredValue]}
+                        />
+                    )}
+                </div>
 
                 {checkboxes.map(({ name, placeholder, subtitle }) => (
                     <div className="col-12" key={name}>
