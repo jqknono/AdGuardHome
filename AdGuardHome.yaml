@@ -2,9 +2,8 @@ http:
   pprof:
     port: 6060
     enabled: false
-  address: 0.0.0.0:8080
+  address: 0.0.0.0:34020
   session_ttl: 720h
-service_type: family  # personal|family|enterprise
 users:
   - name: jqknono
     password: $2a$10$4AYmaNFdqVIUTvHs7XuDI..2HzN0hA21Mk5UDh2.aHQrjWatC86zS
@@ -13,6 +12,7 @@ block_auth_min: 15
 http_proxy: ""
 language: ""
 theme: auto
+service_type: enterprise
 dns:
   bind_hosts:
     - 0.0.0.0
@@ -25,24 +25,18 @@ dns:
   refuse_any: true
   upstream_dns:
     - 223.5.5.5
-    - 223.5.5.1
-    - 223.5.5.2
-    - 223.5.5.3
-    - 223.5.5.4
-    - 223.5.5.5
-    - '[/google.com/github.com/baidu.com/]1.1.1.1 1.1.1.2 1.1.1.3 1.1.1.4 1.1.1.5 1.1.1.6'
+    - 119.29.29.29
   upstream_dns_file: ""
   bootstrap_dns:
     - 223.5.5.5
-    - 223.6.6.6
   fallback_dns:
     - 223.6.6.6
-    - 223.5.5.1
-    - 223.5.5.2
-    - 223.5.5.3
-    - 223.5.5.4
-    - 223.5.5.5
-  upstream_mode: parallel
+  upstream_alternate_dns:
+    - https://cf.adguardprivate.com/dns-query
+    - https://gg.adguardprivate.com/dns-query
+  upstream_alternate_rulesets:
+    - https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/gfw.txt
+  upstream_mode: load_balance
   fastest_timeout: 1s
   allowed_clients: []
   disallowed_clients: []
@@ -61,9 +55,9 @@ dns:
   aaaa_disabled: false
   enable_dnssec: false
   edns_client_subnet:
-    custom_ip: ""
-    enabled: false
-    use_custom: false
+    custom_ip: 223.76.185.188
+    enabled: true
+    use_custom: true
   max_goroutines: 100
   handle_ddr: false
   ipset: []
@@ -97,7 +91,7 @@ tls:
 querylog:
   dir_path: ""
   ignored: []
-  interval: 2160h
+  interval: 24h
   size_memory: 1000
   enabled: true
   file_enabled: true

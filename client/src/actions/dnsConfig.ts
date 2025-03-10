@@ -67,6 +67,14 @@ export const setDnsConfig = (config: any) => async (dispatch: any) => {
             data.ratelimit_whitelist = splitByNewLine(config.ratelimit_whitelist);
             hasDnsSettings = true;
         }
+        if (Object.prototype.hasOwnProperty.call(data, 'upstream_alternate_dns')) {
+            data.upstream_alternate_dns = splitByNewLine(config.upstream_alternate_dns);
+            hasDnsSettings = true;
+        }
+        if (Object.prototype.hasOwnProperty.call(data, 'upstream_alternate_rulesets')) {
+            data.upstream_alternate_rulesets = splitByNewLine(config.upstream_alternate_rulesets);
+            hasDnsSettings = true;
+        }
 
         await apiClient.setDnsConfig(data);
 

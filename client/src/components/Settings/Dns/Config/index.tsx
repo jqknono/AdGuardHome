@@ -53,6 +53,7 @@ const Config = () => {
                     }}
                     onSubmit={handleFormSubmit}
                     processing={processingSetConfig}
+                    dispatch={dispatch}
                 />
             </div>
         </Card>

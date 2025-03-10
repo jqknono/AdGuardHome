@@ -39,6 +39,14 @@ type jsonDNSConfig struct {
 	// servers are not responding.
 	Fallbacks *[]string `json:"fallback_dns"`
 
+	// UpstreamAlternateDNS is the list of alternate DNS servers for domains
+	// specified in UpstreamAlternateRulesets.
+	UpstreamAlternateDNS *[]string `json:"upstream_alternate_dns"`
+
+	// UpstreamAlternateRulesets is the list of URLs to ruleset files containing
+	// domains for which the alternate DNS servers should be used.
+	UpstreamAlternateRulesets *[]string `json:"upstream_alternate_rulesets"`
+
 	// ProtectionEnabled defines if protection is enabled.
 	ProtectionEnabled *bool `json:"protection_enabled"`
 
@@ -141,6 +149,8 @@ func (s *Server) getDNSConfig() (c *jsonDNSConfig) {
 	upstreamFile := s.conf.UpstreamDNSFileName
 	bootstraps := stringutil.CloneSliceOrEmpty(s.conf.BootstrapDNS)
 	fallbacks := stringutil.CloneSliceOrEmpty(s.conf.FallbackDNS)
+	upstreamAlternateDNS := stringutil.CloneSliceOrEmpty(s.conf.UpstreamAlternateDNS)
+	upstreamAlternateRulesets := stringutil.CloneSliceOrEmpty(s.conf.UpstreamAlternateRulesets)
 	blockingMode, blockingIPv4, blockingIPv6 := s.dnsFilter.BlockingMode()
 	blockedResponseTTL := s.dnsFilter.BlockedResponseTTL()
 	ratelimit := s.conf.Ratelimit
@@ -180,34 +190,36 @@ func (s *Server) getDNSConfig() (c *jsonDNSConfig) {
 	}
 
 	return &jsonDNSConfig{
-		Upstreams:                &upstreams,
-		UpstreamsFile:            &upstreamFile,
-		Bootstraps:               &bootstraps,
-		Fallbacks:                &fallbacks,
-		ProtectionEnabled:        &protectionEnabled,
-		BlockingMode:             &blockingMode,
-		BlockingIPv4:             blockingIPv4,
-		BlockingIPv6:             blockingIPv6,
-		Ratelimit:                &ratelimit,
-		RatelimitSubnetLenIPv4:   &ratelimitSubnetLenIPv4,
-		RatelimitSubnetLenIPv6:   &ratelimitSubnetLenIPv6,
-		RatelimitWhitelist:       &ratelimitWhitelist,
-		EDNSCSCustomIP:           customIP,
-		EDNSCSEnabled:            &enableEDNSClientSubnet,
-		EDNSCSUseCustom:          &useCustom,
-		DNSSECEnabled:            &enableDNSSEC,
-		DisableIPv6:              &aaaaDisabled,
-		BlockedResponseTTL:       &blockedResponseTTL,
-		CacheSize:                &cacheSize,
-		CacheMinTTL:              &cacheMinTTL,
-		CacheMaxTTL:              &cacheMaxTTL,
-		CacheOptimistic:          &cacheOptimistic,
-		UpstreamMode:             &upstreamMode,
-		ResolveClients:           &resolveClients,
-		UsePrivateRDNS:           &usePrivateRDNS,
-		LocalPTRUpstreams:        &localPTRUpstreams,
-		DefaultLocalPTRUpstreams: defPTRUps,
-		DisabledUntil:            protectionDisabledUntil,
+		Upstreams:                 &upstreams,
+		UpstreamsFile:             &upstreamFile,
+		Bootstraps:                &bootstraps,
+		Fallbacks:                 &fallbacks,
+		UpstreamAlternateDNS:      &upstreamAlternateDNS,
+		UpstreamAlternateRulesets: &upstreamAlternateRulesets,
+		ProtectionEnabled:         &protectionEnabled,
+		BlockingMode:              &blockingMode,
+		BlockingIPv4:              blockingIPv4,
+		BlockingIPv6:              blockingIPv6,
+		Ratelimit:                 &ratelimit,
+		RatelimitSubnetLenIPv4:    &ratelimitSubnetLenIPv4,
+		RatelimitSubnetLenIPv6:    &ratelimitSubnetLenIPv6,
+		RatelimitWhitelist:        &ratelimitWhitelist,
+		EDNSCSCustomIP:            customIP,
+		EDNSCSEnabled:             &enableEDNSClientSubnet,
+		EDNSCSUseCustom:           &useCustom,
+		DNSSECEnabled:             &enableDNSSEC,
+		DisableIPv6:               &aaaaDisabled,
+		BlockedResponseTTL:        &blockedResponseTTL,
+		CacheSize:                 &cacheSize,
+		CacheMinTTL:               &cacheMinTTL,
+		CacheMaxTTL:               &cacheMaxTTL,
+		CacheOptimistic:           &cacheOptimistic,
+		UpstreamMode:              &upstreamMode,
+		ResolveClients:            &resolveClients,
+		UsePrivateRDNS:            &usePrivateRDNS,
+		LocalPTRUpstreams:         &localPTRUpstreams,
+		DefaultLocalPTRUpstreams:  defPTRUps,
+		DisabledUntil:             protectionDisabledUntil,
 	}
 }
 
@@ -565,6 +577,8 @@ func (s *Server) setConfigRestartable(dc *jsonDNSConfig) (shouldRestart bool) {
 		setIfNotNil(&s.conf.UpstreamDNSFileName, dc.UpstreamsFile),
 		setIfNotNil(&s.conf.BootstrapDNS, dc.Bootstraps),
 		setIfNotNil(&s.conf.FallbackDNS, dc.Fallbacks),
+		setIfNotNil(&s.conf.UpstreamAlternateDNS, dc.UpstreamAlternateDNS),
+		setIfNotNil(&s.conf.UpstreamAlternateRulesets, dc.UpstreamAlternateRulesets),
 		setIfNotNil(&s.conf.EDNSClientSubnet.Enabled, dc.EDNSCSEnabled),
 		setIfNotNil(&s.conf.EDNSClientSubnet.UseCustom, dc.EDNSCSUseCustom),
 		setIfNotNil(&s.conf.CacheSize, dc.CacheSize),

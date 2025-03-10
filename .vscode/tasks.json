@@ -159,6 +159,28 @@
                 "$go",
                 "$tsc"
             ]
+        },
+        {
+            "label": "i18n: Convert from table to json",
+            "type": "shell",
+            "command": "cd ./scripts/i18n && ./table_to_i18n.py",
+            "group": "none",
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "i18n: Convert from json to table",
+            "type": "shell",
+            "command": "cd ./scripts/i18n && ./i18n_to_table.py",
+            "group": "none",
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            },
+            "problemMatcher": []
         }
     ]
 }

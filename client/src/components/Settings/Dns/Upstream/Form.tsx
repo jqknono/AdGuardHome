@@ -148,6 +148,8 @@ interface FormProps {
     upstream_dns?: string;
     fallback_dns?: string;
     bootstrap_dns?: string;
+    upstream_alternate_dns?: string;
+    upstream_alternate_rulesets?: string;
 }
 
 const Form = ({ submitting, invalid, handleSubmit }: FormProps) => {
@@ -193,6 +195,49 @@ const Form = ({ submitting, invalid, handleSubmit }: FormProps) => {
 
                 <div className="col-12">
                     <Examples />
+                    <hr />
+                </div>
+
+                {/* Alternate upstream section */}
+                <div className="col-12 mb-2">
+                    <label className="form__label form__label--with-desc" htmlFor="upstream_alternate_rulesets">
+                        <Trans>upstream_alternate_rulesets_title</Trans>
+                    </label>
+                    <div className="form__desc form__desc--top">
+                        <Trans>upstream_alternate_rulesets_desc</Trans>
+                    </div>
+                    <Field
+                        id="upstream_alternate_rulesets"
+                        name="upstream_alternate_rulesets"
+                        component={renderTextareaField}
+                        type="text"
+                        className="form-control form-control--textarea form-control--textarea-small font-monospace"
+                        placeholder={t('upstream_alternate_rulesets_placeholder')}
+                        disabled={processingSetConfig}
+                        normalizeOnBlur={removeEmptyLines}
+                    />
+                </div>
+
+                <div className="col-12">
+                    <label className="form__label form__label--with-desc" htmlFor="upstream_alternate_dns">
+                        <Trans>upstream_alternate_dns_title</Trans>
+                    </label>
+                    <div className="form__desc form__desc--top">
+                        <Trans>upstream_alternate_dns_desc</Trans>
+                    </div>
+                    <Field
+                        id="upstream_alternate_dns"
+                        name="upstream_alternate_dns"
+                        component={renderTextareaField}
+                        type="text"
+                        className="form-control form-control--textarea form-control--textarea-small font-monospace"
+                        placeholder={t('upstream_alternate_dns_placeholder')}
+                        disabled={processingSetConfig}
+                        normalizeOnBlur={removeEmptyLines}
+                    />
+                </div>
+
+                <div className="col-12">
                     <hr />
                 </div>
 

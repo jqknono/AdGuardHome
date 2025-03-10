@@ -325,6 +325,8 @@ export type DnsConfigData = {
     cache_ttl_max?: number;
     cache_ttl_min?: number;
     cache_optimistic?: boolean;
+    upstream_alternate_dns?: string;
+    upstream_alternate_rulesets?: string;
 };
 
 export type FilteringData = {
@@ -503,6 +505,8 @@ export const initialState: RootState = {
         resolve_clients: false,
         use_private_ptr_resolvers: false,
         default_local_ptr_upstreams: [],
+        upstream_alternate_dns: '',
+        upstream_alternate_rulesets: '',
     },
     encryption: {
         processing: true,

@@ -91,6 +91,14 @@ type Config struct {
 	// servers are not responding.
 	FallbackDNS []string `yaml:"fallback_dns"`
 
+	// UpstreamAlternateDNS is the list of alternative upstream DNS servers to be used
+	// for domains specified in UpstreamAlternateRulesets.
+	UpstreamAlternateDNS []string `yaml:"upstream_alternate_dns"`
+
+	// UpstreamAlternateRulesets is the list of URLs to ruleset files that define domains
+	// for which the UpstreamAlternateDNS servers should be used.
+	UpstreamAlternateRulesets []string `yaml:"upstream_alternate_rulesets"`
+
 	// UpstreamMode determines the logic through which upstreams will be used.
 	UpstreamMode UpstreamMode `yaml:"upstream_mode"`
 

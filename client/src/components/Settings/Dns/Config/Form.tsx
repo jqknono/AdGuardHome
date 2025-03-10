@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallowEqual, useSelector } from 'react-redux';
-
-import { Field, reduxForm } from 'redux-form';
+import { Field, reduxForm, change } from 'redux-form';
 import { Trans, useTranslation } from 'react-i18next';
+import { Dispatch } from 'redux';
 import {
     renderInputField,
     renderRadioField,
@@ -69,9 +69,10 @@ interface ConfigFormProps {
     submitting: boolean;
     invalid: boolean;
     processing?: boolean;
+    dispatch: Dispatch<any>;
 }
 
-const Form = ({ handleSubmit, submitting, invalid, processing }: ConfigFormProps) => {
+const Form = ({ handleSubmit, submitting, invalid, processing, dispatch }: ConfigFormProps) => {
     const { t } = useTranslation();
     const { blocking_mode, edns_cs_enabled, edns_cs_use_custom } = useSelector(
         (state: RootState) => state.form[FORM_NAME.BLOCKING_MODE].values ?? {},
@@ -208,13 +209,32 @@ const Form = ({ handleSubmit, submitting, invalid, processing }: ConfigFormProps
                     </div>
 
                     {edns_cs_use_custom && (
-                        <Field
-                            name="edns_cs_custom_ip"
-                            component={renderInputField}
-                            className="form-control"
-                            placeholder={t('form_enter_ip')}
-                            validate={[validateIp, validateRequiredValue]}
-                        />
+                        <>
+                            <Field
+                                name="edns_cs_custom_ip"
+                                component={renderInputField}
+                                className="form-control"
+                                placeholder={t('form_enter_ip')}
+                                validate={[validateIp, validateRequiredValue]}
+                            />
+                            <div className="mt-2">
+                                <button
+                                    type="button"
+                                    className="btn btn-outline-secondary text-nowrap px-3"
+                                    onClick={async () => {
+                                        try {
+                                            const response = await fetch('https://ip.adguardprivate.com/ip');
+                                            const ip = (await response.text()).trim();
+                                            dispatch(change(FORM_NAME.BLOCKING_MODE, 'edns_cs_custom_ip', ip));
+                                        } catch (error) {
+                                            console.error('Failed to fetch IP:', error);
+                                        }
+                                    }}
+                                >
+                                    {t('form_get_my_ip')}
+                                </button>
+                            </div>
+                        </>
                     )}
                 </div>
 

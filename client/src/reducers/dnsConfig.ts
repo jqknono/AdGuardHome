@@ -24,6 +24,8 @@ const dnsConfig = handleActions(
                 upstream_mode,
                 fallback_dns,
                 bootstrap_dns,
+                upstream_alternate_dns,
+                upstream_alternate_rulesets,
                 // local_ptr_upstreams,
                 // ratelimit_whitelist,
                 ...values
@@ -37,6 +39,8 @@ const dnsConfig = handleActions(
                 upstream_dns: (upstream_dns && upstream_dns.join('\n')) || '',
                 fallback_dns: (fallback_dns && fallback_dns.join('\n')) || '',
                 bootstrap_dns: (bootstrap_dns && bootstrap_dns.join('\n')) || '',
+                upstream_alternate_dns: (upstream_alternate_dns && upstream_alternate_dns.join('\n')) || '',
+                upstream_alternate_rulesets: (upstream_alternate_rulesets && upstream_alternate_rulesets.join('\n')) || '',
                 // local_ptr_upstreams: (local_ptr_upstreams && local_ptr_upstreams.join('\n')) || '',
                 // ratelimit_whitelist: (ratelimit_whitelist && ratelimit_whitelist.join('\n')) || '',
                 processingGetConfig: false,

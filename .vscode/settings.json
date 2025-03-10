@@ -4,5 +4,46 @@
             "file": ".copilot-codeGeneration-instructions.md",
         }
     ],
-    "github.copilot.chat.localeOverride": "zh-CN"
+    "go.testEnvVars": {
+        "GOPATH": "${workspaceFolder}/.gopath",
+        "GOCACHE": "${workspaceFolder}/.gopath/.gocache",
+        "GOMIPS": "softfloat",
+        "CGO_ENABLED": "0",
+        "CGO_CFLAGS": "-O3 -std=gnu11 -g",
+        "CC": "cc",
+        "GOTOOLCHAIN": "local",
+        "GOPROXY": "https://proxy.golang.org,direct"
+    },
+    "go.toolsEnvVars": {
+        "GOCACHE": "${workspaceFolder}/.gopath/.gocache",
+        "GOPROXY": "https://goproxy.cn|direct",
+        "GOENV": "${workspaceFolder}/.vscode/.goenv",
+        "GOPATH": "${workspaceFolder}/.gopath",
+        "GOMIPS": "softfloat",
+        "CGO_ENABLED": "0",
+        "CGO_CFLAGS": "-O3 -std=gnu11 -g",
+        "CC": "cc",
+        "GOTOOLCHAIN": "local"
+    },
+    "go.toolsGopath": "${workspaceFolder}/.gopath",
+    "go.gopath": "${workspaceFolder}/.gopath",
+    "go.editorContextMenuCommands": {
+        "benchmarkAtCursor": true,
+        "generateTestForPackage": true,
+        "generateTestForFile": true,
+        "testPackage": true,
+        "fillStruct": true,
+        "testFile": true,
+        "removeTags": true
+    },
+    "go.inferGopath": true,
+    "go.testFlags": [
+        "-v"
+    ],
+    "github.copilot.chat.localeOverride": "en",
+    "github.copilot.chat.commitMessageGeneration.instructions": [
+        {
+            "text": "Use English to write commit messages."
+        }
+    ]
 }
