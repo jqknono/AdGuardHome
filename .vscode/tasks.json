@@ -161,6 +161,11 @@
             ]
         },
         {
+            "label": "4.5 push to aliyuncs/adguardprivate/adguardprivate:rollback",
+            "type": "shell",
+            "command": "docker tag registry.cn-hangzhou.aliyuncs.com/adguardprivate/adguardprivate:latest registry.cn-hangzhou.aliyuncs.com/adguardprivate/adguardprivate:rollback && docker push registry.cn-hangzhou.aliyuncs.com/adguardprivate/adguardprivate:rollback",
+        },
+        {
             "label": "i18n: Convert from table to json",
             "type": "shell",
             "command": "cd ./scripts/i18n && ./table_to_i18n.py",
