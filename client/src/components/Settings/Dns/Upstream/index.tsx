@@ -42,12 +42,12 @@ const Upstream = () => {
             fallback_dns,
             bootstrap_dns,
             upstream_mode,
-            upstream_alternate_dns,
-            upstream_alternate_rulesets,
             resolve_clients,
             local_ptr_upstreams,
+            upstream_alternate_rulesets,
             use_private_ptr_resolvers,
             ...(upstream_dns_file ? null : { upstream_dns }),
+            ...(upstream_dns_file ? null : { upstream_alternate_dns }),
         };
 
         dispatch(setDnsConfig(dnsConfig));
@@ -56,6 +56,10 @@ const Upstream = () => {
     const upstreamDns = upstream_dns_file
         ? t('upstream_dns_configured_in_file', { path: upstream_dns_file })
         : upstream_dns;
+
+    const upstreamAlternateDns = upstream_dns_file
+        ? t('upstream_dns_configured_in_file', { path: upstream_dns_file })
+        : upstream_alternate_dns;
 
     return (
         <Card title={t('upstream_dns')} bodyType="card-body box-body--settings">
@@ -67,7 +71,7 @@ const Upstream = () => {
                             fallback_dns,
                             bootstrap_dns,
                             upstream_mode,
-                            upstream_alternate_dns,
+                            upstream_alternate_dns: upstreamAlternateDns,
                             upstream_alternate_rulesets,
                             // resolve_clients,
                             // local_ptr_upstreams,

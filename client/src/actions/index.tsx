@@ -87,32 +87,32 @@ export const initSettings =
             parental: {},
         },
     ) =>
-    async (dispatch: any) => {
-        dispatch(initSettingsRequest());
-        try {
-            const safebrowsingStatus = await apiClient.getSafebrowsingStatus();
-            const parentalStatus = await apiClient.getParentalStatus();
-            const safesearchStatus = await apiClient.getSafesearchStatus();
-            const { safebrowsing, parental } = settingsList;
-            const newSettingsList = {
-                safebrowsing: {
-                    ...safebrowsing,
-                    enabled: safebrowsingStatus.enabled,
-                },
-                parental: {
-                    ...parental,
-                    enabled: parentalStatus.enabled,
-                },
-                safesearch: {
-                    ...safesearchStatus,
-                },
-            };
-            dispatch(initSettingsSuccess({ settingsList: newSettingsList }));
-        } catch (error) {
-            dispatch(addErrorToast({ error }));
-            dispatch(initSettingsFailure());
-        }
-    };
+        async (dispatch: any) => {
+            dispatch(initSettingsRequest());
+            try {
+                const safebrowsingStatus = await apiClient.getSafebrowsingStatus();
+                const parentalStatus = await apiClient.getParentalStatus();
+                const safesearchStatus = await apiClient.getSafesearchStatus();
+                const { safebrowsing, parental } = settingsList;
+                const newSettingsList = {
+                    safebrowsing: {
+                        ...safebrowsing,
+                        enabled: safebrowsingStatus.enabled,
+                    },
+                    parental: {
+                        ...parental,
+                        enabled: parentalStatus.enabled,
+                    },
+                    safesearch: {
+                        ...safesearchStatus,
+                    },
+                };
+                dispatch(initSettingsSuccess({ settingsList: newSettingsList }));
+            } catch (error) {
+                dispatch(addErrorToast({ error }));
+                dispatch(initSettingsFailure());
+            }
+        };
 
 export const toggleProtectionRequest = createAction('TOGGLE_PROTECTION_REQUEST');
 export const toggleProtectionFailure = createAction('TOGGLE_PROTECTION_FAILURE');
@@ -141,18 +141,18 @@ const getDisabledMessage = (time: any) => {
 
 export const toggleProtection =
     (status: any, time = null) =>
-    async (dispatch: any) => {
-        dispatch(toggleProtectionRequest());
-        try {
-            const successMessage = status ? getDisabledMessage(time) : 'enabled_protection';
-            await apiClient.setProtection({ enabled: !status, duration: time });
-            dispatch(addSuccessToast(successMessage));
-            dispatch(toggleProtectionSuccess({ disabledDuration: time }));
-        } catch (error) {
-            dispatch(addErrorToast({ error }));
-            dispatch(toggleProtectionFailure());
-        }
-    };
+        async (dispatch: any) => {
+            dispatch(toggleProtectionRequest());
+            try {
+                const successMessage = status ? getDisabledMessage(time) : 'enabled_protection';
+                await apiClient.setProtection({ enabled: !status, duration: time });
+                dispatch(addSuccessToast(successMessage));
+                dispatch(toggleProtectionSuccess({ disabledDuration: time }));
+            } catch (error) {
+                dispatch(addErrorToast({ error }));
+                dispatch(toggleProtectionFailure());
+            }
+        };
 
 export const setDisableDurationTime = createAction('SET_DISABLED_DURATION_TIME');
 
@@ -166,27 +166,27 @@ export const getVersionSuccess = createAction('GET_VERSION_SUCCESS');
 
 export const getVersion =
     (recheck = false) =>
-    async (dispatch: any, getState: any) => {
-        dispatch(getVersionRequest());
-        try {
-            const data = await apiClient.getGlobalVersion({ recheck_now: recheck });
-            dispatch(getVersionSuccess(data));
+        async (dispatch: any, getState: any) => {
+            dispatch(getVersionRequest());
+            try {
+                const data = await apiClient.getGlobalVersion({ recheck_now: recheck });
+                dispatch(getVersionSuccess(data));
 
-            if (recheck) {
-                const { dnsVersion } = getState().dashboard;
-                const currentVersion = dnsVersion === 'undefined' ? 0 : dnsVersion;
+                if (recheck) {
+                    const { dnsVersion } = getState().dashboard;
+                    const currentVersion = dnsVersion === 'undefined' ? 0 : dnsVersion;
 
-                if (data && !areEqualVersions(currentVersion, data.new_version)) {
-                    dispatch(addSuccessToast('updates_checked'));
-                } else {
-                    dispatch(addSuccessToast('updates_version_equal'));
+                    if (data && !areEqualVersions(currentVersion, data.new_version)) {
+                        dispatch(addSuccessToast('updates_checked'));
+                    } else {
+                        dispatch(addSuccessToast('updates_version_equal'));
+                    }
                 }
+            } catch (error) {
+                dispatch(addErrorToast({ error: 'version_request_error' }));
+                dispatch(getVersionFailure());
             }
-        } catch (error) {
-            dispatch(addErrorToast({ error: 'version_request_error' }));
-            dispatch(getVersionFailure());
-        }
-    };
+        };
 
 export const getUpdateRequest = createAction('GET_UPDATE_REQUEST');
 export const getUpdateFailure = createAction('GET_UPDATE_FAILURE');
@@ -371,62 +371,64 @@ export const getTimerStatus = () => async (dispatch: any) => {
 export const testUpstreamRequest = createAction('TEST_UPSTREAM_REQUEST');
 export const testUpstreamFailure = createAction('TEST_UPSTREAM_FAILURE');
 export const testUpstreamSuccess = createAction('TEST_UPSTREAM_SUCCESS');
-
 export const testUpstream =
-    ({ bootstrap_dns, upstream_dns, local_ptr_upstreams, fallback_dns }: any, upstream_dns_file: any) =>
-    async (dispatch: any) => {
-        dispatch(testUpstreamRequest());
-        try {
-            const removeComments = compose(filterOutComments, splitByNewLine);
+    ({ bootstrap_dns, upstream_dns, local_ptr_upstreams, fallback_dns, upstream_alternate_dns }: any, upstream_dns_file: any) =>
+        async (dispatch: any) => {
+            dispatch(testUpstreamRequest());
+            try {
+                const removeComments = compose(filterOutComments, splitByNewLine);
 
-            const config = {
-                bootstrap_dns: splitByNewLine(bootstrap_dns),
-                private_upstream: splitByNewLine(local_ptr_upstreams),
-                fallback_dns: splitByNewLine(fallback_dns),
-                ...(upstream_dns_file
-                    ? null
-                    : {
-                          upstream_dns: removeComments(upstream_dns),
-                      }),
-            };
-
-            const upstreamResponse = await apiClient.testUpstream(config);
-            const testMessages = Object.keys(upstreamResponse).map((key) => {
-                const message = upstreamResponse[key];
-                if (message.startsWith('WARNING:')) {
-                    dispatch(addErrorToast({ error: i18next.t('dns_test_warning_toast', { key }) }));
-                } else if (message.endsWith(': parsing error')) {
-                    const info = message.substring(0, message.indexOf(':'));
-                    const [sectionKey, line] = info.split(' ');
-                    const section = i18next.t(sectionKey);
-                    dispatch(
-                        addErrorToast({
-                            error: i18next.t('dns_test_parsing_error_toast', {
-                                section,
-                                line,
-                            }),
+                const config = {
+                    bootstrap_dns: splitByNewLine(bootstrap_dns),
+                    private_upstream: splitByNewLine(local_ptr_upstreams),
+                    fallback_dns: splitByNewLine(fallback_dns),
+                    ...(upstream_dns_file
+                        ? null
+                        : {
+                            upstream_dns: [
+                                ...removeComments(upstream_dns),
+                                ...removeComments(upstream_alternate_dns)
+                            ],
                         }),
-                    );
-                } else if (message !== 'OK') {
-                    dispatch(addErrorToast({ error: i18next.t('dns_test_not_ok_toast', { key }) }));
+                };
+
+                const upstreamResponse = await apiClient.testUpstream(config);
+                const testMessages = Object.keys(upstreamResponse).map((key) => {
+                    const message = upstreamResponse[key];
+                    if (message.startsWith('WARNING:')) {
+                        dispatch(addErrorToast({ error: i18next.t('dns_test_warning_toast', { key }) }));
+                    } else if (message.endsWith(': parsing error')) {
+                        const info = message.substring(0, message.indexOf(':'));
+                        const [sectionKey, line] = info.split(' ');
+                        const section = i18next.t(sectionKey);
+                        dispatch(
+                            addErrorToast({
+                                error: i18next.t('dns_test_parsing_error_toast', {
+                                    section,
+                                    line,
+                                }),
+                            }),
+                        );
+                    } else if (message !== 'OK') {
+                        dispatch(addErrorToast({ error: i18next.t('dns_test_not_ok_toast', { key }) }));
+                    }
+                    return message;
+                });
+
+                if (testMessages.every((message) => message === 'OK' || message.startsWith('WARNING:'))) {
+                    dispatch(addSuccessToast('dns_test_ok_toast'));
                 }
-                return message;
-            });
 
-            if (testMessages.every((message) => message === 'OK' || message.startsWith('WARNING:'))) {
-                dispatch(addSuccessToast('dns_test_ok_toast'));
+                dispatch(testUpstreamSuccess());
+            } catch (error) {
+                dispatch(addErrorToast({ error }));
+                dispatch(testUpstreamFailure());
             }
-
-            dispatch(testUpstreamSuccess());
-        } catch (error) {
-            dispatch(addErrorToast({ error }));
-            dispatch(testUpstreamFailure());
-        }
-    };
+        };
 
 export const testUpstreamWithFormValues = () => async (dispatch: any, getState: any) => {
     const { upstream_dns_file } = getState().dnsConfig;
-    const { bootstrap_dns, upstream_dns, local_ptr_upstreams, fallback_dns } =
+    const { bootstrap_dns, upstream_dns, local_ptr_upstreams, fallback_dns, upstream_alternate_dns } =
         getState().form[FORM_NAME.UPSTREAM].values;
 
     return dispatch(
@@ -436,6 +438,7 @@ export const testUpstreamWithFormValues = () => async (dispatch: any, getState: 
                 upstream_dns,
                 local_ptr_upstreams,
                 fallback_dns,
+                upstream_alternate_dns,
             },
             upstream_dns_file,
         ),
