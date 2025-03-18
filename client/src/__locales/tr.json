@@ -638,7 +638,7 @@
   "setup_dns_notice": "<1>DNS-over-HTTPS</1> veya <1>DNS-over-TLS</1> protokolünü kullanmak için AdGuard Private üzerinde <0>Şifreleme ayarları</0> bölümünden ayarları yapmanız gerekir.",
   "setup_dns_privacy_1": "<0>DNS-over-TLS:</0> <1>{{address}}</1> dizesini kullan.",
   "setup_dns_privacy_2": "<0>DNS-over-HTTPS:</0> <1>{{address}}</1> dizesini kullan.",
-  "setup_dns_privacy_3": "<0>İşte, kullanabileceğiniz yazılımların bir listesi.</0>",
+  "setup_dns_privacy_3": "DNS-over-TLS'yi yapılandırmak için bir istemci kimliği eklemeniz gerekir, işte kullanabileceğiniz yazılımların bir listesi.",
   "setup_dns_privacy_4": "Bir iOS 14 veya macOS Big Sur cihazında, DNS ayarlarına <highlight>DNS-over-HTTPS</highlight> veya <highlight>DNS-over-TLS</highlight> sunucuları ekleyen özel '.mobileconfig' dosyasını indirebilirsiniz.",
   "setup_dns_privacy_android_1": "Android 9, yerel olarak DNS-over-TLS protokolünü destekler. Yapılandırmak için Ayarlar → Ağ ve İnternet → Gelişmiş → Özel DNS öğesine gidin ve alan adınızı girin.",
   "setup_dns_privacy_android_2": "<0>Android için AdGuard</0>, <1>DNS-over-HTTPS</1> ve <1>DNS-over-TLS</1> protokolünü destekler.",

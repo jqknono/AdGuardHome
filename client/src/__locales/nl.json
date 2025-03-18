@@ -640,7 +640,7 @@
   "setup_dns_notice": "Om <1>DNS-via-HTTPS</1> of <1>DNS-via-TLS</1> te gebruiken, moet je <0>Versleuteling configureren</0> in de AdGuard Private instellingen.",
   "setup_dns_privacy_1": "<0>DNS-via-TLS:</0> Gebruik <1>{{address}}</1> string.",
   "setup_dns_privacy_2": "<0>DNS-via-HTTPS:</0> Gebruik <1>{{address}}</1> string.",
-  "setup_dns_privacy_3": "<0>Hou er rekening mee dat het beveiligde DNS protocol alleen beschikbaar is voor Android 9. U moet dus extra software installeren voor andere besturingssystemen.</0><0>Hier is een lijst van te gebruiken software.</0>",
+  "setup_dns_privacy_3": "Om DNS-over-TLS te configureren, moet u een client-ID toevoegen. Hier is een lijst met software die u kunt gebruiken.",
   "setup_dns_privacy_4": "Op een iOS 14 of macOS Big Sur apparaat kan je een speciaal '.mobileconfig'-bestand downloaden dat <highlight>DNS-via-HTTPS</highlight> of <highlight>DNS-via-TLS</highlight> servers aan de DNS-instellingen toevoegt.",
   "setup_dns_privacy_android_1": "Android 9 ondersteunt native DNS-via-TLS. Om het te configureren, ga naar Instellingen → Netwerk & internet → Geavanceerd → Privé-DNS en voer daar je domeinnaam in.",
   "setup_dns_privacy_android_2": "<0>AdGuard voor Android</0>ondersteunt<1>DNS-via-HTTPS </1>en<1>DNS-via-TLS</1>.",

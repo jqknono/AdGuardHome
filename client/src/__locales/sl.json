@@ -640,7 +640,7 @@
   "setup_dns_notice": "Za uporabo <1>DNS-prek-HTTPS</1> ali <1>DNS-prek-TLS</1>, morate <0>konfigurirati šifriranje</0> v nastavitvah AdGuard Private.",
   "setup_dns_privacy_1": "<0>DNS-prek-TLS:</0> Uporabite niz <1>{{address}}</1>.",
   "setup_dns_privacy_2": "<0>DNS-prek-HTTPS:</0> Uporabite niz <1>{{address}}</1>.",
-  "setup_dns_privacy_3": "<0>Tu je seznam programov, ki jo lahko uporabite.</0>",
+  "setup_dns_privacy_3": "Če želite konfigurirati DNS-over-TLS, morate dodati ID odjemalca, tukaj je seznam programske opreme, ki jo lahko uporabite.",
   "setup_dns_privacy_4": "Na napravo iOS 14 ali macOS Big Sur lahko prenesete posebno datoteko '.mobileconfig', ki v nastavitve DNS doda strežnike <highlight>DNS-preko-HTTPS</highlight> ali <highlight>DNS-preko-TLS</highlight>.",
   "setup_dns_privacy_android_1": "Android 9 izvirno podpira DNS-prek-TLS. Če ga želite konfigurirati, pojdite v Nastavitve → Omrežje in internet → Napredno → Zasebni DNS, in tam vnesite svoje ime domene.",
   "setup_dns_privacy_android_2": "<0>AdGuard za Android</0> podpira <1>DNS-prek-HTTPS</1> in <1>DNS-prek-TLS</1>.",

@@ -15,7 +15,6 @@
     - 登录界面账号自动填充子域名
     - 设置指导只显示必要的信息
   - 修改
-    - AdguardPrivate 不提供非加密的 DNS, 所有`plain_dns`翻译修改为`DNS-over-TLS`,`"plain_dns": ".+",`
     - 修改 Logo 和标题
 - internal(backend)
   - 增加

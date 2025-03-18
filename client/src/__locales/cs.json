@@ -640,7 +640,7 @@
   "setup_dns_notice": "Pro použití <1>DNS skrze HTTPS</1> nebo <1>DNS skrze TLS</1> potřebujete v nastaveních AdGuard Private <0>nakonfigurovat šifrování</0>.",
   "setup_dns_privacy_1": "<0>DNS skrze TLS:</0> Použít <1>{{address}}</1> řetězec.",
   "setup_dns_privacy_2": "<0>DNS skrze HTTPS:</0> Použít <1>{{address}}</1> řetězec.",
-  "setup_dns_privacy_3": "<0>Zde je seznam softwaru, který můžete použít.</0>",
+  "setup_dns_privacy_3": "Chcete-li nakonfigurovat DNS-over-TLS, musíte přidat ID klienta, zde je seznam softwaru, který můžete použít.",
   "setup_dns_privacy_4": "Na zařízení se systémem iOS 14 nebo macOS Big Sur si můžete stáhnout speciální soubor '.mobileconfig', který do nastavení DNS přidává servery <highlight>DNS skrze HTTPS</highlight> nebo <highlight> DNS skrze TLS</highlight>.",
   "setup_dns_privacy_android_1": "Android 9 podporuje DNS skrze TLS nativně. Pokud ho chcete konfigurovat, přejděte na Nastavení → Síť & internet → Pokročilé → Soukromé DNS a tam zadejte název vaší domény.",
   "setup_dns_privacy_android_2": "<0>AdGuard pro Android</0> podporuje <1>DNS skrze HTTPS</1> a <1>DNS skrze LS</1>.",

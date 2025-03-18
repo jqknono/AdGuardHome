@@ -640,7 +640,7 @@
   "setup_dns_notice": "Jikalau ingin menggunakan <1>DNS-over-HTTPS</1> atau <1>DNS-over-TLS</1>, Anda perlu <0>mengatur Enkripsi</0> pada pengaturan AdGuard Private.",
   "setup_dns_privacy_1": "<0>DNS melalui TLS:</0> Gunakan <1>{{address}}</1> string.",
   "setup_dns_privacy_2": "<0>DNS-over-TLS:</0> Memakai <1>{{address}}</1> string.",
-  "setup_dns_privacy_3": "<0>Berikut daftar perangkat lunak yang dapat Anda gunakan.</0>",
+  "setup_dns_privacy_3": "Untuk mengonfigurasi DNS-over-TLS, Anda perlu menambahkan ID klien, berikut daftar perangkat lunak yang dapat Anda gunakan.",
   "setup_dns_privacy_4": "Pada perangkat iOS 14 atau macOS Big Sur, Anda dapat mengunduh berkas khusus '.mobileconfig' yang menambahkan server <highlight>DNS melalui HTTPS</highlight> atau <highlight>DNS melalui TLS</highlight> ke pengaturan DNS.",
   "setup_dns_privacy_android_1": "Android 9 mendukung DNS-over-TLS secara asli. Untuk mengkonfigurasinya, buka Pengaturan → Jaringan & internet → Tingkat Lanjut → DNS Pribadi dan masukkan nama domain Anda di sana.",
   "setup_dns_privacy_android_2": "<0>AdGuard untuk Android</0> mendukung <1>DNS-over-HTTPS</1> dan <1>DNS-over-TLS</1>.",

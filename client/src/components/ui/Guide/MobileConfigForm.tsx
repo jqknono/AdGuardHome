@@ -133,9 +133,8 @@ const MobileConfigForm = ({ invalid }: MobileConfigFormProps) => {
                     </label>
 
                     <Field name="protocol" type="text" component={renderSelectField} className="form-control">
-                        <option value={MOBILE_CONFIG_LINKS.DOT}>{i18next.t('dns_over_tls')}</option>
-
                         <option value={MOBILE_CONFIG_LINKS.DOH}>{i18next.t('dns_over_https')}</option>
+                        <option value={MOBILE_CONFIG_LINKS.DOT}>{i18next.t('dns_over_tls')}</option>
                     </Field>
                 </div>
             </div>

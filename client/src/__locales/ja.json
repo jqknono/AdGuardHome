@@ -640,7 +640,7 @@
   "setup_dns_notice": "<1>DNS-over-HTTPS</1>または<1>DNS-over-TLS</1>を使用するには、AdGuard Private 設定の<0>暗号化設定</0>が必要です。",
   "setup_dns_privacy_1": "<0>DNS-over-TLS:</0> <1>{{address}}</1>という文字列を使用してください。",
   "setup_dns_privacy_2": "<0>DNS-over-HTTPS:</0> <1>{{address}}</1>という文字列を使用してください。",
-  "setup_dns_privacy_3": "<0>使用できるソフトウェアのリストは次の通りです。</0>",
+  "setup_dns_privacy_3": "DNS-over-TLSを構成するには、クライアントIDを追加する必要があります。以下は、使用できるソフトウェアのリストです。",
   "setup_dns_privacy_4": "iOS 14 または macOS Big Sur デバイスにて、<highlight>DNS-over-HTTPS</highlight>または<highlight>DNS-over-TLS</highlight>サーバをDNS設定へ追加する特別な「.mobileconfig」ファイルをダウンロードできます。",
   "setup_dns_privacy_android_1": "Android 9はDNS-over-TLSをネイティブにサポートします。設定するには、設定 → ネットワークとインターネット → 詳細設定 → プライベートDNS へ遷移し、そこにドメイン名を入力してください。",
   "setup_dns_privacy_android_2": "<0>AdGuard for Android</0>は、<1>DNS-over-HTTPS</1>と<1>DNS-over-TLS</1>をサポートしています。",

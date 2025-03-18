@@ -640,7 +640,7 @@
   "setup_dns_notice": "من أجل استخدام <0> DNS-over-HTTPS </0> أو <1> DNS-over-TLS </1> ، تحتاج إلى <1> تكوين التشفير </1> في إعدادات AdGuard Private.",
   "setup_dns_privacy_1": "<0> DNS-over-TLS: </0> استخدم سلسلة <1> {{address}} </1>.",
   "setup_dns_privacy_2": "<0> DNS-over-HTTPS: </0> استخدم سلسلة <1> {{address}} </1>.",
-  "setup_dns_privacy_3": "<0> فيما يلي قائمة بالبرامج التي يمكنك استخدامها. </0>",
+  "setup_dns_privacy_3": "لتكوين DNS-over-TLS ، يجب عليك إضافة معرف العميل ، فيما يلي قائمة بالبرامج التي يمكنك استخدامها.",
   "setup_dns_privacy_4": "على جهاز iOS 14 أو macOS Big Sur ، يمكنك تنزيل ملف \".mobileconfig\" خاص يضيف خوادم <highlight> DNS-over-HTTPS </highlight> أو <highlight> DNS-over-TLS </highlight> إلى إعدادات DNS.",
   "setup_dns_privacy_android_1": "يدعم Android 9 DNS-over-TLS أصلاً. لتكوينه ، انتقل إلى الإعدادات → الشبكة والإنترنت → متقدم → DNS الخاص وأدخل اسم المجال الخاص بك هناك.",
   "setup_dns_privacy_android_2": "<0> AdGuard لنظام Android </0> يدعم <1> DNS-over-HTTPS </1> و <1> DNS-over-TLS </1>.",

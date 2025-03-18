@@ -637,7 +637,7 @@
   "setup_dns_notice": "Ahhoz, hogy a <1>DNS-over-HTTPS</1> vagy a <1>DNS-over-TLS</1> valamelyikét használja, muszáj <0>beállítania a titkosítást</0> az AdGuard Private beállításaiban.",
   "setup_dns_privacy_1": "<0>DNS-over-TLS:</0> Használja a(z) <1>{{address}}</1> szöveget.",
   "setup_dns_privacy_2": "<0>DNS-over-HTTPS:</0> Használja a(z) <1>{{address}}</1> szöveget.",
-  "setup_dns_privacy_3": "<0>Azon szoftverek listája, amelyeket használhat.</0>",
+  "setup_dns_privacy_3": "A DNS-over-TLS konfigurálásához hozzá kell adnia egy ügyfélazonosítót, itt található a használható szoftverek listája.",
   "setup_dns_privacy_4": "Az iOS14-en vagy a macOS Big Sur eszközökön le tud tölteni egy speciális, '.mobileconfig' nevű fájlt, ami hozzáadja a <highlight>DNS-over-HTTPS</highlight> vagy a <highlight>DNS-over-TLS</highlight> szervereket a DNS beállításokhoz.",
   "setup_dns_privacy_android_1": "Az Android 9 natív módon támogatja a DNS-over-TLS-t. A beállításához menjen a Beállítások → Hálózat & internet → Speciális → Privát DNS menübe, és adja meg itt a domaint.",
   "setup_dns_privacy_android_2": "Az <0>AdGuard for Android</0> támogatja a <1>DNS-over-HTTPS</1>-t és a <1>DNS-over-TLS</1>-t.",

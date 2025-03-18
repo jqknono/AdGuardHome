@@ -640,7 +640,7 @@
   "setup_dns_notice": "Para usar o <1>DNS-sobre-HTTPS</1> ou <1>DNS-sobre-TLS</1>, você precisa <0>configurar a criptografia</0> nas configurações do AdGuard Private.",
   "setup_dns_privacy_1": "<0>DNS-sobre-TLS:</0> Use <1>{{address}}</1> string.",
   "setup_dns_privacy_2": "<0>DNS-sobre-HTTPS:</0> Use <1>{{address}}</1> string.",
-  "setup_dns_privacy_3": "<0>Aqui está uma lista de softwares que você pode usar.</0>",
+  "setup_dns_privacy_3": "Para configurar o DNS-over-TLS, você precisa adicionar um ID de cliente, aqui está uma lista de softwares que você pode usar.",
   "setup_dns_privacy_4": "Em um dispositivo iOS 14 ou macOS Big Sur, você pode baixar o arquivo especial '.mobileconfig' que adiciona os servidores <highlight>DNS-sobre-HTTPS</highlight> ou <highlight>DNS-sobre-TLS</highlight> nas configurações de DNS.",
   "setup_dns_privacy_android_1": "O Android 9 suporta o DNS-sobre-TLS de forma nativa. Para configurá-lo, vá para Configurações → Rede e internet → Avançado → DNS privado e digite seu nome de domínio lá.",
   "setup_dns_privacy_android_2": "O <0>AdGuard para Android</0> suporta <1>DNS-sobre-HTTPS</1> e <1>DNS-sobre-TLS</1>.",
