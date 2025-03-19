@@ -1,7 +1,7 @@
 {
   "access_allowed_desc": "Zoznam CIDR, IP adries alebo <a>ClientID</a>. Ak tento zoznam obsahuje položky, AdGuard Private bude akceptovať dopyty iba od týchto klientov.",
   "access_allowed_title": "Povolení klienti",
-  "access_blocked_desc": "example.org^\".",
+  "access_blocked_desc": "Nezamieňajte túto funkciu s filtrami. AdGuard Private vylúči DNS dopyty, ktoré sa zhodujú s týmito názvami domén, a tieto dopyty sa nebudú zobrazovať v protokole dopytov. Tu môžete explicitne zadať názvy domén, zástupné znaky a pravidlá filtrovania URL.",
   "access_blocked_title": "Nepovolené domény",
   "access_desc": "Tu môžete konfigurovať pravidlá prístupu pre server DNS AdGuard Private.",
   "access_disallowed_desc": "Zoznam CIDR, IP adries alebo <a>ClientID</a>. Ak tento zoznam obsahuje položky, AdGuard Private zruší dopyty od týchto klientov. Toto pole sa ignoruje, ak sú v poli Povolení klienti položky.",

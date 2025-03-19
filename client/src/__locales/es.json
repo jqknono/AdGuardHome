@@ -1,7 +1,7 @@
 {
   "access_allowed_desc": "Lista de CIDR, direcciones IP o <a>ID de clientes</a>. Si esta lista tiene entradas, AdGuard Private aceptará peticiones solo de estos clientes.",
   "access_allowed_title": "Clientes permitidos",
-  "access_blocked_desc": "Nezaměňujte to s filtry. AdGuard Private zruší dotazy DNS odpovídající těmto doménám a tyto dotazy se neobjeví ani v protokolu dotazů. Zde můžete určit přesné názvy domén, zástupné znaky a pravidla filtrování URL adres, např. \"example.org\", \"*.example.org\" nebo \"\\",
+  "access_blocked_desc": "No confunda esta función con los filtros. AdGuard Private excluirá las consultas DNS que coincidan con estos nombres de dominio, y estas consultas no se mostrarán en el registro de consultas. Aquí puede especificar explícitamente nombres de dominio, comodines y reglas de filtrado de URL.",
   "access_blocked_title": "Dominios no permitidos",
   "access_desc": "Aquí puedes configurar las reglas de acceso para el servidor DNS de AdGuard Private",
   "access_disallowed_desc": "Lista de CIDR, direcciones IP o <a>ID de clientes</a>. Si esta lista tiene entradas, AdGuard Private descartará las peticiones de estos clientes. Este campo será ignorado si hay entradas en clientes permitidos.",

@@ -1,7 +1,7 @@
 {
   "access_allowed_desc": "รายการ CIDR หรือที่อยู่ IP หากกำหนดค่า AdGuard Private จะยอมรับคำขอจากที่อยู่ IP เหล่านี้เท่านั้น",
   "access_allowed_title": "ลูกค้าที่ได้รับอนุญาต",
-  "access_blocked_desc": "Ne smije se miješati s filterima. AdGuard Private ispušta DNS upite koji odgovaraju tim domenama, a ti se upiti čak i ne pojavljuju u zapisniku upita. Možete navesti točne nazive domena, zamjenske znakove ili pravila filtriranja URL-a, npr \\",
+  "access_blocked_desc": "อย่าสับสนฟังก์ชันนี้กับตัวกรอง AdGuard Private จะยกเว้นการสืบค้น DNS ที่ตรงกับชื่อโดเมนเหล่านี้ และการสืบค้นเหล่านี้จะไม่แสดงในบันทึกการสืบค้น ที่นี่คุณสามารถระบุชื่อโดเมน ไวลด์การ์ด และกฎการกรอง URL ได้อย่างชัดเจน",
   "access_blocked_title": "โดเมนที่ถูกปิดกั้น",
   "access_desc": "ที่นี่คุณสามารถกำหนดค่ากฎการเข้าถึงสำหรับเซิร์ฟเวอร์ AdGuard Private DNS",
   "access_disallowed_desc": "รายการ CIDR หรือที่อยู่ IP หากกำหนดค่าไว้ AdGuard Private จะส่งคำขอจากที่อยู่ IP เหล่านี้",

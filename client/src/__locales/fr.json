@@ -1,7 +1,7 @@
 {
   "access_allowed_desc": "Une liste de CIDRs, d'adresses IP, ou de <a>ClientIDs</a>. Si cette liste comporte des entrées, AdGuard Private n'acceptera que les demandes provenant de ces clients.",
   "access_allowed_title": "Clients autorisés",
-  "access_blocked_desc": "Ikke at forveksle med filtre. AdGuard Private dropper DNS-forespørgsler matchende disse domæner, ej heller vil forespørgslerne optræde i forespørgselsloggen. Der kan angives præcise domænenavne, jokertegn eller URL-filterregler, f.eks. \"eksempel.org\", \"*.eksempel.org\", \"\\",
+  "access_blocked_desc": "Ne confondez pas cette fonction avec les filtres. AdGuard Private exclura les requêtes DNS qui correspondent à ces noms de domaine, et ces requêtes ne seront pas affichées dans le journal des requêtes. Ici, vous pouvez spécifier explicitement les noms de domaine, les caractères génériques et les règles de filtrage d'URL.",
   "access_blocked_title": "Domaines interdits",
   "access_desc": "Ici vous pouvez configurer les règles d'accès au serveur DNS AdGuard Private",
   "access_disallowed_desc": "Une liste de CIDRs, d'adresses IP, ou de <a>ClientIDs</a>. Si cette liste comporte des entrées, AdGuard Private abandonnera les demandes provenant de ces clients. Ce champ est ignoré s'il y a des entrées dans Clients autorisés.",

@@ -1,7 +1,7 @@
 {
   "access_allowed_desc": "無類別網域間路由（CIDRs）、IP 位址或<a>用戶端 IDs</a> 之清單。如果此清單有項目，AdGuard Private 將接受僅來自這些用戶端的請求。",
   "access_allowed_title": "已允許的用戶端",
-  "access_blocked_desc": "Jangan bingung dengan filter. AdGuard Private menghapus kueri DNS yang cocok dengan domain ini, dan kueri ini bahkan tidak muncul di log kueri. Anda dapat menentukan nama domain, karakter pengganti, atau aturan filter URL yang tepat, mis. \"example.org\", \"*.example.org\", atau \"\\",
+  "access_blocked_desc": "請勿將此功能與過濾器混淆。AdGuard Private 將排除匹配這些網域名稱的 DNS 查詢，並且這些查詢將不會在查詢日誌中顯示。在此可以明確指定網域名稱、萬用字元和網址過濾的規則。",
   "access_blocked_title": "未被允許的網域",
   "access_desc": "於此您可配置用於 AdGuard Private DNS 伺服器之存取規則",
   "access_disallowed_desc": "無類別網域間路由（CIDRs）、IP 位址或<a>用戶端 IDs</a> 之清單。如果此清單有項目，AdGuard Private 將排除來自這些用戶端的請求。如果在已允許的用戶端中有項目，此欄位被忽略。",

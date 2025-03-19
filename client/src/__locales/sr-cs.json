@@ -1,7 +1,7 @@
 {
   "access_allowed_desc": "Spisak CIDR, IP adresa ili <a>ClientIDs</a>. Ako ova lista ima stavke, AdGuard Private će prihvatiti zahteve samo ovih klijenata.",
   "access_allowed_title": "Dozvoljeni klijenti",
-  "access_blocked_desc": "\\",
+  "access_blocked_desc": "Nemojte mešati ovu funkciju sa filterima. AdGuard Private će isključiti DNS upite koji se podudaraju sa ovim imenima domena, i ti upiti neće biti prikazani u upitniku. Ovde možete eksplicitno navesti imena domena, džokere i pravila filtriranja URL-ova.",
   "access_blocked_title": "Blokirani domeni",
   "access_desc": "Ovde možete konfigurisati pravila pristupa za AdGuard Private DNS server",
   "access_disallowed_desc": "Spisak CIDR, IP adresa ili <a>ClientIDs</a>. Ako ova lista ima stavke, AdGuard Private će otpustiti zahteve ovih klijenata. Ovo polje se zanemaruje ako postoje stavke u dozvoljenim klijentima.",

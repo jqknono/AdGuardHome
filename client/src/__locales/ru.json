@@ -1,7 +1,7 @@
 {
   "access_allowed_desc": "Список CIDR, IP-адресов или <a>ClientID</a>. Если в списке есть записи, AdGuard Private будет принимать запросы только от этих клиентов.",
   "access_allowed_title": "Разрешённые клиенты",
-  "access_blocked_desc": "Ei pidä sekoittaa suodattimiin. AdGuard Private hylkää näiden verkkotunnusten DNS-pyynnöt, eivätkä nämä pyynnöt myöskään näy pyyntöhistoriassa. Tähän voidaan syöttää tarkkoja verkkotunnuksia, jokerimerkkejä tai URL-suodatussääntöjä, kuten \"example.org\", \"*.example.org\" tai \"\\",
+  "access_blocked_desc": "Не путайте эту функцию с фильтрами. AdGuard Private будет исключать DNS-запросы, которые соответствуют этим доменным именам, и эти запросы не будут отображаться в журнале запросов. Здесь вы можете явно указать доменные имена, подстановочные знаки и правила фильтрации URL.",
   "access_blocked_title": "Неразрешённые домены",
   "access_desc": "Здесь вы можете настроить правила доступа к DNS-серверу AdGuard Private",
   "access_disallowed_desc": "Список CIDR, IP-адресов или <a>ClientID</a>. Если в списке есть записи, AdGuard Private будет игнорировать запросы от этих клиентов. Это поле игнорируется, если список разрешённых клиентов содержит записи.",

@@ -1,7 +1,7 @@
 {
   "access_allowed_desc": "Перелік CIDR, IP-адрес та <a>ClientIDs</a>. Якщо налаштовано, AdGuard Private прийматиме запити лише від цих клієнтів.",
   "access_allowed_title": "Дозволені клієнти",
-  "access_blocked_desc": "example.org example.org. example.org^\" u skladu s tim.",
+  "access_blocked_desc": "Не плутайте цю функцію з фільтрами. AdGuard Private виключатиме DNS-запити, які відповідають цим доменним іменам, і ці запити не відображатимуться в журналі запитів. Тут ви можете явно вказати доменні імена, підстановчі знаки та правила фільтрування URL-адрес.",
   "access_blocked_title": "Заборонені домени",
   "access_desc": "Тут ви можете налаштувати правила доступу для DNS-сервера AdGuard Private",
   "access_disallowed_desc": "Перелік CIDR, IP-адрес та <a>ClientIDs</a>. Якщо налаштовано, AdGuard Private буде скасовувати запити від цих клієнтів. Проте якщо налаштовано список Дозволених клієнтів, то це поле проігнорується.",

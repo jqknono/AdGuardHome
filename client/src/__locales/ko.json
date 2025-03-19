@@ -1,7 +1,7 @@
 {
   "access_allowed_desc": "CIDR, IP 주소 또는 <a>ClientID</a> 목록입니다. 이 목록에 항목이 있는 경우, AdGuard Private은 이러한 클라이언트의 요청만 수락합니다.",
   "access_allowed_title": "허용된 클라이언트",
-  "access_blocked_desc": "Not to be confused with filters. AdGuard Private drops DNS queries matching these domains, and these queries don't even appear in the query log. You can specify exact domain names, wildcards, or URL filter rules, e.g. \"example.org\", \"*.example.org\", or \"\\",
+  "access_blocked_desc": "이 기능을 필터와 혼동하지 마십시오. AdGuard Private은 이러한 도메인 이름과 일치하는 DNS 쿼리를 제외하며, 이러한 쿼리는 쿼리 로그에 표시되지 않습니다. 여기에서 도메인 이름, 와일드카드 및 URL 필터링 규칙을 명시적으로 지정할 수 있습니다.",
   "access_blocked_title": "차단된 도메인",
   "access_desc": "여기에서 AdGuard Private DNS 서버에 대한 액세스 규칙을 설정할 수 있습니다",
   "access_disallowed_desc": "CIDR, IP 주소 또는 <a>ClientID</a> 목록입니다. 이 목록에 항목이 있는 경우, AdGuard Private은 이러한 클라이언트의 요청을 무시합니다. 허용된 클라이언트에 항목이 있는 경우, 이 필드는 무시됩니다.",

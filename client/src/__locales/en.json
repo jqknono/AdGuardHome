@@ -1,6 +1,7 @@
 {
   "access_allowed_desc": "A list of CIDRs, IP addresses, or <a>ClientIDs</a>. If this list has entries, AdGuard Private will accept requests only from these clients.",
   "access_allowed_title": "Allowed clients",
+  "access_blocked_desc": "Do not confuse this function with filters. AdGuard Private will exclude DNS queries that match these domain names, and these queries will not be displayed in the query log. Here you can explicitly specify domain names, wildcards, and URL filtering rules.",
   "access_blocked_title": "Disallowed domains",
   "access_desc": "Here you can configure access rules for the AdGuard Private DNS server",
   "access_disallowed_desc": "A list of CIDRs, IP addresses, or <a>ClientIDs</a>. If this list has entries, AdGuard Private will drop requests from these clients. This field is ignored if there are entries in Allowed clients.",

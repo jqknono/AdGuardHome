@@ -1,7 +1,7 @@
 {
   "access_allowed_desc": "Seznam CIDR, IP adres nebo <a>ID klientů</a>. Pokud tento seznam obsahuje položky, AdGuard Private bude přijímat požadavky pouze od těchto klientů.",
   "access_allowed_title": "Povolení klienti",
-  "access_blocked_desc": "Не блытаць з фільтрамі. AdGuard Private выдаляе запыты DNS, якія адпавядаюць гэтым даменам, і гэтыя запыты нават не з'яўляюцца ў журнале запытаў. Вы можаце ўказаць дакладныя даменныя імёны, падстаноўныя знакі або правілы фільтрацыі URL-адрасоў, напрыклад, «example.org», «*.example.org» ці «\\",
+  "access_blocked_desc": "Nezaměňujte tuto funkci s filtry. AdGuard Private vyloučí DNS dotazy, které odpovídají těmto názvům domén, a tyto dotazy se nebudou zobrazovat v protokolu dotazů. Zde můžete explicitně zadat názvy domén, zástupné znaky a pravidla filtrování URL.",
   "access_blocked_title": "Blokované domény",
   "access_desc": "Zde můžete konfigurovat pravidla přístupu pro server DNS AdGuard Private",
   "access_disallowed_desc": "Seznam CIDR, IP adres nebo <a>ID klientů</a>. Pokud tento seznam obsahuje položky, AdGuard Private bude odmítat požadavky od těchto klientů. Pokud jsou povolení klienti nakonfigurováni, je toto pole ignorováno.",

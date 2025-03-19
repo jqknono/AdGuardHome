@@ -1,7 +1,7 @@
 {
   "access_allowed_desc": "CIDR-ek, IP-címek vagy <a>ClientID-k</a> listája. Ha be van állítva, akkor az AdGuard Private csak azokat a lekérdezéseket engedélyezi, amelyek ezektől a kliensektől érkeznek.",
   "access_allowed_title": "Engedélyezett kliensek",
-  "access_blocked_desc": "eksempel.org^\" eller tilsvarende.",
+  "access_blocked_desc": "Ne keverje össze ezt a funkciót a szűrőkkel. Az AdGuard Private kizárja azokat a DNS-lekérdezéseket, amelyek megfelelnek ezeknek a domainneveknek, és ezek a lekérdezések nem jelennek meg a lekérdezési naplóban. Itt explicit módon megadhat domainneveket, helyettesítő karaktereket és URL-szűrési szabályokat.",
   "access_blocked_title": "Nem engedélyezett domainek",
   "access_desc": "Itt konfigurálhatja az AdGuard Private DNS-kiszolgáló hozzáférési szabályait",
   "access_disallowed_desc": "CIDR-ek, IP-címek vagy <a>ClientID-k</a> listája. Ha be van állítva, akkor az AdGuard Private eldobja azokat a lekérdezéseket, amelyek ezektől a kliensektől érkeznek. Ha engedélyezett kliensek vannak ide bekonfigurálva, akkor pedig az a mező ki lesz hagyva.",

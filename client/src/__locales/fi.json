@@ -1,7 +1,7 @@
 {
   "access_allowed_desc": "Lista CIDR-merkinnöistä, IP-osoitteista tai <a>ClientID</a>-tunnisteista. Jos listalla on kohteita, hyväksyy AdGuard Private pyyntöjä vain näiltä päätelaitteilta.",
   "access_allowed_title": "Sallitut päätelaitteet",
-  "access_blocked_desc": "example.org^\".",
+  "access_blocked_desc": "Älä sekoita tätä toimintoa suodattimiin. AdGuard Private jättää huomiotta DNS-kyselyt, jotka vastaavat näitä verkkotunnuksia, eivätkä nämä kyselyt näy kyselylokissa. Tässä voit määrittää selkeästi verkkotunnuksia, jokerimerkkejä ja URL-osoitteiden suodatusääntöjä.",
   "access_blocked_title": "Estetyt verkkotunnukset",
   "access_desc": "Tässä voidaan määrittää AdGuard Privaten DNS-palvelimen käyttöoikeussääntöjä.",
   "access_disallowed_desc": "Lista CIDR-merkinnöistä, IP-osoitteista tai <a>ClientID</a>-tunnisteista. Jos listalla on kohteita, hylkää AdGuard Private näiden päätelaitteiden pyynnöt. Tätä kenttää ei huomioida, jos sallittuja päätelaitteita on määritetty.",

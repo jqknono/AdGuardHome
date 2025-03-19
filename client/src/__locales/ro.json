@@ -1,7 +1,7 @@
 {
   "access_allowed_desc": "O listă de CIDR-uri, adrese IP sau <a>ClientID-uri</a>. Dacă această listă are intrări, AdGuard Private va accepta cereri numai de la acești clienți.",
   "access_allowed_title": "Clienți autorizați",
-  "access_blocked_desc": "این را با فیلتر ها به اشتباه نگیرید.AdGuard Private  جستار DNS را با این دامنه ها در جستار سوال ها نمی پذیرد.",
+  "access_blocked_desc": "Nu confundați această funcție cu filtrele. AdGuard Private va exclude interogările DNS care se potrivesc cu aceste nume de domeniu, iar aceste interogări nu vor fi afișate în jurnalul de interogări. Aici puteți specifica în mod explicit nume de domeniu, metacaractere și reguli de filtrare URL.",
   "access_blocked_title": "Domenii blocate",
   "access_desc": "Aici puteți configura regulile de acces pentru serverul DNS AdGuard Private",
   "access_disallowed_desc": "O listă de CIDR-uri, adrese IP sau <a>ClientID-uri</a>. Dacă această listă are intrări, AdGuard Private va renunța la cererile de la acești clienți. Acest câmp este ignorat dacă există intrări în „Clienți permiși”.",

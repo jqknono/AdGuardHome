@@ -1,7 +1,7 @@
 {
   "access_allowed_desc": "En lista över CIDR, IP-adresser eller <a>ClientID</a>. Om den här listan har poster accepterar AdGuard Private endast förfrågningar från dessa clienter.",
   "access_allowed_title": "Tillåtna klienter",
-  "access_blocked_desc": "example.org^ » de manière correspondante.",
+  "access_blocked_desc": "Blanda inte ihop den här funktionen med filter. AdGuard Private kommer att exkludera DNS-frågor som matchar dessa domännamn, och dessa frågor kommer inte att visas i frågeloggen. Här kan du uttryckligen ange domännamn, jokertecken och URL-filtreringsregler.",
   "access_blocked_title": "Blockerade domäner",
   "access_desc": "Här kan du konfigurera åtkomstregler för AdGuard Privates DNS-server",
   "access_disallowed_desc": "En lista över CIDR, IP-adresser eller <a>ClientID</a>. Om den här listan har poster kommer AdGuard Private att ta bort förfrågningar från dessa klienter. Detta fält ignoreras om det finns poster i Tillåtna klienter.",

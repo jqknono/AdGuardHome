@@ -1,7 +1,7 @@
 {
   "access_allowed_desc": "Daftar CIDR, alamat IP, atau <a>ClientID</a>. Jika daftar ini memiliki entri, AdGuard Private hanya akan menerima permintaan dari klien ini.",
   "access_allowed_title": "Klien yang diizinkan",
-  "access_blocked_desc": "Nicht zu verwechseln mit Filtern. AdGuard Private verwirft DNS-Anfragen, die mit diesen Domains übereinstimmen, und diese Abfragen werden nicht einmal im Abfrageprotokoll angezeigt. Sie können exakte Domainnamen, Wildcards oder URL-Filterregeln angeben, z. B. „example.org“, „*.example.org“ oder „\\",
+  "access_blocked_desc": "Jangan bingungkan fungsi ini dengan filter. AdGuard Private akan mengecualikan kueri DNS yang cocok dengan nama domain ini, dan kueri ini tidak akan ditampilkan di log kueri. Di sini Anda dapat secara eksplisit menentukan nama domain, wildcard, dan aturan pemfilteran URL.",
   "access_blocked_title": "Domain yang diblokir",
   "access_desc": "Disini anda dapat mengatur aturan akses untuk server AdGuard Private DNS",
   "access_disallowed_desc": "Daftar CIDR, alamat IP, atau <a>ClientID</a>. Jika daftar ini memiliki entri, AdGuard Private akan membatalkan permintaan dari klien ini. Kolom ini diabaikan jika ada entri di daftar putih klien.",

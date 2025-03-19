@@ -1,7 +1,7 @@
 {
   "access_allowed_desc": "CIDR'lerin, IP adreslerinin veya <a>İstemci Kimliklerin</a> listesi. Bu listede girişler varsa, AdGuard Private yalnızca bu istemcilerden gelen istekleri kabul eder.",
   "access_allowed_title": "İzin verilen istemciler",
-  "access_blocked_desc": "\\",
+  "access_blocked_desc": "Bu işlevi filtrelerle karıştırmayın. AdGuard Private, bu alan adlarıyla eşleşen DNS sorgularını hariç tutar ve bu sorgular sorgu günlüğünde görüntülenmez. Burada, alan adlarını, joker karakterleri ve URL filtreleme kurallarını açıkça belirtebilirsiniz.",
   "access_blocked_title": "İzin verilmeyen alan adları",
   "access_desc": "AdGuard Private DNS sunucusu için erişim kurallarını buradan yapılandırabilirsiniz",
   "access_disallowed_desc": "CIDR'lerin, IP adreslerinin veya <a>İstemci Kimliklerin</a> listesi. Bu listede girişler varsa, AdGuard Private bu istemcilerden gelen istekleri keser. İzin verilen istemcilerde girişler varsa, bu alan yok sayılır.",

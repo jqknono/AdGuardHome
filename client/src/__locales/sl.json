@@ -1,7 +1,7 @@
 {
   "access_allowed_desc": "Seznam CIDR-jev, naslovov IP ali <a>ID-jev odjemalcev</a>. Če ta seznam vsebuje vnose, bo AdGuard Private sprejel zahteve samo teh odjemalcev.",
   "access_allowed_title": "Dovoljeni odjemalci",
-  "access_blocked_desc": "A ne pas confondre avec les filtres. AdGuard Private rejette les requêtes DNS correspondant à ces domaines, et ces requêtes n'apparaissent même pas dans le journal des requêtes. Vous pouvez spécifier des noms de domaine exacts, des caractères génériques ou des règles de filtrage d'URL, par exemple « exemple.org », « *.exemple.org » ou « \\",
+  "access_blocked_desc": "Ne zamenjujte te funkcije s filtri. AdGuard Private bo izključil poizvedbe DNS, ki se ujemajo s temi imeni domen, in te poizvedbe ne bodo prikazane v dnevniku poizvedb. Tu lahko izrecno določite imena domen, nadomestne znake in pravila filtriranja URL-jev.",
   "access_blocked_title": "Prepovedane domene",
   "access_desc": "Tukaj lahko nastavite pravila dostopa strežnika DNS AdGuard Private",
   "access_disallowed_desc": "Seznam CIDR-jev, naslovov IP ali <a>ID-jev odjemalcev</a>. Če ta seznam vsebuje vnose, bo AdGuard Private zavrnil zahteve teh odjemalcev. To polje je prezrto, če so vnosi v dovoljenih odjemalcih.",

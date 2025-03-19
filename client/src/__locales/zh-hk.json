@@ -1,7 +1,7 @@
 {
   "access_allowed_desc": "輸入 CIDR 或 IP 位址格式的清單，設定後 AdGuard Private 將僅接受設定的 IP 位址查詢請求。",
   "access_allowed_title": "用戶端白名單",
-  "access_blocked_desc": "example.org^\".",
+  "access_blocked_desc": "請勿將此功能與過濾器混淆。AdGuard Private 將排除匹配這些網域名稱的 DNS 查詢，並且這些查詢將不會在查詢日誌中顯示。在此可以明確指定網域名稱、萬用字元和網址過濾的規則。",
   "access_blocked_title": "網域黑名單",
   "access_desc": "您可以在這裡設定 AdGuard Private DNS 伺服器存取規則。",
   "access_disallowed_desc": "輸入 CIDR 或 IP 位址格式的清單，設定後 AdGuard Private 將拒絕設定的 IP 位址查詢請求。",

@@ -1,7 +1,7 @@
 {
   "access_allowed_desc": "CIDR、IP 地址或<a>客户端 ID</a> 的列表。如已配置，则 AdGuard Private 将仅接受来自这些客户端的请求。",
   "access_allowed_title": "允许的客户端",
-  "access_blocked_desc": "\\",
+  "access_blocked_desc": "不要将此功能与过滤器混淆。AdGuard Private 将排除匹配这些域名的 DNS 查询，并且这些查询将不会在查询日志中显示。在此可以明确指定域名、通配符（wildcard）和网址过滤的规则。",
   "access_blocked_title": "不允许的域名",
   "access_desc": "您可以在此处配置 AdGuard Private 的 DNS 服务器的访问规则",
   "access_disallowed_desc": "CIDR、IP 地址或<a>客户端 ID</a> 的列表。如果已配置，则 AdGuard Private 将丢弃来自这些客户端的请求。如果允许的客户端已配置，此字段将会被忽略。",

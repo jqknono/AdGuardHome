@@ -1,7 +1,7 @@
 {
   "access_allowed_desc": "En liste over CIDR- eller IP-adresser. Dersom dette er satt opp, vil AdGuard Private kun akseptere forespørsler fra disse IP-adressene.",
   "access_allowed_title": "Tillatte klienter",
-  "access_blocked_desc": "example.org^\" correspondingly.",
+  "access_blocked_desc": "Ikke forveksle denne funksjonen med filtre. AdGuard Private vil ekskludere DNS-spørringer som samsvarer med disse domenenavnene, og disse spørringene vil ikke vises i spørringsloggen. Her kan du eksplisitt spesifisere domenenavn, jokertegn og URL-filtreringsregler.",
   "access_blocked_title": "Blokkerte domener",
   "access_desc": "Her kan du sette opp tilgangsregler for AdGuard Private-DNS-tjeneren.",
   "access_disallowed_desc": "En liste over CIDR- eller IP-adresser. Dersom dette er satt opp, vil AdGuard Private avslå forespørsler fra disse IP-adressene.",

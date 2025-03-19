@@ -1,7 +1,7 @@
 {
   "access_allowed_desc": "Lista identyfikatorów CIDR, adresów IP lub <a>identyfikatorów klienta</a>. Jeśli ta lista zawiera wpisy, AdGuard Private zaakceptuje żądania tylko od tych klientów.",
   "access_allowed_title": "Dozwoleni klienci",
-  "access_blocked_desc": "No debe confundirse con filtros. AdGuard Private descartará las consultas DNS que coincidan con estos dominios, y estas consultas ni siquiera aparecerán en el registro de consultas. Puedes especificar nombres de dominio exactos, comodines o reglas de filtrado de URL, por ejemplo: \"ejemplo.org\", \"*.ejemplo.org\" o \"\\",
+  "access_blocked_desc": "Nie myl tej funkcji z filtrami. AdGuard Private wykluczy zapytania DNS pasujące do tych nazw domen, a te zapytania nie będą wyświetlane w dzienniku zapytań. Tutaj możesz wyraźnie określić nazwy domen, symbole wieloznaczne i reguły filtrowania adresów URL.",
   "access_blocked_title": "Niedozwolone domeny",
   "access_desc": "Tutaj możesz skonfigurować reguły dostępu dla serwera DNS AdGuard Private",
   "access_disallowed_desc": "Lista identyfikatorów CIDR, adresów IP lub <a>identyfikatorów klienta</a>. Jeśli ta lista zawiera wpisy, AdGuard Private odrzuci żądania od tych klientów. To pole jest ignorowane, jeśli istnieją wpisy w Dozwolonych klientach.",

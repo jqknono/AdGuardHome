@@ -1,7 +1,7 @@
 {
   "access_allowed_desc": "Eine Liste von CIDRs, IP-Adressen oder <a>Client-IDs</a>. Wenn diese Liste gefüllt ist, akzeptiert AdGuard Private nur Anfragen von diesen Clients.",
   "access_allowed_title": "Zugelassene Clients",
-  "access_blocked_desc": "example.org^» адпаведна.",
+  "access_blocked_desc": "Verwechseln Sie diese Funktion nicht mit Filtern. AdGuard Private schließt DNS-Abfragen aus, die mit diesen Domänennamen übereinstimmen, und diese Abfragen werden nicht im Abfrageprotokoll angezeigt. Hier können Sie explizit Domänennamen, Platzhalter und URL-Filterregeln angeben.",
   "access_blocked_title": "Nicht zugelassene Domains",
   "access_desc": "Hier können Sie die Zugriffsregeln für den DNS-Server von AdGuard Private konfigurieren",
   "access_disallowed_desc": "Eine Liste von CIDRs, IP-Adressen oder <a>ClientIDs</a>. Wenn diese Liste gefüllt ist, weist AdGuard Private Anfragen von diesen Clients zurück. Dieses Feld wird ignoriert, wenn es Einträge in der Liste „Zugelassene Clients“ gibt.",

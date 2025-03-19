@@ -1,7 +1,7 @@
 {
   "access_allowed_desc": "Danh sách CIDR, địa chỉ IP hoặc <a>ClientID</a>. Nếu danh sách này có các mục nhập, AdGuard Private sẽ chỉ chấp nhận yêu cầu từ những khách hàng này.",
   "access_allowed_title": "Máy chủ được phép",
-  "access_blocked_desc": "Ne keverje össze ezt a szűrőkkel. Az AdGuard Private az összes DNS kérést el fogja dobni, ami ezekkel a domainekkel megegyezik, és ezek a lekérések nem is fognak megjelenni a lekérdezési naplóban sem. Megadhatja a pontos domain neveket, a helyettesítő karaktereket vagy az URL szűrési szabályokat, pl. ennek megfelelően \"example.org\", \"*.example.org\", vagy \"\\",
+  "access_blocked_desc": "Đừng nhầm lẫn chức năng này với bộ lọc. AdGuard Private sẽ loại trừ các truy vấn DNS khớp với các tên miền này và các truy vấn này sẽ không được hiển thị trong nhật ký truy vấn. Tại đây, bạn có thể chỉ định rõ ràng tên miền, ký tự đại diện và quy tắc lọc URL.",
   "access_blocked_title": "Tên miền bị chặn",
   "access_desc": "Tại đây bạn có thể định cấu hình quy tắc truy cập cho máy chủ AdGuard Private DNS",
   "access_disallowed_desc": "Danh sách CIDR, địa chỉ IP hoặc <a>ClientID</a>. Nếu danh sách này có các mục nhập, AdGuard Private sẽ loại bỏ các yêu cầu từ những khách hàng này. Trường này bị bỏ qua nếu có các mục nhập trong máy khách Được phép.",

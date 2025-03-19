@@ -1,7 +1,7 @@
 {
   "access_allowed_desc": "Een lijst met CIDR's, IP-adressen of <a>Client-ID's</a>. Indien geconfigureerd, accepteert AdGuard Private alleen verzoeken van deze cliënts.",
   "access_allowed_title": "Toegestane gebruikers",
-  "access_blocked_desc": "\\",
+  "access_blocked_desc": "Verwar deze functie niet met filters. AdGuard Private sluit DNS-query's uit die overeenkomen met deze domeinnamen, en deze query's worden niet weergegeven in het querylogboek. Hier kunt u expliciet domeinnamen, wildcards en URL-filterregels specificeren.",
   "access_blocked_title": "Niet toegelaten domeinen",
   "access_desc": "Hier kan je toegangsregels voor de AdGuard Private DNS-server instellen",
   "access_disallowed_desc": "Een lijst met CIDR's, IP-adressen of <a>Client-ID's</a>. Indien geconfigureerd, zal AdGuard Private verzoeken van deze klanten verwerpen. Als toegestane cliënts zijn geconfigureerd, wordt dit veld genegeerd.",

@@ -1,7 +1,7 @@
 {
   "access_allowed_desc": "CIDR、IPアドレス、または<a>ClientID</a>のリスト。このリストに入力がある場合、AdGuard Privateはリストに入っているクライアントからのみリクエストを受け入れます。",
   "access_allowed_title": "許可されたクライアント",
-  "access_blocked_desc": "example.org^“.",
+  "access_blocked_desc": "この機能をフィルターと混同しないでください。AdGuard Privateは、これらのドメイン名に一致するDNSクエリを除外し、これらのクエリはクエリログに表示されません。ここでは、ドメイン名、ワイルドカード、URLフィルタリングルールを明示的に指定できます。",
   "access_blocked_title": "拒否するドメイン",
   "access_desc": "こちらでは、AdGuard Private DNSサーバーのアクセスルールを設定できます。",
   "access_disallowed_desc": "CIDR、IPアドレス、または<a>ClientID</a>のリスト。リストに入力がある場合、AdGuard Privateはリストに入力されているクライアントからのリクエストを破棄します。※「許可されたクライアント」リストに入力項目がある場合、この「拒否するクライアント」設定は無視されます。",
