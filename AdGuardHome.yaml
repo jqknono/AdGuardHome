@@ -102,15 +102,15 @@ statistics:
   enabled: true
 filters:
   - enabled: true
-    url: https://adguardteam.github.io/HostlistsRegistry/assets/filter_1.txt
+    url: https://jqknono.github.io/HostlistsRegistry/assets/filter_1.txt
     name: AdGuard DNS filter
     id: 1
   - enabled: true
-    url: https://adguardteam.github.io/HostlistsRegistry/assets/filter_2.txt
+    url: https://jqknono.github.io/HostlistsRegistry/assets/filter_2.txt
     name: AdAway Default Blocklist
     id: 2
   - enabled: true
-    url: https://adguardteam.github.io/HostlistsRegistry/assets/filter_38.txt
+    url: https://jqknono.github.io/HostlistsRegistry/assets/filter_38.txt
     name: 1Hosts (mini)
     id: 1734953904
 whitelist_filters: []

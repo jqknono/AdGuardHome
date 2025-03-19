@@ -25,8 +25,8 @@ var youtube string
 
 // safeSearchRules is a map with rules texts grouped by search providers.
 // Source rules downloaded from:
-// https://adguardteam.github.io/HostlistsRegistry/assets/engines_safe_search.txt,
-// https://adguardteam.github.io/HostlistsRegistry/assets/youtube_safe_search.txt.
+// https://jqknono.github.io/HostlistsRegistry/assets/engines_safe_search.txt,
+// https://jqknono.github.io/HostlistsRegistry/assets/youtube_safe_search.txt.
 var safeSearchRules = map[Service]string{
 	Bing:       bing,
 	DuckDuckGo: duckduckgo,
