@@ -567,11 +567,12 @@ func (d *DNSFilter) RegisterFilteringHandlers() {
 
 	registerHTTP(http.MethodGet, "/control/blocked_services/services", d.handleBlockedServicesIDs)
 	registerHTTP(http.MethodGet, "/control/blocked_services/all", d.handleBlockedServicesAll)
+	// 添加新的API端点用于重新加载服务
+	registerHTTP(http.MethodPost, "/control/blocked_services/reload", d.handleBlockedServicesReload)
 
 	// Deprecated handlers.
 	registerHTTP(http.MethodGet, "/control/blocked_services/list", d.handleBlockedServicesList)
 	registerHTTP(http.MethodPost, "/control/blocked_services/set", d.handleBlockedServicesSet)
-
 	registerHTTP(http.MethodGet, "/control/blocked_services/get", d.handleBlockedServicesGet)
 	registerHTTP(http.MethodPut, "/control/blocked_services/update", d.handleBlockedServicesUpdate)
 

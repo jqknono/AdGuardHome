@@ -1,5 +1,20 @@
 package filtering
 
+// hlServices is the JSON structure for the Hostlists Registry blocked service
+// index.
+type hlServices struct {
+	BlockedServices []*hlServicesService `json:"blocked_services"`
+}
+
+// hlServicesService is the JSON structure for a service in the Hostlists
+// Registry.
+type hlServicesService struct {
+	ID      string   `json:"id"`
+	Name    string   `json:"name"`
+	IconSVG string   `json:"icon_svg"`
+	Rules   []string `json:"rules"`
+}
+
 // blockedService represents a single blocked service.
 type blockedService struct {
 	ID      string   `json:"id"`
@@ -7,8 +22,6 @@ type blockedService struct {
 	IconSVG []byte   `json:"icon_svg"`
 	Rules   []string `json:"rules"`
 }
-
-// todo: 增加百度, 优酷, 常见游戏拦截规则
 
 var blockedServices = []blockedService{{
 	ID:      "bilibili",

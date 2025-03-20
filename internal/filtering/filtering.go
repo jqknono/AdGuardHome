@@ -5,6 +5,7 @@ import (
 	"context"
 	"fmt"
 	"io/fs"
+	"log/slog"
 	"net"
 	"net/http"
 	"net/netip"
@@ -164,6 +165,9 @@ type Config struct {
 
 	// ProtectionEnabled defines whether or not use any of filtering features.
 	ProtectionEnabled bool `yaml:"protection_enabled"`
+
+	// ServiceURLs 是用于下载blocked services的URL列表
+	ServiceURLs ServicesURLs `yaml:"service_urls"`
 }
 
 // BlockingMode is an enum of all allowed blocking modes.
@@ -264,6 +268,9 @@ type DNSFilter struct {
 	hostCheckers []hostChecker
 
 	safeFSPatterns []string
+
+	// logger 用于记录日志
+	logger *slog.Logger
 }
 
 // Filter represents a filter list
@@ -1082,6 +1089,9 @@ func (d *DNSFilter) Start() {
 	d.done = make(chan struct{}, 1)
 
 	d.RegisterFilteringHandlers()
+
+	// 在启动时初始化服务加载器
+	d.initServiceLoader(context.Background())
 
 	go d.updatesLoop()
 }

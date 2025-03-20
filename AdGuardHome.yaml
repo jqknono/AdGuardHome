@@ -32,8 +32,7 @@ dns:
   fallback_dns:
     - 223.6.6.6
   upstream_alternate_dns:
-    - https://cf.adguardprivate.com/dns-query
-    - https://gg.adguardprivate.com/dns-query
+    - h3://doh.jqknono.com/dns-query
   upstream_alternate_rulesets:
     - https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/gfw.txt
   upstream_mode: load_balance
@@ -169,6 +168,9 @@ filtering:
   parental_enabled: false
   safebrowsing_enabled: false
   protection_enabled: true
+  service_urls:
+    - https://hostlistsregistry1.jqknono.com/assets/services_zh-cn.json
+    # - https://hostlistsregistry1.jqknono.com/assets/services.json
 clients:
   runtime_sources:
     whois: false

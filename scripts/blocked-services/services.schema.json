@@ -1,0 +1,41 @@
+{
+    "type": "object",
+    "properties": {
+        "blocked_services": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Unique identifier for the service"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the service"
+                    },
+                    "rules": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "description": "Ad blocking rules for the service"
+                        }
+                    },
+                    "icon_svg": {
+                        "type": "string",
+                        "description": "SVG icon for the service"
+                    }
+                },
+                "required": [
+                    "id",
+                    "name",
+                    "rules",
+                    "icon_svg"
+                ]
+            }
+        }
+    },
+    "required": [
+        "blocked_services"
+    ]
+}
