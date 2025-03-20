@@ -1,8 +1,19 @@
 package control
 
 import (
+	"encoding/json"
 	"net/http"
 )
+
+// respondJSON 将数据以JSON格式返回给客户端
+func respondJSON(w http.ResponseWriter, r *http.Request, data interface{}) {
+	w.Header().Set("Content-Type", "application/json")
+	err := json.NewEncoder(w).Encode(data)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+}
 
 // BlockedServicesController 处理与阻止服务相关的API请求
 type BlockedServicesController struct {
@@ -24,5 +35,5 @@ func (c *BlockedServicesController) Get(w http.ResponseWriter, r *http.Request) 
 		"enabled":  false,      // 是否启用阻止服务功能
 	}
 
-	serveJSON(w, r, data)
+	respondJSON(w, r, data)
 }

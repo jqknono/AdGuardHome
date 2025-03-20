@@ -1,12 +1,12 @@
 {
     "github.copilot.chat.codeGeneration.instructions": [
         {
-            "file": ".copilot-codeGeneration-instructions.md",
+            "file": ".github/prompts/.copilot-codeGeneration-instructions.md",
         }
     ],
     "go.testEnvVars": {
-        "GOPATH": "${workspaceFolder}/.gopath",
-        "GOCACHE": "${workspaceFolder}/.gopath/.gocache",
+        // "GOPATH": "${workspaceFolder}/.gopath",
+        // "GOCACHE": "${workspaceFolder}/.gopath/.gocache",
         "GOMIPS": "softfloat",
         "CGO_ENABLED": "0",
         "CGO_CFLAGS": "-O3 -std=gnu11 -g",
@@ -15,10 +15,10 @@
         "GOPROXY": "https://proxy.golang.org,direct"
     },
     "go.toolsEnvVars": {
-        "GOCACHE": "${workspaceFolder}/.gopath/.gocache",
+        // "GOCACHE": "${workspaceFolder}/.gopath/.gocache",
         "GOPROXY": "https://goproxy.cn|direct",
         "GOENV": "${workspaceFolder}/.vscode/.goenv",
-        "GOPATH": "${workspaceFolder}/.gopath",
+        // "GOPATH": "${workspaceFolder}/.gopath",
         "GOMIPS": "softfloat",
         "CGO_ENABLED": "0",
         "CGO_CFLAGS": "-O3 -std=gnu11 -g",

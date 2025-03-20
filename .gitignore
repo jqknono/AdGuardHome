@@ -43,3 +43,4 @@ client/bin/
 __debug_bin*
 .env
 .gopath/
+.github/prompts/

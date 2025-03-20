@@ -1,4 +1,5 @@
-package proxy
+// Package control implements AdGuard Home control API and configuration management.
+package control
 
 import (
 	"fmt"
@@ -13,7 +14,6 @@ import (
 	"github.com/AdguardTeam/golibs/container"
 	"github.com/AdguardTeam/golibs/errors"
 	"github.com/AdguardTeam/golibs/netutil"
-	"github.com/gorilla/mux"
 )
 
 // UnqualifiedNames is a key for [UpstreamConfig.DomainReservedUpstreams] map to
@@ -373,98 +373,19 @@ func ValidatePrivateConfig(uc *UpstreamConfig, privateSubnets netutil.SubnetSet)
 	return errors.Join(errs...)
 }
 
-// getUpstreamsForDomain returns the upstreams specified for resolving fqdn.  It
-// always returns the default set of upstreams if the domain is not reserved for
-// any other upstreams.
-//
-// More specific domains take priority over less specific ones.  For example, if
-// the upstreams specified for the following domains:
-//
-//   - host.com
-//   - www.host.com
-//
-// The request for mail.host.com will be resolved using the upstreams specified
-// for host.com.
-func (uc *UpstreamConfig) getUpstreamsForDomain(fqdn string) (ups []upstream.Upstream) {
-	if len(uc.DomainReservedUpstreams) == 0 {
-		return uc.Upstreams
-	}
-
-	fqdn = strings.ToLower(fqdn)
-	if uc.SubdomainExclusions.Has(fqdn) {
-		return uc.lookupSubdomainExclusion(fqdn)
-	}
-
-	ups, ok := uc.lookupUpstreams(fqdn)
-	if ok {
-		return ups
-	}
-
-	if _, fqdn, _ = strings.Cut(fqdn, "."); fqdn == "" {
-		fqdn = UnqualifiedNames
-	}
-
-	for fqdn != "" {
-		if ups, ok = uc.lookupUpstreams(fqdn); ok {
-			return ups
+// closeAll 关闭所有上游连接并收集错误
+func closeAll(errs []error, ups ...upstream.Upstream) []error {
+	for _, u := range ups {
+		if u == nil {
+			continue
 		}
 
-		_, fqdn, _ = strings.Cut(fqdn, ".")
+		if err := u.Close(); err != nil {
+			errs = append(errs, err)
+		}
 	}
-
-	return uc.Upstreams
-}
-
-// getUpstreamsForDS is like [getUpstreamsForDomain], but intended for DS
-// queries only, so that it matches fqdn without the first label.
-//
-// A DS RRset SHOULD be present at a delegation point when the child zone is
-// signed.  The DS RRset MAY contain multiple records, each referencing a public
-// key in the child zone used to verify the RRSIGs in that zone.  All DS RRsets
-// in a zone MUST be signed, and DS RRsets MUST NOT appear at a zone's apex.
-//
-// See https://datatracker.ietf.org/doc/html/rfc4035#section-2.4
-func (uc *UpstreamConfig) getUpstreamsForDS(fqdn string) (ups []upstream.Upstream) {
-	_, fqdn, _ = strings.Cut(fqdn, ".")
-	if fqdn == "" {
-		return uc.Upstreams
-	}
-
-	return uc.getUpstreamsForDomain(fqdn)
-}
-
-// lookupSubdomainExclusion returns upstreams for the host from subdomain
-// exclusions list.
-func (uc *UpstreamConfig) lookupSubdomainExclusion(host string) (u []upstream.Upstream) {
-	ups, ok := uc.SpecifiedDomainUpstreams[host]
-	if ok && len(ups) > 0 {
-		return ups
-	}
-
-	// Check if there is a spec for upper level domain.
-	h := strings.SplitAfterN(host, ".", 2)
-	ups, ok = uc.DomainReservedUpstreams[h[1]]
-	if ok && len(ups) > 0 {
-		return ups
-	}
-
-	return uc.Upstreams
-}
-
-// lookupUpstreams returns upstreams for a domain name.  It returns default
-// upstream list for domain name excluded by domain reserved upstreams.
-func (uc *UpstreamConfig) lookupUpstreams(name string) (ups []upstream.Upstream, ok bool) {
-	ups, ok = uc.DomainReservedUpstreams[name]
-	if !ok {
-		return ups, false
-	}
-
-	if len(ups) == 0 {
-		// The domain has been excluded from reserved upstreams querying.
-		ups = uc.Upstreams
-	}
-
-	return ups, true
+	
+	return errs
 }
 
 // Close implements the io.Closer interface for *UpstreamConfig.
@@ -496,12 +417,24 @@ func (uc *UpstreamConfig) Close() (err error) {
 
 // ...existing code...
 
-func RegisterRoutes(r *mux.Router) {
+// RegisterRoutes 注册所有控制路由到标准 http 处理器
+func RegisterRoutes(mux *http.ServeMux) {
 	// ...existing code...
 
 	// 注册阻止服务控制器路由
 	blockedServicesController := NewBlockedServicesController()
-	r.HandleFunc("/control/blocked_services/get", blockedServicesController.Get).Methods(http.MethodGet)
+	mux.HandleFunc("/control/blocked_services/get", methodHandler(http.MethodGet, blockedServicesController.Get))
 
 	// ...existing code...
+}
+
+// methodHandler 包装一个处理函数，确保只有指定的 HTTP 方法才能访问
+func methodHandler(method string, h http.HandlerFunc) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		if r.Method != method {
+			http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
+			return
+		}
+		h(w, r)
+	}
 }

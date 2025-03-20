@@ -186,6 +186,11 @@
                 "panel": "shared"
             },
             "problemMatcher": []
+        },
+        {
+            "label": "Test",
+            "type": "shell",
+            "command": "make VERBOSE=1 deps test go-bench go-fuzz"
         }
     ]
 }
