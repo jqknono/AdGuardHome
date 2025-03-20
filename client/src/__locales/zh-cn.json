@@ -750,5 +750,15 @@
   "version_request_error": "检查更新失败。请检查互联网连接。",
   "wednesday": "星期三",
   "wednesday_short": "周三",
-  "whois": "WHOIS"
+  "whois": "WHOIS",
+  "service_urls": "服务配置源",
+  "service_urls_desc": "配置用于加载阻止服务规则的URL列表",
+  "show_urls": "显示配置源",
+  "hide_urls": "隐藏配置源",
+  "add_url": "添加URL",
+  "service_url_placeholder": "输入服务配置源URL",
+  "reload_services": "重新加载服务",
+  "loading_service_urls": "正在加载服务配置源...",
+  "blocked_services_reloaded": "服务已成功重新加载",
+  "service_urls_saved": "服务配置源已保存"
 }

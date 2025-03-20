@@ -11,6 +11,7 @@ import { getBlockedServices, getAllBlockedServices, updateBlockedServices } from
 import PageTitle from '../../ui/PageTitle';
 
 import { ScheduleForm } from './ScheduleForm';
+import ServiceUrls from './ServiceUrls';
 import { RootState } from '../../../initialState';
 
 const getInitialDataForServices = (initial: any) =>
@@ -70,7 +71,7 @@ const Services = () => {
     return (
         <>
             <PageTitle title={t('blocked_services')} subtitle={t('blocked_services_desc')} />
-
+            <ServiceUrls />
             <Card bodyType="card-body box-body--settings">
                 <div className="form">
                     <Form

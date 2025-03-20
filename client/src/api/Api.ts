@@ -526,6 +526,12 @@ class Api {
 
     BLOCKED_SERVICES_ALL = { path: 'blocked_services/all', method: 'GET' };
 
+    BLOCKED_SERVICES_RELOAD = { path: 'blocked_services/reload', method: 'POST' };
+
+    SERVICE_URLS_GET = { path: 'blocked_services/urls/get', method: 'GET' };
+
+    SERVICE_URLS_SET = { path: 'blocked_services/urls/set', method: 'POST' };
+
     getAllBlockedServices() {
         const { path, method } = this.BLOCKED_SERVICES_ALL;
 
@@ -543,6 +549,30 @@ class Api {
         const parameters = {
             data: config,
         };
+
+        return this.makeRequest(path, method, parameters);
+    }
+
+    reloadBlockedServices() {
+        const { path, method } = this.BLOCKED_SERVICES_RELOAD;
+
+        return this.makeRequest(path, method);
+    }
+
+    getServiceUrls() {
+        const { path, method } = this.SERVICE_URLS_GET;
+
+        return this.makeRequest(path, method);
+    }
+
+    setServiceUrls(urls: string[]) {
+        const { path, method } = this.SERVICE_URLS_SET;
+        const parameters = {
+            data: {
+                service_urls: urls,
+            },
+        };
+
         return this.makeRequest(path, method, parameters);
     }
 

@@ -12,7 +12,7 @@ const services = handleActions(
             ...state,
             processing: false,
         }),
-        [actions.getBlockedServicesSuccess.toString()]: (state, { payload }: any) => ({
+        [actions.getBlockedServicesSuccess.toString()]: (state: any, { payload }: any) => ({
             ...state,
             list: payload,
             processing: false,
@@ -26,9 +26,9 @@ const services = handleActions(
             ...state,
             processingAll: false,
         }),
-        [actions.getAllBlockedServicesSuccess.toString()]: (state, { payload }: any) => ({
+        [actions.getAllBlockedServicesSuccess.toString()]: (state: any, { payload }: any) => ({
             ...state,
-            allServices: payload.blocked_services,
+            allServices: payload?.blocked_services || [],
             processingAll: false,
         }),
 
@@ -44,13 +44,57 @@ const services = handleActions(
             ...state,
             processingSet: false,
         }),
+
+        [actions.reloadBlockedServicesRequest.toString()]: (state: any) => ({
+            ...state,
+            processingReload: true,
+        }),
+        [actions.reloadBlockedServicesFailure.toString()]: (state: any) => ({
+            ...state,
+            processingReload: false,
+        }),
+        [actions.reloadBlockedServicesSuccess.toString()]: (state: any) => ({
+            ...state,
+            processingReload: false,
+        }),
+
+        [actions.getServiceUrlsRequest.toString()]: (state: any) => ({
+            ...state,
+            processingGetUrls: true,
+        }),
+        [actions.getServiceUrlsFailure.toString()]: (state: any) => ({
+            ...state,
+            processingGetUrls: false,
+        }),
+        [actions.getServiceUrlsSuccess.toString()]: (state: any, { payload }: any) => ({
+            ...state,
+            serviceUrls: payload?.service_urls || [],
+            processingGetUrls: false,
+        }),
+
+        [actions.updateServiceUrlsRequest.toString()]: (state: any) => ({
+            ...state,
+            processingSetUrls: true,
+        }),
+        [actions.updateServiceUrlsFailure.toString()]: (state: any) => ({
+            ...state,
+            processingSetUrls: false,
+        }),
+        [actions.updateServiceUrlsSuccess.toString()]: (state: any) => ({
+            ...state,
+            processingSetUrls: false,
+        }),
     },
     {
         processing: true,
         processingAll: true,
         processingSet: false,
+        processingReload: false,
+        processingGetUrls: false,
+        processingSetUrls: false,
         list: {},
         allServices: [],
+        serviceUrls: [],
     },
 );
 

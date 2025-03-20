@@ -324,3 +324,70 @@ func (d *DNSFilter) handleBlockedServicesReload(w http.ResponseWriter, r *http.R
 		Message: "服务已重新加载",
 	})
 }
+
+// handleServiceURLsGet 获取当前配置的 service_urls
+func (d *DNSFilter) handleServiceURLsGet(w http.ResponseWriter, r *http.Request) {
+	var urls []string
+	func() {
+		d.confMu.RLock()
+		defer d.confMu.RUnlock()
+		if d.conf.ServiceURLs != nil {
+			urls = slices.Clone(d.conf.ServiceURLs)
+		} else {
+			urls = []string{}
+		}
+	}()
+	aghhttp.WriteJSONResponseOK(w, r, struct {
+		ServiceURLs []string `json:"service_urls"`
+	}{
+		ServiceURLs: urls,
+	})
+}
+
+// handleServiceURLsSet 设置 service_urls
+func (d *DNSFilter) handleServiceURLsSet(w http.ResponseWriter, r *http.Request) {
+	var data struct {
+		ServiceURLs []string `json:"service_urls"`
+	}
+	err := json.NewDecoder(r.Body).Decode(&data)
+	if err != nil {
+		aghhttp.Error(r, w, http.StatusBadRequest, "json.Decode: %s", err)
+		return
+	}
+
+	if len(data.ServiceURLs) == 0 {
+		// 使用默认值
+		data.ServiceURLs = []string{"https://jqknono.github.io/HostlistsRegistry/assets/services.json"}
+	}
+
+	func() {
+		d.confMu.Lock()
+		defer d.confMu.Unlock()
+		d.conf.ServiceURLs = data.ServiceURLs
+	}()
+
+	// 重新初始化服务加载器
+	d.initServiceLoader(r.Context())
+
+	// 重新加载服务
+	if serviceLoader != nil {
+		_, err := serviceLoader.LoadServices(r.Context())
+		if err != nil {
+			log.Error("failed to reload services: %s", err)
+		}
+		updateBlockedServicesFromLoader(r.Context())
+	}
+
+	log.Debug("Updated service URLs: %d", len(data.ServiceURLs))
+	d.conf.ConfigModified()
+
+	aghhttp.WriteJSONResponseOK(w, r, struct {
+		Status  string   `json:"status"`
+		URLs    []string `json:"urls"`
+		Message string   `json:"message"`
+	}{
+		Status:  "ok",
+		URLs:    data.ServiceURLs,
+		Message: "服务URL已更新",
+	})
+}

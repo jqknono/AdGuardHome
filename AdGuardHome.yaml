@@ -10,8 +10,8 @@ users:
 auth_attempts: 5
 block_auth_min: 15
 http_proxy: ""
-language: ""
-theme: auto
+language: zh-cn
+theme: light
 service_type: enterprise
 dns:
   bind_hosts:
@@ -101,15 +101,15 @@ statistics:
   enabled: true
 filters:
   - enabled: true
-    url: https://jqknono.github.io/HostlistsRegistry/assets/filter_1.txt
+    url: https://adguardteam.github.io/HostlistsRegistry/assets/filter_1.txt
     name: AdGuard DNS filter
     id: 1
   - enabled: true
-    url: https://jqknono.github.io/HostlistsRegistry/assets/filter_2.txt
+    url: https://adguardteam.github.io/HostlistsRegistry/assets/filter_2.txt
     name: AdAway Default Blocklist
     id: 2
   - enabled: true
-    url: https://jqknono.github.io/HostlistsRegistry/assets/filter_38.txt
+    url: https://adguardteam.github.io/HostlistsRegistry/assets/filter_38.txt
     name: 1Hosts (mini)
     id: 1734953904
 whitelist_filters: []
@@ -169,8 +169,7 @@ filtering:
   safebrowsing_enabled: false
   protection_enabled: true
   service_urls:
-    - https://hostlistsregistry1.jqknono.com/assets/services_zh-cn.json
-    # - https://hostlistsregistry1.jqknono.com/assets/services.json
+    - https://hostlistsregistry1.jqknono.com/assets/services.json
 clients:
   runtime_sources:
     whois: false
