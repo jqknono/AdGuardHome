@@ -411,12 +411,12 @@ var config = &configuration{
 	Filters: []filtering.FilterYAML{{
 		Filter:  filtering.Filter{ID: 1},
 		Enabled: true,
-		URL:     "https://jqknono.github.io/HostlistsRegistry/assets/filter_1.txt",
+		URL:     "https://adguardteam.github.io/HostlistsRegistry/assets/filter_1.txt",
 		Name:    "AdGuard DNS filter",
 	}, {
 		Filter:  filtering.Filter{ID: 2},
 		Enabled: false,
-		URL:     "https://jqknono.github.io/HostlistsRegistry/assets/filter_2.txt",
+		URL:     "https://adguardteam.github.io/HostlistsRegistry/assets/filter_2.txt",
 		Name:    "AdAway Default Blocklist",
 	}},
 	Filtering: &filtering.Config{

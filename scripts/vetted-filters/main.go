@@ -22,7 +22,7 @@ func main() {
 	ctx := context.Background()
 	l := slogutil.New(nil)
 
-	urlStr := "https://jqknono.github.io/HostlistsRegistry/assets/filters.json"
+	urlStr := "https://adguardteam.github.io/HostlistsRegistry/assets/filters.json"
 	if s := os.Getenv("URL"); s != "" {
 		urlStr = s
 	}

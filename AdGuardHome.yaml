@@ -169,7 +169,7 @@ filtering:
   safebrowsing_enabled: false
   protection_enabled: true
   service_urls:
-    - https://hostlistsregistry1.jqknono.com/assets/services.json
+    - https://www.adguardprivate.com/services/i18n/zh-cn.json
 clients:
   runtime_sources:
     whois: false

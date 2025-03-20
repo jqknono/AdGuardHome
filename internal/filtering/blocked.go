@@ -50,8 +50,8 @@ func initBlockedServices() {
 // initServiceLoader 初始化服务加载器
 func (d *DNSFilter) initServiceLoader(ctx context.Context) {
 	if len(d.conf.ServiceURLs) == 0 {
-		// use default "https://jqknono.github.io/HostlistsRegistry/assets/services.json"
-		d.conf.ServiceURLs = []string{"https://jqknono.github.io/HostlistsRegistry/assets/services.json"}
+		// use default "https://adguardteam.github.io/HostlistsRegistry/assets/services.json"
+		d.conf.ServiceURLs = []string{"https://adguardteam.github.io/HostlistsRegistry/assets/services.json"}
 	}
 
 	logger := slog.Default()
@@ -357,7 +357,7 @@ func (d *DNSFilter) handleServiceURLsSet(w http.ResponseWriter, r *http.Request)
 
 	if len(data.ServiceURLs) == 0 {
 		// 使用默认值
-		data.ServiceURLs = []string{"https://jqknono.github.io/HostlistsRegistry/assets/services.json"}
+		data.ServiceURLs = []string{"https://adguardteam.github.io/HostlistsRegistry/assets/services.json"}
 	}
 
 	func() {

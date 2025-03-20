@@ -334,7 +334,7 @@ AdGuard's [Hostlists Registry][reg].
 Optional environment:
 
  *  `URL`: the URL of the index file.  By default it's
-    `https://jqknono.github.io/HostlistsRegistry/assets/services.json`.
+    `https://adguardteam.github.io/HostlistsRegistry/assets/services.json`.
 
    ###  Usage
 
@@ -354,7 +354,7 @@ filtering list data from AdGuard's [Hostlists Registry][reg].
 Optional environment:
 
  *  `URL`: the URL of the index file.  By default it's
-    `https://jqknono.github.io/HostlistsRegistry/assets/filters.json`.
+    `https://adguardteam.github.io/HostlistsRegistry/assets/filters.json`.
 
    ###  Usage
 
