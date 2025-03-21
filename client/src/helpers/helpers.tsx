@@ -853,10 +853,10 @@ export const getSpecialFilterName = (filterId: any) => {
             return i18n.t('system_host_files');
         case SPECIAL_FILTER_ID.BLOCKED_SERVICES:
             return i18n.t('blocked_services');
-        // case SPECIAL_FILTER_ID.PARENTAL:
-        //     return i18n.t('parental_control');
-        // case SPECIAL_FILTER_ID.SAFE_BROWSING:
-        //     return i18n.t('safe_browsing');
+        case SPECIAL_FILTER_ID.PARENTAL:
+            return i18n.t('parental_control');
+        case SPECIAL_FILTER_ID.SAFE_BROWSING:
+            return i18n.t('safe_browsing');
         case SPECIAL_FILTER_ID.SAFE_SEARCH:
             return i18n.t('safe_search');
         default:

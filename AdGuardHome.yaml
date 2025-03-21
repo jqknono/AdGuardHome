@@ -18,7 +18,7 @@ dns:
     - 0.0.0.0
   port: 5353
   anonymize_client_ip: false
-  ratelimit: 2
+  ratelimit: 1
   ratelimit_subnet_len_ipv4: 24
   ratelimit_subnet_len_ipv6: 56
   ratelimit_whitelist: []
@@ -46,7 +46,7 @@ dns:
   trusted_proxies:
     - 127.0.0.0/8
     - ::1/128
-  cache_size: 4194304
+  cache_size: 4194301
   cache_ttl_min: 60
   cache_ttl_max: 86400
   cache_optimistic: true
@@ -163,7 +163,7 @@ filtering:
   parental_cache_size: 1048576
   cache_time: 30
   filters_update_interval: 72
-  blocked_response_ttl: 12
+  blocked_response_ttl: 10
   filtering_enabled: true
   parental_enabled: false
   safebrowsing_enabled: false

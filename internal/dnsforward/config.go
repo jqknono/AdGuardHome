@@ -306,6 +306,9 @@ type ServerConfig struct {
 
 	// ServePlainDNS defines if plain DNS is allowed for incoming requests.
 	ServePlainDNS bool
+
+	// ServiceType 指示服务类型，可以是: personal, family, enterprise
+	ServiceType string
 }
 
 // UpstreamMode is a enumeration of upstream mode representations.  See

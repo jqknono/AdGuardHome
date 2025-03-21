@@ -26,8 +26,8 @@ const dnsConfig = handleActions(
                 bootstrap_dns,
                 upstream_alternate_dns,
                 upstream_alternate_rulesets,
-                // local_ptr_upstreams,
-                // ratelimit_whitelist,
+                local_ptr_upstreams,
+                ratelimit_whitelist,
                 ...values
             } = payload;
 
@@ -41,8 +41,8 @@ const dnsConfig = handleActions(
                 bootstrap_dns: (bootstrap_dns && bootstrap_dns.join('\n')) || '',
                 upstream_alternate_dns: (upstream_alternate_dns && upstream_alternate_dns.join('\n')) || '',
                 upstream_alternate_rulesets: (upstream_alternate_rulesets && upstream_alternate_rulesets.join('\n')) || '',
-                // local_ptr_upstreams: (local_ptr_upstreams && local_ptr_upstreams.join('\n')) || '',
-                // ratelimit_whitelist: (ratelimit_whitelist && ratelimit_whitelist.join('\n')) || '',
+                local_ptr_upstreams: (local_ptr_upstreams && local_ptr_upstreams.join('\n')) || '',
+                ratelimit_whitelist: (ratelimit_whitelist && ratelimit_whitelist.join('\n')) || '',
                 processingGetConfig: false,
                 upstream_mode: upstream_mode === '' ? DNS_REQUEST_OPTIONS.LOAD_BALANCING : upstream_mode,
             };
@@ -66,10 +66,10 @@ const dnsConfig = handleActions(
         processingGetConfig: false,
         processingSetConfig: false,
         blocking_mode: BLOCKING_MODES.default,
-        // ratelimit: 20,
+        ratelimit: 20,
         blocking_ipv4: DEFAULT_BLOCKING_IPV4,
         blocking_ipv6: DEFAULT_BLOCKING_IPV6,
-        // blocked_response_ttl: 10,
+        blocked_response_ttl: 10,
         edns_cs_enabled: false,
         disable_ipv6: false,
         dnssec_enabled: false,

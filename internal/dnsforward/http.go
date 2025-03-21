@@ -467,6 +467,13 @@ func checkInclusion(ptr *int, minN, maxN int) (err error) {
 	return nil
 }
 
+// 添加函数来决定是否允许修改特定配置
+// isEnterpriseConfigAllowed 检查当前的服务类型是否允许修改企业级配置
+func (s *Server) isEnterpriseConfigAllowed() bool {
+	// 从ServerConfig中获取服务类型
+	return s.conf.ServiceType == "enterprise"
+}
+
 // handleSetConfig handles requests to the POST /control/dns_config endpoint.
 func (s *Server) handleSetConfig(w http.ResponseWriter, r *http.Request) {
 	req := &jsonDNSConfig{}
@@ -475,6 +482,21 @@ func (s *Server) handleSetConfig(w http.ResponseWriter, r *http.Request) {
 		aghhttp.Error(r, w, http.StatusBadRequest, "decoding request: %s", err)
 
 		return
+	}
+
+	// 检查服务类型，只有在enterprise模式下才允许修改ratelimit和cache_size
+	if req.Ratelimit != nil || req.CacheSize != nil {
+		if !s.isEnterpriseConfigAllowed() {
+			// 如果不是enterprise类型，则忽略ratelimit和cache_size的修改请求
+			if req.Ratelimit != nil {
+				log.Info("ignoring ratelimit change request: service_type is not enterprise")
+				req.Ratelimit = nil
+			}
+			if req.CacheSize != nil {
+				log.Info("ignoring cache_size change request: service_type is not enterprise")
+				req.CacheSize = nil
+			}
+		}
 	}
 
 	// TODO(e.burkov):  Consider prebuilding this set on startup.

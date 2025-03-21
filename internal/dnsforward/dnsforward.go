@@ -468,6 +468,9 @@ func (s *Server) startLocked() error {
 func (s *Server) Prepare(conf *ServerConfig) (err error) {
 	s.conf = *conf
 
+	// 设置 ServiceType，与全局配置 home.Config.ServiceType 保持一致
+	s.conf.ServiceType = s.getHomeConfigServiceType()
+
 	// dnsFilter can be nil during application update.
 	if s.dnsFilter != nil {
 		mode, bIPv4, bIPv6 := s.dnsFilter.BlockingMode()
@@ -481,7 +484,7 @@ func (s *Server) Prepare(conf *ServerConfig) (err error) {
 
 	err = s.prepareInternalDNS()
 	if err != nil {
-		// Don't wrap the error, because it's informative enough as is.
+		// Don't wrap the error since it's informative enough as is.
 		return err
 	}
 
@@ -521,6 +524,17 @@ func (s *Server) Prepare(conf *ServerConfig) (err error) {
 	s.registerHandlers()
 
 	return nil
+}
+
+// 从 home.Config 获取 ServiceType 字段
+func (s *Server) getHomeConfigServiceType() string {
+	// 导入了 home 包后可以直接访问 home.Config.ServiceType
+	// 但为避免循环引用，我们通过 proxy 包达到同样效果
+	if s.conf.ServiceType == "" {
+		// 如果未设置，默认为 "personal"
+		return "personal"
+	}
+	return s.conf.ServiceType
 }
 
 // limit the DomainReservedUpstreams count to 10000, root domain

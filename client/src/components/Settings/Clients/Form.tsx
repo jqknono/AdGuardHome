@@ -36,14 +36,16 @@ const settingsCheckboxes = [
         name: 'filtering_enabled',
         placeholder: 'block_domain_use_filters_and_hosts',
     },
-    // {
-    //     name: 'safebrowsing_enabled',
-    //     placeholder: 'use_adguard_browsing_sec',
-    // },
-    // {
-    //     name: 'parental_enabled',
-    //     placeholder: 'use_adguard_parental',
-    // },
+    {
+        name: 'safebrowsing_enabled',
+        placeholder: 'use_adguard_browsing_sec',
+        requiredServiceTypes: ['enterprise'],
+    },
+    {
+        name: 'parental_enabled',
+        placeholder: 'use_adguard_parental',
+        requiredServiceTypes: ['enterprise'],
+    },
 ];
 
 const logAndStatsCheckboxes = [
@@ -185,6 +187,7 @@ let Form = (props: FormProps) => {
         initialValues,
     } = props;
 
+    const { service_type } = useSelector((state: RootState) => state);
     const services = useSelector((store: RootState) => store?.services);
     const { safe_search } = initialValues;
     const safeSearchServices = { ...safe_search };
@@ -203,17 +206,23 @@ let Form = (props: FormProps) => {
             component: (
                 <div title={props.t('main_settings')}>
                     <div className="form__label--bot form__label--bold">{t('protection_section_label')}</div>
-                    {settingsCheckboxes.map((setting) => (
-                        <div className="form__group" key={setting.name}>
-                            <Field
-                                name={setting.name}
-                                type="checkbox"
-                                component={CheckboxField}
-                                placeholder={t(setting.placeholder)}
-                                disabled={setting.name !== 'use_global_settings' ? useGlobalSettings : false}
-                            />
-                        </div>
-                    ))}
+                    {settingsCheckboxes.map((setting) => {
+                        // 检查是否应该显示此设置选项
+                        const shouldShow = !setting.requiredServiceTypes ||
+                            setting.requiredServiceTypes.includes(service_type);
+
+                        return shouldShow ? (
+                            <div className="form__group" key={setting.name}>
+                                <Field
+                                    name={setting.name}
+                                    type="checkbox"
+                                    component={CheckboxField}
+                                    placeholder={t(setting.placeholder)}
+                                    disabled={setting.name !== 'use_global_settings' ? useGlobalSettings : false}
+                                />
+                            </div>
+                        ) : null;
+                    })}
 
                     <div className="form__group">
                         <Field

@@ -332,8 +332,8 @@ type statsConfig struct {
 
 // Default block host constants.
 const (
-	defaultSafeBrowsingBlockHost = "standard-block.dns.adguard.com"
-	defaultParentalBlockHost     = "family-block.dns.adguard.com"
+	defaultSafeBrowsingBlockHost = "standard-block.dns.adguardprivate.com" // "standard-block.dns.adguard.com"
+	defaultParentalBlockHost     = "family-block.dns.adguardprivate.com"   // "family-block.dns.adguard.com"
 )
 
 // config is the global configuration structure.

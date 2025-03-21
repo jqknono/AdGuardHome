@@ -254,6 +254,7 @@ func newServerConfig(
 		ServeHTTP3:             dnsConf.ServeHTTP3,
 		UseHTTP3Upstreams:      dnsConf.UseHTTP3Upstreams,
 		ServePlainDNS:          dnsConf.ServePlainDNS,
+		ServiceType:            config.ServiceType, // 从全局配置中获取 ServiceType 设置
 	}
 
 	var initialAddresses []netip.Addr

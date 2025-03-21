@@ -22,18 +22,18 @@ import { SettingsData } from '../../initialState';
 const ORDER_KEY = 'order';
 
 const SETTINGS = {
-    // safebrowsing: {
-    //     enabled: false,
-    //     title: 'use_adguard_browsing_sec',
-    //     subtitle: 'use_adguard_browsing_sec_hint',
-    //     [ORDER_KEY]: 0,
-    // },
-    // parental: {
-    //     enabled: false,
-    //     title: 'use_adguard_parental',
-    //     subtitle: 'use_adguard_parental_hint',
-    //     [ORDER_KEY]: 1,
-    // },
+    safebrowsing: {
+        enabled: false,
+        title: 'use_adguard_browsing_sec',
+        subtitle: 'use_adguard_browsing_sec_hint',
+        [ORDER_KEY]: 0,
+    },
+    parental: {
+        enabled: false,
+        title: 'use_adguard_parental',
+        subtitle: 'use_adguard_parental_hint',
+        [ORDER_KEY]: 1,
+    },
 };
 
 interface SettingsProps {

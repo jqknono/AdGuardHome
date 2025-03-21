@@ -18,9 +18,9 @@ const Upstream = () => {
         upstream_mode,
         upstream_alternate_dns,
         upstream_alternate_rulesets,
-        // resolve_clients,
-        // local_ptr_upstreams,
-        // use_private_ptr_resolvers,
+        resolve_clients,
+        local_ptr_upstreams,
+        use_private_ptr_resolvers,
     } = useSelector((state: RootState) => state.dnsConfig, shallowEqual);
 
     const upstream_dns_file = useSelector((state: RootState) => state.dnsConfig.upstream_dns_file);
@@ -73,9 +73,9 @@ const Upstream = () => {
                             upstream_mode,
                             upstream_alternate_dns: upstreamAlternateDns,
                             upstream_alternate_rulesets,
-                            // resolve_clients,
-                            // local_ptr_upstreams,
-                            // use_private_ptr_resolvers,
+                            resolve_clients,
+                            local_ptr_upstreams,
+                            use_private_ptr_resolvers,
                         }}
                         onSubmit={handleSubmit}
                     />
