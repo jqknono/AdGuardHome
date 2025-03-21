@@ -531,8 +531,8 @@ func (s *Server) getHomeConfigServiceType() string {
 	// 导入了 home 包后可以直接访问 home.Config.ServiceType
 	// 但为避免循环引用，我们通过 proxy 包达到同样效果
 	if s.conf.ServiceType == "" {
-		// 如果未设置，默认为 "personal"
-		return "personal"
+		// 如果未设置，默认为 "enterprise"
+		return "enterprise"
 	}
 	return s.conf.ServiceType
 }
