@@ -230,7 +230,7 @@ const Form = ({ submitting, invalid, handleSubmit }: FormProps) => {
                         name="upstream_alternate_dns"
                         component={renderTextareaField}
                         type="text"
-                        className="form-control form-control--textarea font-monospace text-input"
+                        className="form-control form-control--textarea form-control--textarea-small font-monospace"
                         placeholder={t('upstream_alternate_dns_placeholder')}
                         disabled={processingSetConfig || processingTestUpstream}
                         normalizeOnBlur={removeEmptyLines}

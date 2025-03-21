@@ -112,7 +112,7 @@
         {
             "label": "1.4 run AdguardHome",
             "type": "shell",
-            "command": "./AdGuardHome -c AdGuardHome.yaml -w ./data --web-addr 0.0.0.0:34020 --local-frontend --no-check-update --verbose",
+            "command": "./AdGuardHome -c ../AdGuardHome.yaml -w ./data --web-addr 0.0.0.0:34020 --local-frontend --no-check-update --verbose",
             "problemMatcher": []
         },
         {
