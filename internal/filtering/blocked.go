@@ -7,6 +7,7 @@ import (
 	"log/slog"
 	"net/http"
 	"slices"
+	"sync"
 	"time"
 
 	"github.com/AdguardTeam/golibs/log"
@@ -15,6 +16,9 @@ import (
 	"github.com/jqknono/AdGuardHome/internal/filtering/rulelist"
 	"github.com/jqknono/AdGuardHome/internal/schedule"
 )
+
+// 首先，创建一个互斥锁保护 serviceLoader
+var serviceLoaderMu sync.RWMutex
 
 // serviceRules maps a service ID to its filtering rules.
 var serviceRules map[string][]*rules.NetworkRule
@@ -59,29 +63,44 @@ func (d *DNSFilter) initServiceLoader(ctx context.Context) {
 		logger = d.logger
 	}
 
-	serviceLoader = NewServiceLoader(
+	newLoader := NewServiceLoader(
 		d.conf.ServiceURLs,
 		d.conf.DataDir,
 		d.conf.HTTPClient,
 		logger,
 	)
 
+	// 使用锁保护写操作
+	serviceLoaderMu.Lock()
+	serviceLoader = newLoader
+	serviceLoaderMu.Unlock()
+
 	// 预加载服务
 	go func() {
-		_, err := serviceLoader.LoadServices(ctx)
-		if err != nil {
-			log.Error("filtering: failed to load services: %s", err)
+		// 在goroutine中使用读锁访问 serviceLoader
+		serviceLoaderMu.RLock()
+		loader := serviceLoader
+		serviceLoaderMu.RUnlock()
+
+		if loader != nil {
+			_, err := loader.LoadServices(ctx)
+			if err != nil {
+				log.Error("filtering: failed to load services: %s", err)
+			}
 		}
 	}()
 }
 
 // updateBlockedServicesFromLoader 从加载器中更新服务规则
 func updateBlockedServicesFromLoader(ctx context.Context) {
-	if serviceLoader == nil {
+	serviceLoaderMu.RLock()
+	loader := serviceLoader
+	serviceLoaderMu.RUnlock()
+
+	if loader == nil {
 		return
 	}
-
-	services := serviceLoader.GetBlockedServices(ctx)
+	services := loader.GetBlockedServices(ctx)
 	if len(services) == 0 {
 		log.Debug("filtering: no services loaded from URLs")
 		return
