@@ -4,12 +4,12 @@ import (
 	"net"
 	"time"
 
-	"github.com/AdguardTeam/AdGuardHome/internal/aghnet"
-	"github.com/AdguardTeam/AdGuardHome/internal/filtering"
-	"github.com/AdguardTeam/AdGuardHome/internal/querylog"
-	"github.com/AdguardTeam/AdGuardHome/internal/stats"
 	"github.com/AdguardTeam/dnsproxy/proxy"
 	"github.com/AdguardTeam/golibs/log"
+	"github.com/jqknono/AdGuardHome/internal/aghnet"
+	"github.com/jqknono/AdGuardHome/internal/filtering"
+	"github.com/jqknono/AdGuardHome/internal/querylog"
+	"github.com/jqknono/AdGuardHome/internal/stats"
 	"github.com/miekg/dns"
 )
 

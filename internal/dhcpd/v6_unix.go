@@ -10,8 +10,6 @@ import (
 	"sync"
 	"time"
 
-	"github.com/AdguardTeam/AdGuardHome/internal/aghnet"
-	"github.com/AdguardTeam/AdGuardHome/internal/dhcpsvc"
 	"github.com/AdguardTeam/golibs/errors"
 	"github.com/AdguardTeam/golibs/log"
 	"github.com/AdguardTeam/golibs/netutil"
@@ -19,6 +17,8 @@ import (
 	"github.com/insomniacslk/dhcp/dhcpv6"
 	"github.com/insomniacslk/dhcp/dhcpv6/server6"
 	"github.com/insomniacslk/dhcp/iana"
+	"github.com/jqknono/AdGuardHome/internal/aghnet"
+	"github.com/jqknono/AdGuardHome/internal/dhcpsvc"
 )
 
 const valueIAID = "ADGH" // value for IANA.ID

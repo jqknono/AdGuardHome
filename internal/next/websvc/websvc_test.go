@@ -12,14 +12,14 @@ import (
 	"testing"
 	"time"
 
-	"github.com/AdguardTeam/AdGuardHome/internal/next/agh"
-	"github.com/AdguardTeam/AdGuardHome/internal/next/dnssvc"
-	"github.com/AdguardTeam/AdGuardHome/internal/next/websvc"
 	"github.com/AdguardTeam/golibs/logutil/slogutil"
 	"github.com/AdguardTeam/golibs/netutil/httputil"
 	"github.com/AdguardTeam/golibs/netutil/urlutil"
 	"github.com/AdguardTeam/golibs/testutil"
 	"github.com/AdguardTeam/golibs/testutil/fakefs"
+	"github.com/jqknono/AdGuardHome/internal/next/agh"
+	"github.com/jqknono/AdGuardHome/internal/next/dnssvc"
+	"github.com/jqknono/AdGuardHome/internal/next/websvc"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )

@@ -15,14 +15,14 @@ import (
 	"sync"
 	"time"
 
-	"github.com/AdguardTeam/AdGuardHome/internal/aghos"
-	"github.com/AdguardTeam/AdGuardHome/internal/next/agh"
-	"github.com/AdguardTeam/AdGuardHome/internal/next/dnssvc"
-	"github.com/AdguardTeam/AdGuardHome/internal/next/websvc"
 	"github.com/AdguardTeam/golibs/errors"
 	"github.com/AdguardTeam/golibs/logutil/slogutil"
 	"github.com/AdguardTeam/golibs/timeutil"
 	"github.com/google/renameio/v2/maybe"
+	"github.com/jqknono/AdGuardHome/internal/aghos"
+	"github.com/jqknono/AdGuardHome/internal/next/agh"
+	"github.com/jqknono/AdGuardHome/internal/next/dnssvc"
+	"github.com/jqknono/AdGuardHome/internal/next/websvc"
 	"gopkg.in/yaml.v3"
 )
 

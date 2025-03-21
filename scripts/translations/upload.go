@@ -12,9 +12,9 @@ import (
 	"path/filepath"
 	"slices"
 
-	"github.com/AdguardTeam/AdGuardHome/internal/aghhttp"
 	"github.com/AdguardTeam/golibs/errors"
 	"github.com/AdguardTeam/golibs/httphdr"
+	"github.com/jqknono/AdGuardHome/internal/aghhttp"
 )
 
 // upload base translation.

@@ -4,8 +4,8 @@ import (
 	"crypto/tls"
 	"testing"
 
-	"github.com/AdguardTeam/AdGuardHome/internal/aghtls"
 	"github.com/AdguardTeam/golibs/testutil"
+	"github.com/jqknono/AdGuardHome/internal/aghtls"
 	"github.com/stretchr/testify/assert"
 )
 

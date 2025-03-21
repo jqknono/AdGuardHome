@@ -3,8 +3,8 @@ package websvc
 import (
 	"net/http"
 
-	"github.com/AdguardTeam/AdGuardHome/internal/aghhttp"
 	"github.com/AdguardTeam/golibs/httphdr"
+	"github.com/jqknono/AdGuardHome/internal/aghhttp"
 )
 
 // jsonMw sets the content type of the response to application/json.

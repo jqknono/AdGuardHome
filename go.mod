@@ -1,4 +1,4 @@
-module github.com/AdguardTeam/AdGuardHome
+module github.com/jqknono/AdGuardHome
 
 go 1.23.4
 
@@ -65,7 +65,5 @@ require (
 	golang.org/x/tools v0.28.0 // indirect
 	gonum.org/v1/gonum v0.15.1 // indirect
 )
-
-replace github.com/AdguardTeam/AdGuardHome => .
 
 replace github.com/AdguardTeam/dnsproxy v0.73.4 => github.com/jqknono/dnsproxy v0.73.5

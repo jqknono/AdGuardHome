@@ -8,12 +8,12 @@ import (
 	"sync"
 	"time"
 
-	"github.com/AdguardTeam/AdGuardHome/internal/aghhttp"
-	"github.com/AdguardTeam/AdGuardHome/internal/aghnet"
-	"github.com/AdguardTeam/AdGuardHome/internal/filtering"
 	"github.com/AdguardTeam/golibs/container"
 	"github.com/AdguardTeam/golibs/errors"
 	"github.com/AdguardTeam/golibs/service"
+	"github.com/jqknono/AdGuardHome/internal/aghhttp"
+	"github.com/jqknono/AdGuardHome/internal/aghnet"
+	"github.com/jqknono/AdGuardHome/internal/filtering"
 	"github.com/miekg/dns"
 )
 

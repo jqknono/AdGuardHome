@@ -1,6 +1,6 @@
 package querylog
 
-import "github.com/AdguardTeam/AdGuardHome/internal/whois"
+import "github.com/jqknono/AdGuardHome/internal/whois"
 
 // Client is the information required by the query log to match against clients
 // during searches.

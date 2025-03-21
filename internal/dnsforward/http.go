@@ -10,14 +10,14 @@ import (
 	"slices"
 	"time"
 
-	"github.com/AdguardTeam/AdGuardHome/internal/aghhttp"
-	"github.com/AdguardTeam/AdGuardHome/internal/filtering"
 	"github.com/AdguardTeam/dnsproxy/proxy"
 	"github.com/AdguardTeam/dnsproxy/upstream"
 	"github.com/AdguardTeam/golibs/errors"
 	"github.com/AdguardTeam/golibs/log"
 	"github.com/AdguardTeam/golibs/netutil"
 	"github.com/AdguardTeam/golibs/stringutil"
+	"github.com/jqknono/AdGuardHome/internal/aghhttp"
+	"github.com/jqknono/AdGuardHome/internal/filtering"
 )
 
 // jsonDNSConfig is the JSON representation of the DNS server configuration.
@@ -752,7 +752,7 @@ func (s *Server) registerHandlers() {
 	//
 	// See go doc net/http.ServeMux.
 	//
-	// See also https://github.com/AdguardTeam/AdGuardHome/issues/2628.
+	// See also https://github.com/jqknono/AdGuardHome/issues/2628.
 	s.conf.HTTPRegister("", "/dns-query", s.handleDoH)
 	s.conf.HTTPRegister("", "/dns-query/", s.handleDoH)
 

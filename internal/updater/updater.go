@@ -18,12 +18,12 @@ import (
 	"sync"
 	"time"
 
-	"github.com/AdguardTeam/AdGuardHome/internal/aghos"
-	"github.com/AdguardTeam/AdGuardHome/internal/version"
 	"github.com/AdguardTeam/golibs/errors"
 	"github.com/AdguardTeam/golibs/ioutil"
 	"github.com/AdguardTeam/golibs/log"
 	"github.com/AdguardTeam/golibs/netutil/urlutil"
+	"github.com/jqknono/AdGuardHome/internal/aghos"
+	"github.com/jqknono/AdGuardHome/internal/version"
 )
 
 // Updater is the AdGuard Home updater.

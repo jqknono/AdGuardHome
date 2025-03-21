@@ -8,10 +8,10 @@ import (
 	"net/netip"
 	"time"
 
-	"github.com/AdguardTeam/AdGuardHome/internal/aghhttp"
-	"github.com/AdguardTeam/AdGuardHome/internal/next/agh"
-	"github.com/AdguardTeam/AdGuardHome/internal/next/jsonpatch"
 	"github.com/AdguardTeam/golibs/logutil/slogutil"
+	"github.com/jqknono/AdGuardHome/internal/aghhttp"
+	"github.com/jqknono/AdGuardHome/internal/next/agh"
+	"github.com/jqknono/AdGuardHome/internal/next/jsonpatch"
 )
 
 // ReqPatchSettingsHTTP describes the request to the PATCH /api/v1/settings/http

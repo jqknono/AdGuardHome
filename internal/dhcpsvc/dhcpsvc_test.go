@@ -5,8 +5,8 @@ import (
 	"net/netip"
 	"time"
 
-	"github.com/AdguardTeam/AdGuardHome/internal/dhcpsvc"
 	"github.com/AdguardTeam/golibs/logutil/slogutil"
+	"github.com/jqknono/AdGuardHome/internal/dhcpsvc"
 	"github.com/stretchr/testify/require"
 )
 

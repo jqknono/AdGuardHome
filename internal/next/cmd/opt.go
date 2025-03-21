@@ -13,10 +13,10 @@ import (
 	"slices"
 	"strings"
 
-	"github.com/AdguardTeam/AdGuardHome/internal/configmigrate"
-	"github.com/AdguardTeam/AdGuardHome/internal/next/configmgr"
-	"github.com/AdguardTeam/AdGuardHome/internal/version"
 	"github.com/AdguardTeam/golibs/osutil"
+	"github.com/jqknono/AdGuardHome/internal/configmigrate"
+	"github.com/jqknono/AdGuardHome/internal/next/configmgr"
+	"github.com/jqknono/AdGuardHome/internal/version"
 )
 
 // options contains all command-line options for the AdGuardHome(.exe) binary.

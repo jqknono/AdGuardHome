@@ -5,7 +5,7 @@ package main
 import (
 	"embed"
 
-	"github.com/AdguardTeam/AdGuardHome/internal/next/cmd"
+	"github.com/jqknono/AdGuardHome/internal/next/cmd"
 )
 
 // Embed the prebuilt client here since we strive to keep .go files inside the

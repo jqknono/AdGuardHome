@@ -13,12 +13,12 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/AdguardTeam/AdGuardHome/internal/aghhttp"
-	"github.com/AdguardTeam/AdGuardHome/internal/aghnet"
-	"github.com/AdguardTeam/AdGuardHome/internal/aghos"
 	"github.com/AdguardTeam/golibs/errors"
 	"github.com/AdguardTeam/golibs/logutil/slogutil"
 	"github.com/AdguardTeam/golibs/timeutil"
+	"github.com/jqknono/AdGuardHome/internal/aghhttp"
+	"github.com/jqknono/AdGuardHome/internal/aghnet"
+	"github.com/jqknono/AdGuardHome/internal/aghos"
 	"go.etcd.io/bbolt"
 )
 
@@ -389,7 +389,7 @@ func (s *StatsCtx) openDB() (err error) {
 	if err != nil {
 		if err.Error() == "invalid argument" {
 			const lines = `AdGuard Home cannot be initialized due to an incompatible file system.
-Please read the explanation here: https://github.com/AdguardTeam/AdGuardHome/wiki/Getting-Started#limitations`
+Please read the explanation here: https://github.com/jqknono/AdGuardHome/wiki/Getting-Started#limitations`
 
 			// TODO(s.chzhen):  Use passed context.
 			slogutil.PrintLines(

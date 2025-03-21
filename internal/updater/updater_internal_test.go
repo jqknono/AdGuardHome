@@ -6,7 +6,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/AdguardTeam/AdGuardHome/internal/aghtest"
+	"github.com/jqknono/AdGuardHome/internal/aghtest"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )

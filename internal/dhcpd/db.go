@@ -12,11 +12,11 @@ import (
 	"strings"
 	"time"
 
-	"github.com/AdguardTeam/AdGuardHome/internal/aghos"
-	"github.com/AdguardTeam/AdGuardHome/internal/dhcpsvc"
 	"github.com/AdguardTeam/golibs/errors"
 	"github.com/AdguardTeam/golibs/log"
 	"github.com/google/renameio/v2/maybe"
+	"github.com/jqknono/AdGuardHome/internal/aghos"
+	"github.com/jqknono/AdGuardHome/internal/dhcpsvc"
 )
 
 const (
@@ -52,7 +52,7 @@ func fromLease(l *dhcpsvc.Lease) (dl *dbLease) {
 		// The front-end is waiting for RFC 3999 format of the time value.  It
 		// also shouldn't got an Expiry field for static leases.
 		//
-		// See https://github.com/AdguardTeam/AdGuardHome/issues/2692.
+		// See https://github.com/jqknono/AdGuardHome/issues/2692.
 		expiryStr = l.Expiry.Format(time.RFC3339)
 	}
 

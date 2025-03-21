@@ -11,12 +11,6 @@ import (
 	"strings"
 	"time"
 
-	"github.com/AdguardTeam/AdGuardHome/internal/aghalg"
-	"github.com/AdguardTeam/AdGuardHome/internal/aghhttp"
-	"github.com/AdguardTeam/AdGuardHome/internal/aghnet"
-	"github.com/AdguardTeam/AdGuardHome/internal/aghtls"
-	"github.com/AdguardTeam/AdGuardHome/internal/client"
-	"github.com/AdguardTeam/AdGuardHome/internal/filtering"
 	"github.com/AdguardTeam/dnsproxy/proxy"
 	"github.com/AdguardTeam/dnsproxy/upstream"
 	"github.com/AdguardTeam/golibs/container"
@@ -27,6 +21,12 @@ import (
 	"github.com/AdguardTeam/golibs/stringutil"
 	"github.com/AdguardTeam/golibs/timeutil"
 	"github.com/ameshkov/dnscrypt/v2"
+	"github.com/jqknono/AdGuardHome/internal/aghalg"
+	"github.com/jqknono/AdGuardHome/internal/aghhttp"
+	"github.com/jqknono/AdGuardHome/internal/aghnet"
+	"github.com/jqknono/AdGuardHome/internal/aghtls"
+	"github.com/jqknono/AdGuardHome/internal/client"
+	"github.com/jqknono/AdGuardHome/internal/filtering"
 )
 
 // ClientsContainer provides information about preconfigured DNS clients.
@@ -772,7 +772,7 @@ func (s *Server) UpdatedProtectionStatus() (enabled bool, disabledUntil *time.Ti
 	// relatively rare situation, do not lock s.serverLock for writing, as that
 	// can lead to freezes.
 	//
-	// See https://github.com/AdguardTeam/AdGuardHome/issues/5661.
+	// See https://github.com/jqknono/AdGuardHome/issues/5661.
 	if s.protectionUpdateInProgress.CompareAndSwap(false, true) {
 		go s.enableProtectionAfterPause()
 	}

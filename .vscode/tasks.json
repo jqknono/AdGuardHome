@@ -190,7 +190,7 @@
         {
             "label": "Test",
             "type": "shell",
-            "command": "make VERBOSE=1 deps test go-bench go-fuzz"
+            "command": "VERBOSE=2 && bash ./scripts/make/go-test.sh"
         }
     ]
 }

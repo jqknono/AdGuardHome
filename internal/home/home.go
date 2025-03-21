@@ -19,21 +19,6 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/AdguardTeam/AdGuardHome/internal/aghalg"
-	"github.com/AdguardTeam/AdGuardHome/internal/aghnet"
-	"github.com/AdguardTeam/AdGuardHome/internal/aghos"
-	"github.com/AdguardTeam/AdGuardHome/internal/aghtls"
-	"github.com/AdguardTeam/AdGuardHome/internal/arpdb"
-	"github.com/AdguardTeam/AdGuardHome/internal/dhcpd"
-	"github.com/AdguardTeam/AdGuardHome/internal/dnsforward"
-	"github.com/AdguardTeam/AdGuardHome/internal/filtering"
-	"github.com/AdguardTeam/AdGuardHome/internal/filtering/hashprefix"
-	"github.com/AdguardTeam/AdGuardHome/internal/filtering/safesearch"
-	"github.com/AdguardTeam/AdGuardHome/internal/permcheck"
-	"github.com/AdguardTeam/AdGuardHome/internal/querylog"
-	"github.com/AdguardTeam/AdGuardHome/internal/stats"
-	"github.com/AdguardTeam/AdGuardHome/internal/updater"
-	"github.com/AdguardTeam/AdGuardHome/internal/version"
 	"github.com/AdguardTeam/dnsproxy/upstream"
 	"github.com/AdguardTeam/golibs/errors"
 	"github.com/AdguardTeam/golibs/hostsfile"
@@ -42,6 +27,21 @@ import (
 	"github.com/AdguardTeam/golibs/netutil"
 	"github.com/AdguardTeam/golibs/netutil/urlutil"
 	"github.com/AdguardTeam/golibs/osutil"
+	"github.com/jqknono/AdGuardHome/internal/aghalg"
+	"github.com/jqknono/AdGuardHome/internal/aghnet"
+	"github.com/jqknono/AdGuardHome/internal/aghos"
+	"github.com/jqknono/AdGuardHome/internal/aghtls"
+	"github.com/jqknono/AdGuardHome/internal/arpdb"
+	"github.com/jqknono/AdGuardHome/internal/dhcpd"
+	"github.com/jqknono/AdGuardHome/internal/dnsforward"
+	"github.com/jqknono/AdGuardHome/internal/filtering"
+	"github.com/jqknono/AdGuardHome/internal/filtering/hashprefix"
+	"github.com/jqknono/AdGuardHome/internal/filtering/safesearch"
+	"github.com/jqknono/AdGuardHome/internal/permcheck"
+	"github.com/jqknono/AdGuardHome/internal/querylog"
+	"github.com/jqknono/AdGuardHome/internal/stats"
+	"github.com/jqknono/AdGuardHome/internal/updater"
+	"github.com/jqknono/AdGuardHome/internal/version"
 )
 
 // Global context
@@ -867,7 +867,7 @@ Please note, that this is crucial for a server to be able to use privileged port
 You have two options:
 1. Run AdGuard Home with root privileges
 2. On Linux you can grant the CAP_NET_BIND_SERVICE capability:
-https://github.com/AdguardTeam/AdGuardHome/wiki/Getting-Started#running-without-superuser`)
+https://github.com/jqknono/AdGuardHome/wiki/Getting-Started#running-without-superuser`)
 		}
 
 		log.Info(
