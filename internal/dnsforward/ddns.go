@@ -51,9 +51,9 @@ func (s *Server) registerDDNSHandlers() {
 		return
 	}
 
-	s.conf.HTTPRegister("GET", "/control/ddns/script/windows", s.handleDDNSWindowsScript)
-	s.conf.HTTPRegister("GET", "/control/ddns/script/linux", s.handleDDNSLinuxScript)
-	s.conf.HTTPRegister("GET", "/control/ddns/script/macos", s.handleDDNSMacOSScript)
+	s.conf.HTTPRegister(http.MethodGet, "/control/ddns/script/windows", s.handleDDNSWindowsScript)
+	s.conf.HTTPRegister(http.MethodGet, "/control/ddns/script/linux", s.handleDDNSLinuxScript)
+	s.conf.HTTPRegister(http.MethodGet, "/control/ddns/script/macos", s.handleDDNSMacOSScript)
 }
 
 // Handle Windows script request
