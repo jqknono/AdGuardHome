@@ -56,7 +56,7 @@ func (s *ServiceLoader) ServicesDir() string {
 // ensureServiceDir 确保服务文件缓存目录存在
 func (s *ServiceLoader) ensureServiceDir() error {
 	dir := s.ServicesDir()
-	return os.MkdirAll(dir, 0755)
+	return os.MkdirAll(dir, 0o755)
 }
 
 // LoadServices 加载所有配置的服务文件
@@ -198,7 +198,7 @@ func (s *ServiceLoader) downloadAndCache(ctx context.Context, url, cacheFile str
 	}
 
 	// 保存到缓存
-	if err := os.WriteFile(cacheFile, body, 0644); err != nil {
+	if err := os.WriteFile(cacheFile, body, 0o644); err != nil {
 		s.logger.ErrorContext(ctx, "写入缓存失败", slogutil.KeyError, err, "file", cacheFile)
 	}
 

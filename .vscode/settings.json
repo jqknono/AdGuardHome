@@ -37,6 +37,7 @@
     //     "removeTags": true
     // },
     // "go.inferGopath": true,
+    "go.formatTool": "gofumpt",
     "go.testFlags": [
         "-v",
         "-tags",

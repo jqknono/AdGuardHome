@@ -384,7 +384,7 @@ func closeAll(errs []error, ups ...upstream.Upstream) []error {
 			errs = append(errs, err)
 		}
 	}
-	
+
 	return errs
 }
 
