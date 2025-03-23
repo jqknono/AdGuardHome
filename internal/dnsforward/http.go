@@ -778,5 +778,8 @@ func (s *Server) registerHandlers() {
 	s.conf.HTTPRegister("", "/dns-query", s.handleDoH)
 	s.conf.HTTPRegister("", "/dns-query/", s.handleDoH)
 
+	// register the DDNS handler
+	s.initDDNS()
+
 	webRegistered = true
 }

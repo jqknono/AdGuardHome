@@ -21,7 +21,18 @@ interface RewritesProps {
     rewrites: RewritesData;
 }
 
-class Rewrites extends Component<RewritesProps> {
+interface RewritesState {
+    ddnsDomain: string;
+}
+
+class Rewrites extends Component<RewritesProps, RewritesState> {
+    constructor(props: RewritesProps) {
+        super(props);
+        this.state = {
+            ddnsDomain: '',
+        };
+    }
+
     componentDidMount() {
         this.props.getRewritesList();
     }
@@ -46,6 +57,17 @@ class Rewrites extends Component<RewritesProps> {
         }
     };
 
+    handleDDNSDomainChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        this.setState({ ddnsDomain: event.target.value });
+    };
+
+    downloadDDNSScript = (os: string) => {
+        const { ddnsDomain } = this.state;
+        const domainParam = ddnsDomain ? `?domain=${encodeURIComponent(ddnsDomain)}` : '';
+        const endpoint = `/control/ddns/script/${os}${domainParam}`;
+        window.location.href = endpoint;
+    };
+
     render() {
         const {
             t,
@@ -65,6 +87,8 @@ class Rewrites extends Component<RewritesProps> {
             modalType,
             currentRewrite,
         } = rewrites;
+
+        const { ddnsDomain } = this.state;
 
         return (
             <Fragment>
@@ -89,6 +113,51 @@ class Rewrites extends Component<RewritesProps> {
                             disabled={processingAdd}>
                             <Trans>rewrite_add</Trans>
                         </button>
+
+                        {/* DDNS 脚本下载区域 */}
+                        <div className="mt-4">
+                            <h4><Trans>ddns_scripts</Trans></h4>
+                            <p className="text-muted mt-2"><Trans>ddns_scripts_desc</Trans></p>
+                            <div className="form-group">
+                                <label htmlFor="ddnsDomain" className="form-label">
+                                    <Trans>ddns_domain</Trans>
+                                </label>
+                                <input
+                                    type="text"
+                                    id="ddnsDomain"
+                                    className="form-control"
+                                    value={ddnsDomain}
+                                    onChange={this.handleDDNSDomainChange}
+                                    placeholder={t('ddns_domain_placeholder')}
+                                />
+                                <small className="form-text text-muted">
+                                    <Trans>ddns_domain_help</Trans>
+                                </small>
+                            </div>
+                            <div className="btn-group mt-3">
+                                <button
+                                    type="button"
+                                    className="btn btn-outline-primary"
+                                    onClick={() => this.downloadDDNSScript('windows')}
+                                    disabled={!ddnsDomain}>
+                                    <Trans>ddns_script_windows</Trans>
+                                </button>
+                                <button
+                                    type="button"
+                                    className="btn btn-outline-primary"
+                                    onClick={() => this.downloadDDNSScript('linux')}
+                                    disabled={!ddnsDomain}>
+                                    <Trans>ddns_script_linux</Trans>
+                                </button>
+                                <button
+                                    type="button"
+                                    className="btn btn-outline-primary"
+                                    onClick={() => this.downloadDDNSScript('macos')}
+                                    disabled={!ddnsDomain}>
+                                    <Trans>ddns_script_macos</Trans>
+                                </button>
+                            </div>
+                        </div>
 
                         <Modal
                             isModalOpen={isModalOpen}

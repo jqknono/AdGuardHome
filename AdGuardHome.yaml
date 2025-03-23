@@ -10,7 +10,7 @@ users:
 auth_attempts: 5
 block_auth_min: 15
 http_proxy: ""
-language: zh-cn
+language: en
 theme: light
 service_type: enterprise
 dns:
@@ -154,8 +154,10 @@ filtering:
   parental_block_host: family-block.dns.adguard.com
   safebrowsing_block_host: standard-block.dns.adguard.com
   rewrites:
-    - domain: rewrites.example.com
-      answer: 1.1.1.1
+    - domain: nas.home
+      answer: 54.179.178.240
+    - domain: nas.home
+      answer: 2406:da18:c10:f800:b3fc:22c7:aa7a:abb
   safe_fs_patterns:
     - /home/test/code/AdGuardHome/data/userfilters/*
   safebrowsing_cache_size: 1048576

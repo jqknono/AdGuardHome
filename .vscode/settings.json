@@ -42,12 +42,6 @@
         "-tags",
         "!excludedir"
     ],
-    "github.copilot.chat.localeOverride": "en",
-    "github.copilot.chat.commitMessageGeneration.instructions": [
-        {
-            "text": "Use English to write commit messages."
-        }
-    ],
     "files.exclude": {
         "client/pkg/**": true
     },
